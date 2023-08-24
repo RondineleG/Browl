@@ -1,10 +1,36 @@
 using Browl.Data.Entities;
+using Browl.Data.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace Browl.Data;
-public class BrowlDbContext : DBContext
+public class BrowlDbContext : DbContext
 {
+    private readonly ITenantService _tenantService;
+    public BrowlDbContext(DbContextOptions options, ITenantService service) : base(options) => _tenantService = service;
+    public string TenantName
+    {
+        get => _tenantService.GetTenant()?.TenantName ?? String.Empty;
+    }
     public DbSet<Habit>? Habits { get; set; }
-    protected override void OnConfiguring(DbContextOptionsBuilder options) => options.UseSqlServer("Server=sqlserver;Database=GoodHabitsDatabase;User Id=sa;Password=Password1 ;Integrated Security=false;TrustServerCertificate=true;");
-    protected override void OnModelCreating(ModelBuilder modelBuilder) => SeedData.Seed(modelBuilder);
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        var tenantConnectionString = _tenantService.GetConnectionString();
+        if (!string.IsNullOrEmpty(tenantConnectionString))
+        {
+            optionsBuilder.UseSqlServer(_tenantService.GetConnectionString());
+        }
+    }
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+        modelBuilder.Entity<Habit>().HasQueryFilter(a => a.TenantName == TenantName);
+        SeedData.Seed(modelBuilder);
+    }
+    public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
+    {
+        ChangeTracker.Entries<IHasTenant>()
+            .Where(entry => entry.State == EntityState.Added || entry.State == EntityState.Modified)
+            .ToList().ForEach(entry => entry.Entity.TenantName = TenantName);
+        return await base.SaveChangesAsync(cancellationToken);
+    }
 }

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/Browl.Client.props" />
+</Project>

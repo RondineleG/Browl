@@ -1,0 +1,34 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "RunClient",
+            "type": "blazorwasm",
+            "request": "launch",
+            "preLaunchTask": "build-client",
+            "cwd": "${workspaceFolder}/Browl.Client",
+            "url": "https://localhost:5900"
+        },
+        {
+            "name": "RunHabitService",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-habit-service",
+            "program": "${workspaceFolder}/Browl.Service.MarketDataCollector/bin/Debug/net7.0/Browl.Service.MarketDataCollector.dll",
+            "args": [],
+            "cwd":
+              "${workspaceFolder}/Browl.Service.MarketDataCollector",
+            "stopAtEntry": false,
+            "console": "integratedTerminal"
+        },
+    ],
+    "compounds": [
+        {
+            "name": "Run All",
+            "configurations": [
+                "RunHabitService",
+                "RunClient"
+            ]
+        }
+    ]
+}

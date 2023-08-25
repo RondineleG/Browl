@@ -1,6 +1,6 @@
-using Microsoft.Extensions.Options;
 using Browl.Data;
 using Browl.Data.Interfaces;
+using Microsoft.Extensions.Options;
 
 namespace Browl.Service.MarketDataCollector;
 public class TenantService : ITenantService

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using Browl.Service.MarketDataCollector.Dtos.Habit;
-using Browl.Service.MarketDataCollector.Interfaces;
+using Browl.Core.Dtos.Habit;
+using Browl.Core.Interfaces.Services;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.JsonPatch.Exceptions;
 using Microsoft.AspNetCore.Mvc;

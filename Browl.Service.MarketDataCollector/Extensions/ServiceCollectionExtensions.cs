@@ -1,4 +1,5 @@
-﻿using Browl.Data;
+﻿using Browl.Core.Entities;
+using Browl.Data.Context;
 using Microsoft.EntityFrameworkCore;
 namespace Browl.Service.MarketDataCollector.Extensions;
 public static class ServiceCollectionExtensions

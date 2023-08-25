@@ -1,10 +1,11 @@
-using Browl.Data;
-using Browl.Data.Interfaces;
-using Browl.Service.MarketDataCollector;
+using Browl.Core.Entities;
+using Browl.Core.Interfaces.Services;
+using Browl.Data.Services;
+using Browl.Service.MarketDataCollector.Configuration;
 using Browl.Service.MarketDataCollector.Extensions;
-using Browl.Service.MarketDataCollector.Interfaces;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.OpenApi.Models;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddHttpContextAccessor();
@@ -34,6 +35,22 @@ builder.Services.Configure<TenantSettings>(builder.Configuration.GetSection(name
 builder.Services.AddAndMigrateDatabases(builder.Configuration);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddJwtTConfiguration(builder.Configuration);
+builder.Services.AddFluentValidationConfiguration();
+builder.Services.AddAutoMapperConfiguration();
+builder.Services.AddDatabaseConfiguration(builder.Configuration);
+builder.Services.AddDependencyInjectionConfiguration();
+builder.Services.AddSwaggerConfiguration();
+
+var ambiente = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+var configuration = new ConfigurationBuilder()
+                         .SetBasePath(Directory.GetCurrentDirectory())
+                         .AddJsonFile("appsettings.json")
+                         .AddJsonFile($"appsettings.{ambiente}.json", optional: true)
+                         .Build();
+Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(configuration).CreateLogger();
+builder.Host.UseSerilog((ctx, lc) => lc.WriteTo.Console());
+
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
@@ -44,5 +61,10 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseRouting();
 app.UseAuthorization();
+app.UseDatabaseConfiguration();
+app.UseSwaggerConfiguration();
+app.UseHttpsRedirection();
+app.UseRouting();
+app.UseJwtConfiguration();
 app.MapControllers();
 app.Run();

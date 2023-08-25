@@ -1,6 +1,6 @@
 ﻿using Browl.Data;
 using Microsoft.EntityFrameworkCore;
-namespace Browl.Service.MarketDataCollector;
+namespace Browl.Service.MarketDataCollector.Extensions;
 public static class ServiceCollectionExtensions
 {
     public static IServiceCollection

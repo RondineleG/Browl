@@ -3,9 +3,8 @@ using Browl.Data.Interfaces;
 using Browl.Service.MarketDataCollector;
 using Browl.Service.MarketDataCollector.Extensions;
 using Browl.Service.MarketDataCollector.Interfaces;
-using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Mvc.Versioning;
-
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddHttpContextAccessor();

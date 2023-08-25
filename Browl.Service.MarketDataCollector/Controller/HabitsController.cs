@@ -33,10 +33,16 @@ public class HabitsController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetAsync(int id) => Ok(_mapper.Map<HabitDto>(await _habitService.GetById(id)));
+    public async Task<IActionResult> GetAsync(int id)
+    {
+        return Ok(_mapper.Map<HabitDto>(await _habitService.GetById(id)));
+    }
 
     [HttpGet]
-    public async Task<IActionResult> GetAsync() => Ok(_mapper.Map<ICollection<HabitDto>>(await _habitService.GetAll()));
+    public async Task<IActionResult> GetAsync()
+    {
+        return Ok(_mapper.Map<ICollection<HabitDto>>(await _habitService.GetAll()));
+    }
 
     [HttpPost]
     public async Task<IActionResult> CreateAsync(CreateHabitDto request)

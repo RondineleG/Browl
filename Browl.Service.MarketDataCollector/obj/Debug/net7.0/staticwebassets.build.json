@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "Kx3NhkpAD1t2n7b1Jj148lr+auHkvvShNNM8KD2NgLs=",
+  "Source": "Browl.Service.MarketDataCollector",
+  "BasePath": "_content/Browl.Service.MarketDataCollector",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

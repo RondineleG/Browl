@@ -1,0 +1,14 @@
+/workspace/Browl.Data/bin/Debug/net7.0/Browl.Data.deps.json
+/workspace/Browl.Data/bin/Debug/net7.0/Browl.Data.runtimeconfig.json
+/workspace/Browl.Data/bin/Debug/net7.0/Browl.Data.dll
+/workspace/Browl.Data/bin/Debug/net7.0/Browl.Data.pdb
+/workspace/Browl.Data/obj/Debug/net7.0/Browl.Data.csproj.AssemblyReference.cache
+/workspace/Browl.Data/obj/Debug/net7.0/Browl.Data.GeneratedMSBuildEditorConfig.editorconfig
+/workspace/Browl.Data/obj/Debug/net7.0/Browl.Data.AssemblyInfoInputs.cache
+/workspace/Browl.Data/obj/Debug/net7.0/Browl.Data.AssemblyInfo.cs
+/workspace/Browl.Data/obj/Debug/net7.0/Browl.Data.csproj.CoreCompileInputs.cache
+/workspace/Browl.Data/obj/Debug/net7.0/Browl.Data.dll
+/workspace/Browl.Data/obj/Debug/net7.0/refint/Browl.Data.dll
+/workspace/Browl.Data/obj/Debug/net7.0/Browl.Data.pdb
+/workspace/Browl.Data/obj/Debug/net7.0/Browl.Data.genruntimeconfig.cache
+/workspace/Browl.Data/obj/Debug/net7.0/ref/Browl.Data.dll

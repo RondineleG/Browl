@@ -3,32 +3,125 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Browl.Client", "Browl.Client\Browl.Client.csproj", "{B63038BF-D20E-4546-B505-97059199898B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{63F63DF1-F1E4-406D-8D06-4D2E3EE5115D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Browl.Service.MarketDataCollector", "Browl.Service.MarketDataCollector\Browl.Service.MarketDataCollector.csproj", "{8A0E9CBF-7829-475B-B0C7-761BEA215267}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{EE819CBF-81B0-4B90-A9F3-E70C01AAE813}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Browl.Data", "Browl.Data\Browl.Data.csproj", "{B5FF382C-BAA4-4D3F-84A7-1C0214648B87}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{758EAD6C-01B5-4816-97E5-CA0E5F217D34}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{03BB35D6-9D52-4B1C-AB42-12396FC5C393}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Browl.Service.MarketDataCollector", "Browl.Service.MarketDataCollector", "{2BC4B565-62D6-4A63-89CE-B396C16C0DED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Browl.Service.MarketDataCollector.Test", "Browl.Service.MarketDataCollector.Test", "{DB8F8AA6-A0F4-487D-B807-787C5117DD35}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".vscode", ".vscode", "{92FBFC64-38B1-4966-8DA5-9653C2ABDC6D}"
+	ProjectSection(SolutionItems) = preProject
+		.vscode\launch.json = .vscode\launch.json
+		.vscode\settings.json = .vscode\settings.json
+		.vscode\tasks.json = .vscode\tasks.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker", "docker", "{1354B93D-BE4B-4B8B-A6CE-2F135D1EB48F}"
+	ProjectSection(SolutionItems) = preProject
+		docker\docker-compose.yaml = docker\docker-compose.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".devcontainer", ".devcontainer", "{646A11E0-1983-4BAB-8218-2D8764668F7C}"
+	ProjectSection(SolutionItems) = preProject
+		.devcontainer\devcontainer.json = .devcontainer\devcontainer.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{1065DA14-E85E-4906-A135-07AD28AEB13E}"
+	ProjectSection(SolutionItems) = preProject
+		docs\Bot.md = docs\Bot.md
+		docs\ColetaDadosMercado.md = docs\ColetaDadosMercado.md
+		docs\Código de identificação - 7.md = docs\Código de identificação - 7.md
+		docs\Diagrama Estrutural.md = docs\Diagrama Estrutural.md
+		docs\estrutura.md = docs\estrutura.md
+		docs\Lista de servicos.md = docs\Lista de servicos.md
+		docs\microserviços por contextos .md = docs\microserviços por contextos .md
+		docs\orndem digrama .md = docs\orndem digrama .md
+		docs\responsabilidades .md = docs\responsabilidades .md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Browl.Service.MarketDataCollector", "Browl.Service.MarketDataCollector", "{0AED9AC5-0793-40C9-A1C4-C468CC7707C3}"
+	ProjectSection(SolutionItems) = preProject
+		docs\Browl.Service.MarketDataCollector\Browl.Service.MarketDataCollector.md = docs\Browl.Service.MarketDataCollector\Browl.Service.MarketDataCollector.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dev-env", "dev-env", "{E62163DD-DFA3-4D67-99AB-D767F441FC34}"
+	ProjectSection(SolutionItems) = preProject
+		docker\dev-env\dockerfile = docker\dev-env\dockerfile
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sqlserver", "sqlserver", "{D15FCE57-FEF3-4ECC-BC21-91EF796643AD}"
+	ProjectSection(SolutionItems) = preProject
+		docker\sqlserver\sqlserver.env = docker\sqlserver\sqlserver.env
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Browl.Service.MarketDataCollector.API.Test", "test\Services\Browl.Service.MarketDataCollector.Test\Browl.Service.MarketDataCollector.API.Test\Browl.Service.MarketDataCollector.API.Test.csproj", "{DFF594C9-795D-47E3-B2C1-25FF388B6368}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Browl.Client", "src\Presentation\Browl.Client\Browl.Client.csproj", "{F6E8F65E-53D1-4706-8A9B-BB82B0DA8952}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Browl.Service.MarketDataCollector.API", "src\Services\Browl.Service.MarketDataCollector\Browl.Service.MarketDataCollector.API\Browl.Service.MarketDataCollector.API.csproj", "{9B5B5309-EA58-4868-BCE7-C750F6818768}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Browl.Service.MarketDataCollector.Application", "src\Services\Browl.Service.MarketDataCollector\Browl.Service.MarketDataCollector.Application\Browl.Service.MarketDataCollector.Application.csproj", "{119215C8-C2C8-43B3-B76D-73CB262EFB5B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Browl.Service.MarketDataCollector.Domain", "src\Services\Browl.Service.MarketDataCollector\Browl.Service.MarketDataCollector.Domain\Browl.Service.MarketDataCollector.Domain.csproj", "{7A3A8A4E-9594-4F3B-805F-F0918C4A2DD0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Browl.Service.MarketDataCollector.Infrastructure", "src\Services\Browl.Service.MarketDataCollector\Browl.Service.MarketDataCollector.Infrastructure\Browl.Service.MarketDataCollector.Infrastructure.csproj", "{F5DA3424-E543-4BF3-8B09-05BE5B9D01DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DFF594C9-795D-47E3-B2C1-25FF388B6368}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFF594C9-795D-47E3-B2C1-25FF388B6368}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFF594C9-795D-47E3-B2C1-25FF388B6368}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFF594C9-795D-47E3-B2C1-25FF388B6368}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6E8F65E-53D1-4706-8A9B-BB82B0DA8952}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6E8F65E-53D1-4706-8A9B-BB82B0DA8952}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6E8F65E-53D1-4706-8A9B-BB82B0DA8952}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6E8F65E-53D1-4706-8A9B-BB82B0DA8952}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B5B5309-EA58-4868-BCE7-C750F6818768}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B5B5309-EA58-4868-BCE7-C750F6818768}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B5B5309-EA58-4868-BCE7-C750F6818768}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B5B5309-EA58-4868-BCE7-C750F6818768}.Release|Any CPU.Build.0 = Release|Any CPU
+		{119215C8-C2C8-43B3-B76D-73CB262EFB5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{119215C8-C2C8-43B3-B76D-73CB262EFB5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{119215C8-C2C8-43B3-B76D-73CB262EFB5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{119215C8-C2C8-43B3-B76D-73CB262EFB5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A3A8A4E-9594-4F3B-805F-F0918C4A2DD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A3A8A4E-9594-4F3B-805F-F0918C4A2DD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A3A8A4E-9594-4F3B-805F-F0918C4A2DD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A3A8A4E-9594-4F3B-805F-F0918C4A2DD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5DA3424-E543-4BF3-8B09-05BE5B9D01DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5DA3424-E543-4BF3-8B09-05BE5B9D01DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5DA3424-E543-4BF3-8B09-05BE5B9D01DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5DA3424-E543-4BF3-8B09-05BE5B9D01DA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B63038BF-D20E-4546-B505-97059199898B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B63038BF-D20E-4546-B505-97059199898B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B63038BF-D20E-4546-B505-97059199898B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B63038BF-D20E-4546-B505-97059199898B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8A0E9CBF-7829-475B-B0C7-761BEA215267}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8A0E9CBF-7829-475B-B0C7-761BEA215267}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8A0E9CBF-7829-475B-B0C7-761BEA215267}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8A0E9CBF-7829-475B-B0C7-761BEA215267}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B5FF382C-BAA4-4D3F-84A7-1C0214648B87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B5FF382C-BAA4-4D3F-84A7-1C0214648B87}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B5FF382C-BAA4-4D3F-84A7-1C0214648B87}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B5FF382C-BAA4-4D3F-84A7-1C0214648B87}.Release|Any CPU.Build.0 = Release|Any CPU
+	GlobalSection(NestedProjects) = preSolution
+		{758EAD6C-01B5-4816-97E5-CA0E5F217D34} = {63F63DF1-F1E4-406D-8D06-4D2E3EE5115D}
+		{03BB35D6-9D52-4B1C-AB42-12396FC5C393} = {63F63DF1-F1E4-406D-8D06-4D2E3EE5115D}
+		{2BC4B565-62D6-4A63-89CE-B396C16C0DED} = {758EAD6C-01B5-4816-97E5-CA0E5F217D34}
+		{DB8F8AA6-A0F4-487D-B807-787C5117DD35} = {EE819CBF-81B0-4B90-A9F3-E70C01AAE813}
+		{0AED9AC5-0793-40C9-A1C4-C468CC7707C3} = {1065DA14-E85E-4906-A135-07AD28AEB13E}
+		{E62163DD-DFA3-4D67-99AB-D767F441FC34} = {1354B93D-BE4B-4B8B-A6CE-2F135D1EB48F}
+		{D15FCE57-FEF3-4ECC-BC21-91EF796643AD} = {1354B93D-BE4B-4B8B-A6CE-2F135D1EB48F}
+		{DFF594C9-795D-47E3-B2C1-25FF388B6368} = {DB8F8AA6-A0F4-487D-B807-787C5117DD35}
+		{F6E8F65E-53D1-4706-8A9B-BB82B0DA8952} = {03BB35D6-9D52-4B1C-AB42-12396FC5C393}
+		{9B5B5309-EA58-4868-BCE7-C750F6818768} = {2BC4B565-62D6-4A63-89CE-B396C16C0DED}
+		{119215C8-C2C8-43B3-B76D-73CB262EFB5B} = {2BC4B565-62D6-4A63-89CE-B396C16C0DED}
+		{7A3A8A4E-9594-4F3B-805F-F0918C4A2DD0} = {2BC4B565-62D6-4A63-89CE-B396C16C0DED}
+		{F5DA3424-E543-4BF3-8B09-05BE5B9D01DA} = {2BC4B565-62D6-4A63-89CE-B396C16C0DED}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {09C8AF50-40D4-48F2-A03D-9BC7AB6D3538}
 	EndGlobalSection
 EndGlobal

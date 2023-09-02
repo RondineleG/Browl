@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<DocumentationFile>C:\Users\Rerum\Videos\Browl\src\Services\Browl.Service.MarketDataCollector\Browl.Service.MarketDataCollector.API\Browl.Service.MarketDataCollector.API.xml</DocumentationFile>
+		<NoWarn>1591</NoWarn>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="automapper" Version="12.0.1" />
+		<PackageReference Include="automapper.extensions.microsoft.dependencyinjection" Version="11.0.0" />
+		<PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+		<PackageReference Include="MicroElements.Swashbuckle.FluentValidation" Version="5.7.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="7.0.10" />
+		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.10" />
+		<PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="7.0.10" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.1.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.10" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="Serilog.AspNetCore" Version="7.0.0" />
+		<PackageReference Include="Serilog.Exceptions" Version="8.4.0" />
+		<PackageReference Include="Serilog.Formatting.Compact" Version="1.1.0" />
+		<PackageReference Include="Serilog.Settings.Configuration" Version="7.0.1" />
+		<PackageReference Include="Serilog.Sinks.Async" Version="1.5.0" />
+		<PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+		<PackageReference Include="SerilogTimings" Version="3.0.1" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.5.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.5.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.5.0" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Browl.Service.MarketDataCollector.Application\Browl.Service.MarketDataCollector.Application.csproj" />
+	  <ProjectReference Include="..\Browl.Service.MarketDataCollector.Domain\Browl.Service.MarketDataCollector.Domain.csproj" />
+	  <ProjectReference Include="..\Browl.Service.MarketDataCollector.Infrastructure\Browl.Service.MarketDataCollector.Infrastructure.csproj" />
+	</ItemGroup>
+
+</Project>

@@ -1,4 +1,4 @@
 # Browl
 
-This is the repository of the Browl project, a complete system that aims to offer cryptocurrency buying and selling services, portfolio and portfolio management, risk management and operation in cryptocurrency derivatives markets.
+Este é o repositório do projeto Browl, um sistema completo que tem como objetivo oferecer serviços de compra e venda de criptomoedas, gestão de carteiras e portfólios, gestão de riscos e operação em mercados de derivativos de criptomoedas.
 

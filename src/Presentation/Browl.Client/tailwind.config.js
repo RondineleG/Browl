@@ -1,6 +1,6 @@
-const withMT = require("@material-tailwind/react/utils/withMT");
+const colors = require('tailwindcss/colors');
 
-module.exports = withMT({
+module.exports = {
     purge: {
         enabled: true,
         content: [
@@ -9,8 +9,9 @@ module.exports = withMT({
         ],
     },
     darkMode: true,
+    theme: [],
     variants: {
         extend: {},
     },
     plugins: [],
-});
+}

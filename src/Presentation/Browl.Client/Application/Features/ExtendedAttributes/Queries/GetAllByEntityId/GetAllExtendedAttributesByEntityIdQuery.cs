@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Browl.Application.Interfaces.Repositories;
 using Browl.Domain.Contracts;
 using Browl.Shared.Constants.Application;
@@ -11,6 +6,11 @@ using Browl.Shared.Wrapper;
 using LazyCache;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Browl.Application.Features.ExtendedAttributes.Queries.GetAllByEntityId
 {

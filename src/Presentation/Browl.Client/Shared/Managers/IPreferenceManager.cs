@@ -1,6 +1,6 @@
 ﻿using Browl.Shared.Settings;
-using System.Threading.Tasks;
 using Browl.Shared.Wrapper;
+using System.Threading.Tasks;
 
 namespace Browl.Shared.Managers
 {

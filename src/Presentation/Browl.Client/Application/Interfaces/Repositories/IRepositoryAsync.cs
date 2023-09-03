@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Browl.Domain.Contracts;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Browl.Domain.Contracts;
 
 namespace Browl.Application.Interfaces.Repositories
 {

@@ -1,6 +1,6 @@
-﻿using System;
-using Browl.Domain.Contracts;
+﻿using Browl.Domain.Contracts;
 using Microsoft.AspNetCore.Components;
+using System;
 
 namespace Browl.Client.Shared.Components
 {

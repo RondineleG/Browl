@@ -1,11 +1,11 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Browl.Application.Interfaces.Repositories;
+﻿using Browl.Application.Interfaces.Repositories;
 using Browl.Domain.Entities.Misc;
 using Browl.Shared.Constants.Application;
 using Browl.Shared.Wrapper;
 using MediatR;
 using Microsoft.Extensions.Localization;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Browl.Application.Features.DocumentTypes.Commands.Delete
 {

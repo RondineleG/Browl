@@ -1,13 +1,13 @@
-﻿using Browl.Application.Requests.Identity;
+﻿using Blazored.FluentValidation;
+using Browl.Application.Requests.Identity;
 using Browl.Client.Extensions;
+using Browl.Shared.Constants.Storage;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using MudBlazor;
 using System;
 using System.IO;
 using System.Threading.Tasks;
-using Blazored.FluentValidation;
-using Browl.Shared.Constants.Storage;
 
 namespace Browl.Client.Pages.Identity
 {

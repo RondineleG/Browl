@@ -1,13 +1,13 @@
-﻿using System;
-using Browl.Application.Requests.Identity;
+﻿using Browl.Application.Requests.Identity;
 using Browl.Application.Responses.Identity;
+using Browl.Shared.Constants.Permission;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
+using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Browl.Shared.Constants.Permission;
-using Microsoft.AspNetCore.Authorization;
 
 namespace Browl.Client.Pages.Identity
 {

@@ -1,4 +1,5 @@
-﻿using Browl.Application.Models.Chat;
+﻿using Browl.Application.Interfaces.Chat;
+using Browl.Application.Models.Chat;
 using Browl.Application.Responses.Identity;
 using Browl.Client.Infrastructure.Extensions;
 using Browl.Shared.Wrapper;
@@ -6,7 +7,6 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
-using Browl.Application.Interfaces.Chat;
 
 namespace Browl.Client.Infrastructure.Managers.Communication
 {

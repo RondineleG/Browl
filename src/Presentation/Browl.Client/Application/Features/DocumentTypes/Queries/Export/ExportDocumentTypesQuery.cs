@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using Browl.Application.Extensions;
+﻿using Browl.Application.Extensions;
 using Browl.Application.Interfaces.Repositories;
 using Browl.Application.Interfaces.Services;
 using Browl.Application.Specifications.Misc;
@@ -11,6 +7,10 @@ using Browl.Shared.Wrapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Browl.Application.Features.DocumentTypes.Queries.Export
 {

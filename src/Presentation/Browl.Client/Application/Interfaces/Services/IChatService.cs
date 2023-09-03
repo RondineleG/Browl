@@ -1,9 +1,9 @@
-﻿using Browl.Application.Responses.Identity;
+﻿using Browl.Application.Interfaces.Chat;
+using Browl.Application.Models.Chat;
+using Browl.Application.Responses.Identity;
 using Browl.Shared.Wrapper;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Browl.Application.Interfaces.Chat;
-using Browl.Application.Models.Chat;
 
 namespace Browl.Application.Interfaces.Services
 {

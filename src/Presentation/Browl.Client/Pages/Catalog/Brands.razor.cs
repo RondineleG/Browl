@@ -1,19 +1,19 @@
-﻿using Browl.Application.Features.Brands.Queries.GetAll;
+﻿using Browl.Application.Features.Brands.Commands.AddEdit;
+using Browl.Application.Features.Brands.Queries.GetAll;
 using Browl.Client.Extensions;
+using Browl.Client.Infrastructure.Managers.Catalog.Brand;
 using Browl.Shared.Constants.Application;
+using Browl.Shared.Constants.Permission;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.SignalR.Client;
+using Microsoft.JSInterop;
 using MudBlazor;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Browl.Application.Features.Brands.Commands.AddEdit;
-using Browl.Client.Infrastructure.Managers.Catalog.Brand;
-using Browl.Shared.Constants.Permission;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.JSInterop;
 
 namespace Browl.Client.Pages.Catalog
 {

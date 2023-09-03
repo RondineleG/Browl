@@ -1,7 +1,11 @@
-﻿using Browl.Application.Features.Products.Queries.GetAllPaged;
+﻿using Browl.Application.Features.Products.Commands.AddEdit;
+using Browl.Application.Features.Products.Queries.GetAllPaged;
 using Browl.Application.Requests.Catalog;
 using Browl.Client.Extensions;
+using Browl.Client.Infrastructure.Managers.Catalog.Product;
 using Browl.Shared.Constants.Application;
+using Browl.Shared.Constants.Permission;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.JSInterop;
@@ -11,10 +15,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Browl.Application.Features.Products.Commands.AddEdit;
-using Browl.Client.Infrastructure.Managers.Catalog.Product;
-using Browl.Shared.Constants.Permission;
-using Microsoft.AspNetCore.Authorization;
 
 namespace Browl.Client.Pages.Catalog
 {
@@ -73,7 +73,7 @@ namespace Browl.Client.Pages.Catalog
             string[] orderings = null;
             if (!string.IsNullOrEmpty(state.SortLabel))
             {
-                orderings = state.SortDirection != SortDirection.None ? new[] {$"{state.SortLabel} {state.SortDirection}"} : new[] {$"{state.SortLabel}"};
+                orderings = state.SortDirection != SortDirection.None ? new[] { $"{state.SortLabel} {state.SortDirection}" } : new[] { $"{state.SortLabel}" };
             }
 
             var request = new GetAllPagedProductsRequest { PageSize = pageSize, PageNumber = pageNumber + 1, SearchString = _searchString, Orderby = orderings };

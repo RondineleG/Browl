@@ -1,9 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using MediatR;
-using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
-using Browl.Application.Features.ExtendedAttributes.Commands.AddEdit;
+﻿using Browl.Application.Features.ExtendedAttributes.Commands.AddEdit;
 using Browl.Application.Features.ExtendedAttributes.Commands.Delete;
 using Browl.Application.Features.ExtendedAttributes.Queries.Export;
 using Browl.Application.Features.ExtendedAttributes.Queries.GetAll;
@@ -11,6 +6,11 @@ using Browl.Application.Features.ExtendedAttributes.Queries.GetAllByEntityId;
 using Browl.Application.Features.ExtendedAttributes.Queries.GetById;
 using Browl.Domain.Contracts;
 using Browl.Shared.Wrapper;
+using MediatR;
+using Microsoft.Extensions.DependencyInjection;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 
 namespace Browl.Application.Extensions
 {

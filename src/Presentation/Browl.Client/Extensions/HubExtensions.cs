@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Browl.Shared.Constants.Application;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.SignalR.Client;
-using Browl.Shared.Constants.Application;
 
 namespace Browl.Client.Extensions
 {
@@ -10,9 +10,7 @@ namespace Browl.Client.Extensions
         {
             if (hubConnection == null)
             {
-                hubConnection = new HubConnectionBuilder()
-                                  .WithUrl(navigationManager.ToAbsoluteUri(ApplicationConstants.SignalR.HubUrl))
-                                  .Build();
+                hubConnection = new HubConnectionBuilder().WithUrl(navigationManager.ToAbsoluteUri(ApplicationConstants.SignalR.HubUrl)).Build();
             }
             return hubConnection;
         }

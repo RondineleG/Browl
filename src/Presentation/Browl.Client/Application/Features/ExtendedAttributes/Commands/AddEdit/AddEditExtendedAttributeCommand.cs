@@ -1,9 +1,4 @@
 ﻿#nullable enable
-using System;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using AutoMapper;
 using Browl.Application.Interfaces.Repositories;
 using Browl.Domain.Contracts;
@@ -13,6 +8,11 @@ using Browl.Shared.Wrapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Browl.Application.Features.ExtendedAttributes.Commands.AddEdit
 {

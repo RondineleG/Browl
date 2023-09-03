@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Browl.Application.Interfaces.Repositories;
 using Browl.Domain.Entities.Misc;
 using Browl.Shared.Constants.Application;
 using Browl.Shared.Wrapper;
 using LazyCache;
 using MediatR;
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Browl.Application.Features.DocumentTypes.Queries.GetAll
 {

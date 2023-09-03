@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using Blazored.FluentValidation;
+﻿using Blazored.FluentValidation;
 using Browl.Application.Features.DocumentTypes.Commands.AddEdit;
 using Browl.Client.Extensions;
 using Browl.Client.Infrastructure.Managers.Misc.DocumentType;
@@ -7,6 +6,7 @@ using Browl.Shared.Constants.Application;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.SignalR.Client;
 using MudBlazor;
+using System.Threading.Tasks;
 
 namespace Browl.Client.Pages.Misc
 {

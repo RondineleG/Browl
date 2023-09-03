@@ -1,16 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations;
-using AutoMapper;
+﻿using AutoMapper;
 using Browl.Application.Interfaces.Repositories;
 using Browl.Application.Interfaces.Services;
 using Browl.Application.Requests;
 using Browl.Domain.Entities.Catalog;
 using Browl.Shared.Wrapper;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Localization;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
 
 namespace Browl.Application.Features.Products.Commands.AddEdit
 {

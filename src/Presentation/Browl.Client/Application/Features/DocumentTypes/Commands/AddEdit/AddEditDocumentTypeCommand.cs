@@ -1,8 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Browl.Application.Interfaces.Repositories;
 using Browl.Domain.Entities.Misc;
 using Browl.Shared.Constants.Application;
@@ -10,6 +6,10 @@ using Browl.Shared.Wrapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Browl.Application.Features.DocumentTypes.Commands.AddEdit
 {

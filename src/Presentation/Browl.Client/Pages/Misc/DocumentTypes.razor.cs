@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Browl.Application.Features.DocumentTypes.Commands.AddEdit;
+﻿using Browl.Application.Features.DocumentTypes.Commands.AddEdit;
 using Browl.Application.Features.DocumentTypes.Queries.GetAll;
 using Browl.Client.Extensions;
 using Browl.Client.Infrastructure.Managers.Misc.DocumentType;
@@ -14,6 +9,11 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.JSInterop;
 using MudBlazor;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace Browl.Client.Pages.Misc
 {

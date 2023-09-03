@@ -1,8 +1,8 @@
-﻿using Browl.Client.Infrastructure.Extensions;
+﻿using Browl.Application.Features.Dashboards.Queries.GetData;
+using Browl.Client.Infrastructure.Extensions;
 using Browl.Shared.Wrapper;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Browl.Application.Features.Dashboards.Queries.GetData;
 
 namespace Browl.Client.Infrastructure.Managers.Dashboard
 {

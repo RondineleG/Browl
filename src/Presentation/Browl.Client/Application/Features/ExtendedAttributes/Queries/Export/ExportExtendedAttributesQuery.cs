@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Browl.Application.Extensions;
+﻿using Browl.Application.Extensions;
 using Browl.Application.Interfaces.Repositories;
 using Browl.Application.Interfaces.Services;
 using Browl.Application.Specifications.ExtendedAttribute;
@@ -14,6 +8,12 @@ using Browl.Shared.Wrapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Browl.Application.Features.ExtendedAttributes.Queries.Export
 {

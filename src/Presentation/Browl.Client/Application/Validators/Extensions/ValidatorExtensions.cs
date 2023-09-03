@@ -1,5 +1,4 @@
-﻿using Browl.Application.Interfaces.Serialization.Serializers;
-using FluentValidation;
+﻿using FluentValidation;
 using FluentValidation.Validators;
 
 namespace Browl.Application.Validators.Extensions

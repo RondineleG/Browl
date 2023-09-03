@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Net.Http;
-using System.Net.Http.Json;
-using System.Threading.Tasks;
-using Browl.Application.Requests.Identity;
+﻿using Browl.Application.Requests.Identity;
 using Browl.Application.Responses.Identity;
 using Browl.Client.Infrastructure.Extensions;
 using Browl.Shared.Wrapper;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Net.Http.Json;
+using System.Threading.Tasks;
 
 namespace Browl.Client.Infrastructure.Managers.Identity.RoleClaims
 {

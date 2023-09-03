@@ -1,5 +1,5 @@
-﻿using System.Text.Json;
-using Browl.Application.Interfaces.Serialization.Options;
+﻿using Browl.Application.Interfaces.Serialization.Options;
+using System.Text.Json;
 
 namespace Browl.Application.Serialization.Options
 {

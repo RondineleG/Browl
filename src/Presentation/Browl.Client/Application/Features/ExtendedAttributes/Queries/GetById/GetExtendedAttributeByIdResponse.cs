@@ -1,7 +1,7 @@
 ﻿#nullable enable
-using System;
 using Browl.Domain.Contracts;
 using Browl.Domain.Enums;
+using System;
 
 namespace Browl.Application.Features.ExtendedAttributes.Queries.GetById
 {

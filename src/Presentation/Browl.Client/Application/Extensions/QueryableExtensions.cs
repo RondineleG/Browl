@@ -1,11 +1,11 @@
 ﻿using Browl.Application.Exceptions;
 using Browl.Application.Specifications.Base;
+using Browl.Domain.Contracts;
 using Browl.Shared.Wrapper;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Browl.Domain.Contracts;
 
 namespace Browl.Application.Extensions
 {

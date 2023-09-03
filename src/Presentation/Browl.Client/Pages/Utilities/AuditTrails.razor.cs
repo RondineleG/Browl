@@ -1,4 +1,9 @@
 ﻿using Browl.Application.Responses.Audit;
+using Browl.Client.Infrastructure.Managers.Audit;
+using Browl.Shared.Constants.Application;
+using Browl.Shared.Constants.Permission;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using MudBlazor;
 using System;
@@ -6,11 +11,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Browl.Client.Infrastructure.Managers.Audit;
-using Browl.Shared.Constants.Application;
-using Browl.Shared.Constants.Permission;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Components;
 
 namespace Browl.Client.Pages.Utilities
 {
@@ -65,7 +65,7 @@ namespace Browl.Client.Pages.Utilities
             {
                 result = false;
             }
-            if (_dateRange?.End != null && response.DateTime > _dateRange.End + new TimeSpan(0,11, 59, 59, 999))
+            if (_dateRange?.End != null && response.DateTime > _dateRange.End + new TimeSpan(0, 11, 59, 59, 999))
             {
                 result = false;
             }

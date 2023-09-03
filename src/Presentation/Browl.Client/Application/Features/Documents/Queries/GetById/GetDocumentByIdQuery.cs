@@ -1,10 +1,10 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Browl.Application.Interfaces.Repositories;
 using Browl.Domain.Entities.Misc;
 using Browl.Shared.Wrapper;
 using MediatR;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Browl.Application.Features.Documents.Queries.GetById
 {

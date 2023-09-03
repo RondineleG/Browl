@@ -1,7 +1,10 @@
-﻿using Browl.Application.Models.Chat;
+﻿using Browl.Application.Interfaces.Chat;
+using Browl.Application.Models.Chat;
 using Browl.Application.Responses.Identity;
 using Browl.Client.Extensions;
+using Browl.Client.Infrastructure.Managers.Communication;
 using Browl.Shared.Constants.Application;
+using Browl.Shared.Constants.Storage;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.SignalR.Client;
@@ -11,9 +14,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Browl.Application.Interfaces.Chat;
-using Browl.Client.Infrastructure.Managers.Communication;
-using Browl.Shared.Constants.Storage;
 
 namespace Browl.Client.Pages.Communication
 {
@@ -84,7 +84,7 @@ namespace Browl.Client.Pages.Communication
             HubConnection.On<string>(ApplicationConstants.SignalR.ConnectUser, (userId) =>
             {
                 var connectedUser = UserList.Find(x => x.Id.Equals(userId));
-                if (connectedUser is {IsOnline: false})
+                if (connectedUser is { IsOnline: false })
                 {
                     connectedUser.IsOnline = true;
                     _snackBar.Add($"{connectedUser.UserName} {_localizer["Logged In."]}", Severity.Info);
@@ -94,7 +94,7 @@ namespace Browl.Client.Pages.Communication
             HubConnection.On<string>(ApplicationConstants.SignalR.DisconnectUser, (userId) =>
             {
                 var disconnectedUser = UserList.Find(x => x.Id.Equals(userId));
-                if (disconnectedUser is {IsOnline: true})
+                if (disconnectedUser is { IsOnline: true })
                 {
                     disconnectedUser.IsOnline = false;
                     _snackBar.Add($"{disconnectedUser.UserName} {_localizer["Logged Out."]}", Severity.Info);

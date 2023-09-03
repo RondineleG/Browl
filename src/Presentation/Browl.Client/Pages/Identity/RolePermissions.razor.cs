@@ -1,19 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Security.Claims;
-using AutoMapper;
+﻿using AutoMapper;
 using Browl.Application.Requests.Identity;
 using Browl.Application.Responses.Identity;
 using Browl.Client.Extensions;
+using Browl.Client.Infrastructure.Managers.Identity.Roles;
 using Browl.Client.Infrastructure.Mappings;
 using Browl.Shared.Constants.Application;
+using Browl.Shared.Constants.Permission;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.SignalR.Client;
 using MudBlazor;
+using System;
+using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
-using Browl.Client.Infrastructure.Managers.Identity.Roles;
-using Browl.Shared.Constants.Permission;
-using Microsoft.AspNetCore.Authorization;
 
 namespace Browl.Client.Pages.Identity
 {

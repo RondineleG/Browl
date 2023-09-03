@@ -5,11 +5,11 @@ using Browl.Application.Requests;
 using Browl.Domain.Entities.Misc;
 using Browl.Shared.Wrapper;
 using MediatR;
+using Microsoft.Extensions.Localization;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Localization;
 
 namespace Browl.Application.Features.Documents.Commands.AddEdit
 {

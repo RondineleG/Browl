@@ -1,18 +1,18 @@
-﻿using Browl.Application.Features.Documents.Queries.GetAll;
+﻿using Browl.Application.Features.Documents.Commands.AddEdit;
+using Browl.Application.Features.Documents.Queries.GetAll;
 using Browl.Application.Requests.Documents;
 using Browl.Client.Extensions;
+using Browl.Client.Infrastructure.Managers.Misc.Document;
+using Browl.Domain.Entities.Misc;
+using Browl.Shared.Constants.Permission;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Components;
 using MudBlazor;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Browl.Application.Features.Documents.Commands.AddEdit;
-using Browl.Client.Infrastructure.Managers.Misc.Document;
-using Browl.Domain.Entities.Misc;
-using Browl.Shared.Constants.Permission;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Components;
 
 namespace Browl.Client.Pages.Misc
 {

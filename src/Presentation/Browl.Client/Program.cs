@@ -1,12 +1,12 @@
 using Browl.Client.Extensions;
 using Browl.Client.Infrastructure.Managers.Preferences;
+using Browl.Client.Infrastructure.Settings;
+using Browl.Shared.Constants.Localization;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
-using Browl.Client.Infrastructure.Settings;
-using Browl.Shared.Constants.Localization;
 
 namespace Browl.Client
 {

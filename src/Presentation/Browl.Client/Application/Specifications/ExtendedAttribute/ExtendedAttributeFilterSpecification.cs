@@ -1,7 +1,7 @@
-﻿using System;
-using Browl.Application.Features.ExtendedAttributes.Queries.Export;
+﻿using Browl.Application.Features.ExtendedAttributes.Queries.Export;
 using Browl.Application.Specifications.Base;
 using Browl.Domain.Contracts;
+using System;
 
 namespace Browl.Application.Specifications.ExtendedAttribute
 {

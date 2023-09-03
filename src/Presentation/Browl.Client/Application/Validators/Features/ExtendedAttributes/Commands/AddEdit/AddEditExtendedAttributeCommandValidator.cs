@@ -1,9 +1,9 @@
-﻿using System;
-using Browl.Application.Features.ExtendedAttributes.Commands.AddEdit;
+﻿using Browl.Application.Features.ExtendedAttributes.Commands.AddEdit;
 using Browl.Domain.Contracts;
 using Browl.Domain.Enums;
 using FluentValidation;
 using Microsoft.Extensions.Localization;
+using System;
 
 namespace Browl.Application.Validators.Features.ExtendedAttributes.Commands.AddEdit
 {

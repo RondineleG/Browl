@@ -1,11 +1,11 @@
-﻿using Browl.Application.Features.Brands.Queries.GetAll;
+﻿using Browl.Application.Features.Brands.Commands.AddEdit;
+using Browl.Application.Features.Brands.Queries.GetAll;
 using Browl.Client.Infrastructure.Extensions;
 using Browl.Shared.Wrapper;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
-using Browl.Application.Features.Brands.Commands.AddEdit;
 
 namespace Browl.Client.Infrastructure.Managers.Catalog.Brand
 {

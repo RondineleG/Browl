@@ -111,10 +111,10 @@ namespace Browl.Shared.Constants.Permission
             public const string Export = "Permissions.AuditTrails.Export";
             public const string Search = "Permissions.AuditTrails.Search";
         }
-       /// <summary>
-       /// Returns a list of Permissions.
-       /// </summary>
-       /// <returns></returns>
+        /// <summary>
+        /// Returns a list of Permissions.
+        /// </summary>
+        /// <returns></returns>
         public static List<string> GetRegisteredPermissions()
         {
             var permssions = new List<string>();

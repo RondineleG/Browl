@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Browl.Application.Requests.Identity;
+﻿using Browl.Application.Requests.Identity;
 using Browl.Application.Responses.Identity;
 using Browl.Shared.Wrapper;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Browl.Client.Infrastructure.Managers.Identity.RoleClaims
 {

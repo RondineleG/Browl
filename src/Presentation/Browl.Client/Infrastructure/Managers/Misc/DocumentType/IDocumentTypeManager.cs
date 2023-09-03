@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Browl.Application.Features.DocumentTypes.Commands.AddEdit;
+﻿using Browl.Application.Features.DocumentTypes.Commands.AddEdit;
 using Browl.Application.Features.DocumentTypes.Queries.GetAll;
 using Browl.Shared.Wrapper;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Browl.Client.Infrastructure.Managers.Misc.DocumentType
 {

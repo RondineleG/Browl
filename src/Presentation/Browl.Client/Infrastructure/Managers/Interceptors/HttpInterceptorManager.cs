@@ -1,10 +1,10 @@
 ﻿using Browl.Client.Infrastructure.Managers.Identity.Authentication;
 using Microsoft.AspNetCore.Components;
+using Microsoft.Extensions.Localization;
 using MudBlazor;
 using System;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Localization;
 using Toolbelt.Blazor;
 
 namespace Browl.Client.Infrastructure.Managers.Interceptors

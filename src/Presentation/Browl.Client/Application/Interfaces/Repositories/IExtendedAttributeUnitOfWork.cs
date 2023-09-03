@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Browl.Domain.Contracts;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Browl.Domain.Contracts;
 
 namespace Browl.Application.Interfaces.Repositories
 {

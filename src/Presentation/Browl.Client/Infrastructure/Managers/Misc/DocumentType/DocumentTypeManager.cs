@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Net.Http;
-using System.Net.Http.Json;
-using System.Threading.Tasks;
-using Browl.Application.Features.DocumentTypes.Commands.AddEdit;
+﻿using Browl.Application.Features.DocumentTypes.Commands.AddEdit;
 using Browl.Application.Features.DocumentTypes.Queries.GetAll;
 using Browl.Client.Infrastructure.Extensions;
 using Browl.Shared.Wrapper;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Net.Http.Json;
+using System.Threading.Tasks;
 
 namespace Browl.Client.Infrastructure.Managers.Misc.DocumentType
 {

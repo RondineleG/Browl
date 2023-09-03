@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Browl.Application.Interfaces.Common;
+﻿using Browl.Application.Interfaces.Common;
 using Browl.Application.Requests.Identity;
 using Browl.Application.Responses.Identity;
 using Browl.Shared.Wrapper;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Browl.Application.Interfaces.Services.Identity
 {

@@ -1,9 +1,9 @@
 ﻿using Blazored.LocalStorage;
+using Browl.Shared.Constants.Storage;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
-using Browl.Shared.Constants.Storage;
 
 namespace Browl.Client.Infrastructure.Authentication
 {

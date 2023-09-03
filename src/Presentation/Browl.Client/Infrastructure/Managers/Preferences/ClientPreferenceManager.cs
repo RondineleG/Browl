@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
-using Blazored.LocalStorage;
+﻿using Blazored.LocalStorage;
 using Browl.Client.Infrastructure.Settings;
-using MudBlazor;
-using System.Threading.Tasks;
 using Browl.Shared.Constants.Storage;
 using Browl.Shared.Settings;
 using Browl.Shared.Wrapper;
 using Microsoft.Extensions.Localization;
+using MudBlazor;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Browl.Client.Infrastructure.Managers.Preferences
 {

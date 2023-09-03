@@ -1,12 +1,12 @@
-﻿using System;
+﻿using Browl.Client.Infrastructure.Managers.Dashboard;
+using Browl.Shared.Constants.Application;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.SignalR.Client;
 using MudBlazor;
+using System;
 using System.Collections.Generic;
 using System.Reflection.Metadata;
 using System.Threading.Tasks;
-using Browl.Client.Infrastructure.Managers.Dashboard;
-using Browl.Shared.Constants.Application;
 
 namespace Browl.Client.Pages.Content
 {

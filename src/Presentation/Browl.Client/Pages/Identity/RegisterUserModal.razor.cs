@@ -1,8 +1,8 @@
-﻿using Browl.Application.Requests.Identity;
+﻿using Blazored.FluentValidation;
+using Browl.Application.Requests.Identity;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
 using System.Threading.Tasks;
-using Blazored.FluentValidation;
 
 namespace Browl.Client.Pages.Identity
 {

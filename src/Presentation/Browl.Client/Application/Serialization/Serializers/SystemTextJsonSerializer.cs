@@ -1,7 +1,7 @@
-﻿using System.Text.Json;
-using Browl.Application.Interfaces.Serialization.Serializers;
+﻿using Browl.Application.Interfaces.Serialization.Serializers;
 using Browl.Application.Serialization.Options;
 using Microsoft.Extensions.Options;
+using System.Text.Json;
 
 namespace Browl.Application.Serialization.Serializers
 {

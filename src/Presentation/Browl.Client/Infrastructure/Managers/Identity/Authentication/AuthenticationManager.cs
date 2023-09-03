@@ -3,17 +3,17 @@ using Browl.Application.Requests.Identity;
 using Browl.Application.Responses.Identity;
 using Browl.Client.Infrastructure.Authentication;
 using Browl.Client.Infrastructure.Extensions;
+using Browl.Client.Infrastructure.Routes;
+using Browl.Shared.Constants.Storage;
 using Browl.Shared.Wrapper;
 using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.Extensions.Localization;
 using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Browl.Client.Infrastructure.Routes;
-using Browl.Shared.Constants.Storage;
-using Microsoft.Extensions.Localization;
 
 namespace Browl.Client.Infrastructure.Managers.Identity.Authentication
 {

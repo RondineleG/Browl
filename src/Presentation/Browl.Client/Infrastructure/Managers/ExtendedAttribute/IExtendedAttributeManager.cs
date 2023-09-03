@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Browl.Application.Features.ExtendedAttributes.Commands.AddEdit;
+﻿using Browl.Application.Features.ExtendedAttributes.Commands.AddEdit;
 using Browl.Application.Features.ExtendedAttributes.Queries.Export;
 using Browl.Application.Features.ExtendedAttributes.Queries.GetAll;
 using Browl.Application.Features.ExtendedAttributes.Queries.GetAllByEntityId;
 using Browl.Domain.Contracts;
 using Browl.Shared.Wrapper;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Browl.Client.Infrastructure.Managers.ExtendedAttribute
 {

@@ -1,12 +1,12 @@
-﻿using Browl.Client.Extensions;
+﻿using Blazored.FluentValidation;
+using Browl.Application.Features.Brands.Commands.AddEdit;
+using Browl.Client.Extensions;
+using Browl.Client.Infrastructure.Managers.Catalog.Brand;
 using Browl.Shared.Constants.Application;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.SignalR.Client;
 using MudBlazor;
 using System.Threading.Tasks;
-using Blazored.FluentValidation;
-using Browl.Application.Features.Brands.Commands.AddEdit;
-using Browl.Client.Infrastructure.Managers.Catalog.Brand;
 
 namespace Browl.Client.Pages.Catalog
 {

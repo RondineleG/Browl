@@ -1,8 +1,8 @@
-﻿using Browl.Application.Features.Brands.Queries.GetAll;
+﻿using Browl.Application.Features.Brands.Commands.AddEdit;
+using Browl.Application.Features.Brands.Queries.GetAll;
 using Browl.Shared.Wrapper;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Browl.Application.Features.Brands.Commands.AddEdit;
 
 namespace Browl.Client.Infrastructure.Managers.Catalog.Brand
 {

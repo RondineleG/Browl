@@ -1,9 +1,9 @@
 ﻿using Browl.Application.Features.Documents.Commands.AddEdit;
 using Browl.Application.Features.Documents.Queries.GetAll;
+using Browl.Application.Features.Documents.Queries.GetById;
 using Browl.Application.Requests.Documents;
 using Browl.Shared.Wrapper;
 using System.Threading.Tasks;
-using Browl.Application.Features.Documents.Queries.GetById;
 
 namespace Browl.Client.Infrastructure.Managers.Misc.Document
 {

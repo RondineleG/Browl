@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Browl.Application.Features.ExtendedAttributes.Commands.AddEdit;
+﻿using Browl.Application.Features.ExtendedAttributes.Commands.AddEdit;
 using Browl.Application.Features.ExtendedAttributes.Queries.Export;
 using Browl.Application.Features.ExtendedAttributes.Queries.GetAllByEntityId;
 using Browl.Client.Extensions;
@@ -16,6 +11,11 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.JSInterop;
 using MudBlazor;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace Browl.Client.Shared.Components
 {
@@ -230,7 +230,7 @@ namespace Browl.Client.Shared.Components
                 var response = await ExtendedAttributeManager.DeleteAsync(id);
                 if (response.Succeeded)
                 {
-                     await Reset();
+                    await Reset();
                     _snackBar.Add(response.Messages[0], Severity.Success);
                 }
                 else

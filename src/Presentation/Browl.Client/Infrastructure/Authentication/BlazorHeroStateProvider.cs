@@ -1,5 +1,6 @@
 ﻿using Blazored.LocalStorage;
 using Browl.Shared.Constants.Permission;
+using Browl.Shared.Constants.Storage;
 using Microsoft.AspNetCore.Components.Authorization;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,6 @@ using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Browl.Shared.Constants.Storage;
 
 namespace Browl.Client.Infrastructure.Authentication
 {

@@ -1,16 +1,16 @@
-﻿using Browl.Application.Interfaces.Repositories;
+﻿using Browl.Application.Extensions;
+using Browl.Application.Interfaces.Repositories;
 using Browl.Application.Interfaces.Services;
+using Browl.Application.Specifications.Catalog;
 using Browl.Domain.Entities.Catalog;
+using Browl.Shared.Wrapper;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Browl.Application.Extensions;
-using Browl.Application.Specifications.Catalog;
-using Browl.Shared.Wrapper;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Localization;
 
 namespace Browl.Application.Features.Products.Queries.Export
 {
@@ -44,7 +44,7 @@ namespace Browl.Application.Features.Products.Queries.Export
             var productFilterSpec = new ProductFilterSpecification(request.SearchString);
             var products = await _unitOfWork.Repository<Product>().Entities
                 .Specify(productFilterSpec)
-                .ToListAsync( cancellationToken);
+                .ToListAsync(cancellationToken);
             var data = await _excelService.ExportAsync(products, mappers: new Dictionary<string, Func<Product, object>>
             {
                 { _localizer["Id"], item => item.Id },

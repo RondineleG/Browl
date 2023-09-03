@@ -1,17 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Blazored.FluentValidation;
 using Browl.Application.Features.Documents.Commands.AddEdit;
+using Browl.Application.Features.DocumentTypes.Queries.GetAll;
 using Browl.Application.Requests;
+using Browl.Client.Infrastructure.Managers.Misc.Document;
+using Browl.Client.Infrastructure.Managers.Misc.DocumentType;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using MudBlazor;
+using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Blazored.FluentValidation;
-using Browl.Application.Features.DocumentTypes.Queries.GetAll;
-using Browl.Client.Infrastructure.Managers.Misc.Document;
-using Browl.Client.Infrastructure.Managers.Misc.DocumentType;
 
 namespace Browl.Client.Pages.Misc
 {

@@ -2,7 +2,7 @@
 
 namespace Browl.Domain.Contracts
 {
-    public abstract class AuditableEntityWithExtendedAttributes<TId, TEntityId, TEntity, TExtendedAttribute> 
+    public abstract class AuditableEntityWithExtendedAttributes<TId, TEntityId, TEntity, TExtendedAttribute>
         : AuditableEntity<TEntityId>, IEntityWithExtendedAttributes<TExtendedAttribute>
             where TEntity : IEntity<TEntityId>
     {

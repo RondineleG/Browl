@@ -1,16 +1,16 @@
 ﻿using Browl.Application.Interfaces.Repositories;
 using Browl.Application.Interfaces.Services.Identity;
 using Browl.Domain.Entities.Catalog;
+using Browl.Domain.Entities.ExtendedAttributes;
+using Browl.Domain.Entities.Misc;
 using Browl.Shared.Wrapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Browl.Domain.Entities.ExtendedAttributes;
-using Browl.Domain.Entities.Misc;
-using Microsoft.Extensions.Localization;
 
 namespace Browl.Application.Features.Dashboards.Queries.GetData
 {

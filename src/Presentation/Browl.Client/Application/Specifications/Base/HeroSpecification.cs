@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Browl.Domain.Contracts;
+using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using Browl.Domain.Contracts;
 
 namespace Browl.Application.Specifications.Base
 {

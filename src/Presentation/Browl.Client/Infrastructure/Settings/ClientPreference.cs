@@ -1,6 +1,6 @@
-﻿using System.Linq;
-using Browl.Shared.Constants.Localization;
+﻿using Browl.Shared.Constants.Localization;
 using Browl.Shared.Settings;
+using System.Linq;
 
 namespace Browl.Client.Infrastructure.Settings
 {

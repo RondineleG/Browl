@@ -1,7 +1,6 @@
 ﻿using Browl.Application.Requests.Identity;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Browl.Client.Pages.Identity

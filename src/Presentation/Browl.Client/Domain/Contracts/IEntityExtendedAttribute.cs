@@ -1,6 +1,6 @@
 ﻿#nullable enable
-using System;
 using Browl.Domain.Enums;
+using System;
 
 namespace Browl.Domain.Contracts
 {

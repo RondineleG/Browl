@@ -1,6 +1,6 @@
-﻿using Browl.Application.Models.Chat;
+﻿using Browl.Application.Interfaces.Chat;
+using Browl.Application.Models.Chat;
 using System.Collections.Generic;
-using Browl.Application.Interfaces.Chat;
 
 namespace Browl.Application.Responses.Identity
 {

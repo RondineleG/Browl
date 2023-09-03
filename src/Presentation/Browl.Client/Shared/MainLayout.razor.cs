@@ -1,6 +1,8 @@
 ﻿using Browl.Client.Extensions;
+using Browl.Client.Infrastructure.Managers.Identity.Roles;
 using Browl.Client.Infrastructure.Settings;
 using Browl.Shared.Constants.Application;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.JSInterop;
 using MudBlazor;
@@ -8,8 +10,6 @@ using System;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using Browl.Client.Infrastructure.Managers.Identity.Roles;
-using Microsoft.AspNetCore.Components;
 
 namespace Browl.Client.Shared
 {
@@ -31,7 +31,7 @@ namespace Browl.Client.Shared
             if (user == null) return;
             if (user.Identity?.IsAuthenticated == true)
             {
-                CurrentUserId = user.GetUserId();                
+                CurrentUserId = user.GetUserId();
                 FirstName = user.GetFirstName();
                 if (FirstName.Length > 0)
                 {
@@ -150,7 +150,7 @@ namespace Browl.Client.Shared
 
             var options = new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.Small, FullWidth = true };
 
-             _dialogService.Show<Dialogs.Logout>(localizer["Logout"], parameters, options);
+            _dialogService.Show<Dialogs.Logout>(localizer["Logout"], parameters, options);
         }
 
         private void DrawerToggle()

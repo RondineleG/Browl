@@ -1,5 +1,5 @@
-﻿using System;
-using Browl.Application.Interfaces.Chat;
+﻿using Browl.Application.Interfaces.Chat;
+using System;
 
 namespace Browl.Application.Models.Chat
 {

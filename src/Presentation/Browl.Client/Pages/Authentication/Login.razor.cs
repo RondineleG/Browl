@@ -1,9 +1,9 @@
-﻿using Browl.Application.Requests.Identity;
+﻿using Blazored.FluentValidation;
+using Browl.Application.Requests.Identity;
 using Microsoft.AspNetCore.Components.Authorization;
 using MudBlazor;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Blazored.FluentValidation;
 
 namespace Browl.Client.Pages.Authentication
 {
@@ -45,7 +45,7 @@ namespace Browl.Client.Pages.Authentication
 
         void TogglePasswordVisibility()
         {
-            if(_passwordVisibility)
+            if (_passwordVisibility)
             {
                 _passwordVisibility = false;
                 _passwordInputIcon = Icons.Material.Filled.VisibilityOff;

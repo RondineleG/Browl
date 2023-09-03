@@ -1,7 +1,10 @@
-﻿using Browl.Application.Features.Brands.Queries.GetAll;
+﻿using Blazored.FluentValidation;
+using Browl.Application.Features.Brands.Queries.GetAll;
 using Browl.Application.Features.Products.Commands.AddEdit;
 using Browl.Application.Requests;
 using Browl.Client.Extensions;
+using Browl.Client.Infrastructure.Managers.Catalog.Brand;
+using Browl.Client.Infrastructure.Managers.Catalog.Product;
 using Browl.Shared.Constants.Application;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
@@ -12,9 +15,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Blazored.FluentValidation;
-using Browl.Client.Infrastructure.Managers.Catalog.Brand;
-using Browl.Client.Infrastructure.Managers.Catalog.Product;
 
 namespace Browl.Client.Pages.Catalog
 {

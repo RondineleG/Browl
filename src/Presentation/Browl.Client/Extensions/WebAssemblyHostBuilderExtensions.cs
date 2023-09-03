@@ -1,7 +1,10 @@
 ﻿using Blazored.LocalStorage;
 using Browl.Client.Infrastructure.Authentication;
 using Browl.Client.Infrastructure.Managers;
+using Browl.Client.Infrastructure.Managers.ExtendedAttribute;
 using Browl.Client.Infrastructure.Managers.Preferences;
+using Browl.Domain.Entities.ExtendedAttributes;
+using Browl.Domain.Entities.Misc;
 using Browl.Shared.Constants.Permission;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components.Authorization;
@@ -14,9 +17,6 @@ using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Reflection;
-using Browl.Client.Infrastructure.Managers.ExtendedAttribute;
-using Browl.Domain.Entities.ExtendedAttributes;
-using Browl.Domain.Entities.Misc;
 using Toolbelt.Blazor.Extensions.DependencyInjection;
 
 namespace Browl.Client.Extensions

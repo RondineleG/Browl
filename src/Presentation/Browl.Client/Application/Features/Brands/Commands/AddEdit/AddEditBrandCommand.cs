@@ -1,13 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
-using AutoMapper;
+﻿using AutoMapper;
 using Browl.Application.Interfaces.Repositories;
 using Browl.Domain.Entities.Catalog;
+using Browl.Shared.Constants.Application;
 using Browl.Shared.Wrapper;
 using MediatR;
+using Microsoft.Extensions.Localization;
+using System.ComponentModel.DataAnnotations;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Localization;
-using Browl.Shared.Constants.Application;
 
 namespace Browl.Application.Features.Brands.Commands.AddEdit
 {

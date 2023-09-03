@@ -2,9 +2,9 @@
 using Browl.Domain.Entities.Catalog;
 using Browl.Shared.Wrapper;
 using MediatR;
+using Microsoft.Extensions.Localization;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Localization;
 
 namespace Browl.Application.Features.Products.Commands.Delete
 {

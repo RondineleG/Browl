@@ -10,36 +10,32 @@ namespace Browl.Service.MarketDataCollector.Application.Implementation;
 
 public class UserManager : IUserManager
 {
-    private readonly IUserRepository repository;
-    private readonly IMapper mapper;
-    private readonly IJwtService jwt;
+    private readonly IUserRepository _userRepository;
+    private readonly IMapper _mapper;
+    private readonly IJwtService _jwtService;
 
-    public UserManager()
+    public UserManager(IUserRepository repository, IMapper mapper, IJwtService jwtService)
     {
-
-    }
-    public UserManager(IUserRepository repository, IMapper mapper, IJwtService jwt)
-    {
-        this.repository = repository;
-        this.mapper = mapper;
-        this.jwt = jwt;
+        _userRepository = repository;
+        _mapper = mapper;
+        _jwtService = jwtService;
     }
 
     public async Task<IEnumerable<UserViewResource>> GetAsync()
     {
-        return mapper.Map<IEnumerable<User>, IEnumerable<UserViewResource>>(await repository.GetAsync());
+        return _mapper.Map<IEnumerable<User>, IEnumerable<UserViewResource>>(await _userRepository.GetAsync());
     }
 
     public async Task<UserViewResource> GetAsync(string login)
     {
-        return mapper.Map<UserViewResource>(await repository.GetAsync(login));
+        return _mapper.Map<UserViewResource>(await _userRepository.GetAsync(login));
     }
 
     public async Task<UserViewResource> InsertAsync(UserNewResource novoUsuario)
     {
-        var usuario = mapper.Map<User>(novoUsuario);
+        var usuario = _mapper.Map<User>(novoUsuario);
         ConverteSenhaEmHash(usuario);
-        return mapper.Map<UserViewResource>(await repository.InsertAsync(usuario));
+        return _mapper.Map<UserViewResource>(await _userRepository.InsertAsync(usuario));
     }
 
     private static void ConverteSenhaEmHash(User usuario)
@@ -51,26 +47,26 @@ public class UserManager : IUserManager
     public async Task<UserViewResource> UpdateMedicoAsync(User usuario)
     {
         ConverteSenhaEmHash(usuario);
-        return mapper.Map<UserViewResource>(await repository.UpdateAsync(usuario));
+        return _mapper.Map<UserViewResource>(await _userRepository.UpdateAsync(usuario));
     }
 
     public async Task<UserLoggedResource> ValidaUsuarioEGeraTokenAsync(User usuario)
     {
-        var usuarioConsultado = await repository.GetAsync(usuario.Login);
+        var usuarioConsultado = await _userRepository.GetAsync(usuario.Login);
         if (usuarioConsultado == null)
         {
             return null;
         }
-        if (await ValidaEAtualizaHashAsync(usuario, usuarioConsultado.Password))
+        if (await ValidateAndUpdateHashAsync(usuario, usuarioConsultado.Password))
         {
-            var usuarioLogado = mapper.Map<UserLoggedResource>(usuarioConsultado);
-            usuarioLogado.Token = jwt.GenerateToken(usuarioConsultado);
+            var usuarioLogado = _mapper.Map<UserLoggedResource>(usuarioConsultado);
+            usuarioLogado.Token = _jwtService.GenerateToken(usuarioConsultado);
             return usuarioLogado;
         }
         return null;
     }
 
-    private async Task<bool> ValidaEAtualizaHashAsync(User usuario, string hash)
+    private async Task<bool> ValidateAndUpdateHashAsync(User usuario, string hash)
     {
         var passwordHasher = new PasswordHasher<User>();
         var status = passwordHasher.VerifyHashedPassword(usuario, hash, usuario.Password);

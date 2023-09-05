@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Browl.Service.MarketDataCollector.Domain.Entities;
 using Browl.Service.MarketDataCollector.Domain.Interfaces.Managers;
 using Browl.Service.MarketDataCollector.Domain.Interfaces.Repositories;
 using Browl.Service.MarketDataCollector.Domain.Resources.Customer;
@@ -8,51 +9,48 @@ namespace Browl.Service.MarketDataCollector.Application.Implementation;
 
 public class CustomerManager : ICustomerManager
 {
-    private readonly ICustomerRepository clienteRepository;
-    private readonly IMapper mapper;
-    private readonly ILogger<CustomerManager> logger;
+    private readonly ICustomerRepository _customerRepository;
+    private readonly IMapper _mapper;
+    private readonly ILogger<CustomerManager> _logger;
 
-    public CustomerManager()
+    public CustomerManager(ICustomerRepository customerRepository, IMapper mapper, ILogger<CustomerManager> logger)
     {
-
-    }
-    public CustomerManager(ICustomerRepository clienteRepository, IMapper mapper, ILogger<CustomerManager> logger)
-    {
-        this.clienteRepository = clienteRepository;
-        this.mapper = mapper;
-        this.logger = logger;
+        _customerRepository = customerRepository;
+        _mapper = mapper;
+        _logger = logger;
     }
 
-    public async Task<IEnumerable<CustomerView>> GetClientesAsync()
+    public async Task<IEnumerable<CustomerViewResource>> GetAsync()
     {
-        var clientes = await clienteRepository.GetClientesAsync();
-        return mapper.Map<IEnumerable<Domain.Entities.Customer>, IEnumerable<CustomerView>>(clientes);
+        var clientes = await _customerRepository.GetAsync();
+        return _mapper.Map<IEnumerable<Customer>, IEnumerable<CustomerViewResource>>(clientes);
     }
 
-    public async Task<CustomerView> GetClienteAsync(int id)
+    public async Task<CustomerViewResource> GetAsync(int id)
     {
-        var cliente = await clienteRepository.GetClienteAsync(id);
-        return mapper.Map<CustomerView>(cliente);
+        var cliente = await _customerRepository.GetAsync(id);
+        return _mapper.Map<CustomerViewResource>(cliente);
     }
 
-    public async Task<CustomerView> DeleteClienteAsync(int id)
+    public async Task<CustomerResource> DeleteAsync(int id)
     {
-        var cliente = await clienteRepository.DeleteClienteAsync(id);
-        return mapper.Map<CustomerView>(cliente);
+        var cliente = await _customerRepository.DeleteAsync(id);
+        return _mapper.Map<CustomerResource>(cliente);
     }
 
-    public async Task<CustomerView> InsertClienteAsync(CustomerResource novoCliente)
+    public async Task<CustomerViewResource> PostAsync(CustomerResource novoCliente)
     {
-        logger.LogInformation("Chamada de negócio para inserir um cliente.");
-        var cliente = mapper.Map<Domain.Entities.Customer>(novoCliente);
-        cliente = await clienteRepository.InsertClienteAsync(cliente);
-        return mapper.Map<CustomerView>(cliente);
+        _logger.LogInformation("Chamada de negócio para inserir um cliente.");
+        var cliente = _mapper.Map<Customer>(novoCliente);
+        cliente = await _customerRepository.PostAsync(cliente);
+        return _mapper.Map<CustomerViewResource>(cliente);
     }
 
-    public async Task<CustomerView> UpdateClienteAsync(CustomerUpdateResource alteraCliente)
+    public async Task<CustomerViewResource> PutAsync(CustomerUpdateResource alteraCliente)
     {
-        var cliente = mapper.Map<Domain.Entities.Customer>(alteraCliente);
-        cliente = await clienteRepository.UpdateClienteAsync(cliente);
-        return mapper.Map<CustomerView>(cliente);
+        var cliente = _mapper.Map<Domain.Entities.Customer>(alteraCliente);
+        cliente = await _customerRepository.PutAsync(cliente);
+        return _mapper.Map<CustomerViewResource>(cliente);
     }
+
 }

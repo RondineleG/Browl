@@ -11,7 +11,7 @@ public class CustomerRepository : BaseRepository, ICustomerRepository
 
     public CustomerRepository(BrowlDbContext context) : base(context) { }
 
-    public async Task<IEnumerable<Customer>> GetClientesAsync()
+    public async Task<IEnumerable<Customer>> GetAsync()
     {
         return await _browlDbContext.Customers
             .Include(p => p.Endereco)
@@ -19,7 +19,7 @@ public class CustomerRepository : BaseRepository, ICustomerRepository
             .AsNoTracking().ToListAsync();
     }
 
-    public async Task<Customer> GetClienteAsync(int id)
+    public async Task<Customer> GetAsync(int id)
     {
         return await _browlDbContext.Customers
             .Include(p => p.Endereco)
@@ -27,14 +27,14 @@ public class CustomerRepository : BaseRepository, ICustomerRepository
             .SingleOrDefaultAsync(p => p.Id == id);
     }
 
-    public async Task<Customer> InsertClienteAsync(Customer cliente)
+    public async Task<Customer> PostAsync(Customer cliente)
     {
         await _browlDbContext.Customers.AddAsync(cliente);
         await _browlDbContext.SaveChangesAsync();
         return cliente;
     }
 
-    public async Task<Customer> UpdateClienteAsync(Customer cliente)
+    public async Task<Customer> PutAsync(Customer cliente)
     {
         var clienteConsultado = await _browlDbContext.Customers
                                              .Include(p => p.Endereco)
@@ -60,7 +60,7 @@ public class CustomerRepository : BaseRepository, ICustomerRepository
         }
     }
 
-    public async Task<Customer> DeleteClienteAsync(int id)
+    public async Task<Customer> DeleteAsync(int id)
     {
         var clienteConsultado = await _browlDbContext.Customers.FindAsync(id);
         if (clienteConsultado == null)

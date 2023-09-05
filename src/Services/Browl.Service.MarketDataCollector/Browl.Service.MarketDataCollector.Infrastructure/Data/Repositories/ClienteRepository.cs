@@ -10,7 +10,7 @@ public class ClienteRepository : BaseRepository, IClienteRepository
     private readonly BrowlDbContext _browlDbContext;
 
     public ClienteRepository(BrowlDbContext context) : base(context) { }
-     
+
     public async Task<IEnumerable<Cliente>> GetClientesAsync()
     {
         return await _browlDbContext.Clientes

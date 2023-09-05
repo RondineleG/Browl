@@ -38,6 +38,11 @@ public class HabitsController : ControllerBase
         return Ok(_mapper.Map<HabitResource>(await _habitService.GetById(id)));
     }
 
+
+    /// <summary>
+    /// Lists all habits.
+    /// </summary>
+    /// <returns>List os habits.</returns>
     [HttpGet]
     public async Task<IActionResult> GetAsync()
     {

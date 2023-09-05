@@ -21,10 +21,10 @@ public static class FluentValidationConfig
             .AddJsonOptions(p => p.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()))
             .AddFluentValidation(p =>
            {
-               p.RegisterValidatorsFromAssemblyContaining<NovoClienteValidator>();
-               p.RegisterValidatorsFromAssemblyContaining<NovoEnderecoValidator>();
-               p.RegisterValidatorsFromAssemblyContaining<AlteraClienteValidator>();
-               p.RegisterValidatorsFromAssemblyContaining<NovoTelefoneValidator>();
+               p.RegisterValidatorsFromAssemblyContaining<CustomerNewValidator>();
+               p.RegisterValidatorsFromAssemblyContaining<AddressNewValidator>();
+               p.RegisterValidatorsFromAssemblyContaining<CustomerUpdateValidator>();
+               p.RegisterValidatorsFromAssemblyContaining<TelephoneNewValidator>();
                p.ValidatorOptions.LanguageManager.Culture = new CultureInfo("pt-BR");
            });
 

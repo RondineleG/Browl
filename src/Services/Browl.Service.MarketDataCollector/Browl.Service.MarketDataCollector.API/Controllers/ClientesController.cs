@@ -1,5 +1,5 @@
-﻿using Browl.Service.MarketDataCollector.Domain.Dtos.Cliente;
-using Browl.Service.MarketDataCollector.Domain.Interfaces.Managers;
+﻿using Browl.Service.MarketDataCollector.Domain.Interfaces.Managers;
+using Browl.Service.MarketDataCollector.Domain.Resources.Customer;
 using Microsoft.AspNetCore.Mvc;
 using SerilogTimings;
 
@@ -9,10 +9,10 @@ namespace Browl.Service.MarketDataCollector.Controller;
 [ApiController]
 public class ClientesController : ControllerBase
 {
-    private readonly IClienteManager clienteManager;
+    private readonly ICustomerManager clienteManager;
     private readonly ILogger<ClientesController> logger;
 
-    public ClientesController(IClienteManager clienteManager, ILogger<ClientesController> logger)
+    public ClientesController(ICustomerManager clienteManager, ILogger<ClientesController> logger)
     {
         this.clienteManager = clienteManager;
         this.logger = logger;
@@ -22,7 +22,7 @@ public class ClientesController : ControllerBase
     /// Retorna todos clientes cadastrados na base.
     /// </summary>
     [HttpGet]
-    [ProducesResponseType(typeof(ClienteView), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(CustomerView), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> Get()
@@ -40,7 +40,7 @@ public class ClientesController : ControllerBase
     /// </summary>
     /// <param name="id" example="123">Id do cliente.</param>
     [HttpGet("{id}")]
-    [ProducesResponseType(typeof(ClienteView), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(CustomerView), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> Get(int id)
@@ -58,14 +58,14 @@ public class ClientesController : ControllerBase
     /// </summary>
     /// <param name="novoCliente"></param>
     [HttpPost]
-    [ProducesResponseType(typeof(ClienteView), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(CustomerView), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> Post(NovoCliente novoCliente)
+    public async Task<IActionResult> Post(CustomerResource novoCliente)
     {
         logger.LogInformation("Objeto recebido {@novoCliente}", novoCliente);
 
-        ClienteView clienteInserido;
+        CustomerView clienteInserido;
         using (Operation.Time("Tempo de adição de um novo cliente."))
         {
             logger.LogInformation("Foi requisitada a inserção de um novo cliente.");
@@ -79,10 +79,10 @@ public class ClientesController : ControllerBase
     /// </summary>
     /// <param name="alteraCliente"></param>
     [HttpPut]
-    [ProducesResponseType(typeof(ClienteView), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(CustomerView), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> Put(AlteraCliente alteraCliente)
+    public async Task<IActionResult> Put(CustomerUpdateResource alteraCliente)
     {
         var clienteAtualizado = await clienteManager.UpdateClienteAsync(alteraCliente);
         if (clienteAtualizado == null)

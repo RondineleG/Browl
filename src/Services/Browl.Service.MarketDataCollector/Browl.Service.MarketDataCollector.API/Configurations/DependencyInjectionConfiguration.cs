@@ -16,10 +16,10 @@ public static class DependencyInjectionConfiguration
         services.AddScoped<ITenantService, TenantService>();
         services.AddScoped<IHabitService, HabitService>();
         services.Configure<TenantSettings>(configuration.GetSection(nameof(TenantSettings)));
-        services.AddScoped<IClienteRepository, ClienteRepository>();
-        services.AddScoped<IClienteManager, ClienteManager>();
-        services.AddScoped<IUsuarioRepository, UsuarioRepository>();
-        services.AddScoped<IUsuarioManager, UsuarioManager>();
+        services.AddScoped<ICustomerRepository, CustomerRepository>();
+        services.AddScoped<ICustomerManager, CustomerManager>();
+        services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IUserManager, UserManager>();
         services.Configure<RouteOptions>(options => options.LowercaseUrls = true);
         services.AddControllers().ConfigureApiBehaviorOptions(options =>
           {

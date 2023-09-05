@@ -38,7 +38,7 @@ namespace Browl.Service.MarketDataCollector.API.Controllers
         [HttpPost]
         [ProducesResponseType(typeof(CategoryResource), 201)]
         [ProducesResponseType(typeof(ErrorResource), 400)]
-        public async Task<IActionResult> PostAsync([FromBody] SaveCategoryResource resource)
+        public async Task<IActionResult> PostAsync([FromBody] CategorySaveResource resource)
         {
             var category = _mapper.Map<Category>(resource);
             var result = await _categoryService.SaveAsync(category);
@@ -61,7 +61,7 @@ namespace Browl.Service.MarketDataCollector.API.Controllers
         [HttpPut("{id}")]
         [ProducesResponseType(typeof(CategoryResource), 200)]
         [ProducesResponseType(typeof(ErrorResource), 400)]
-        public async Task<IActionResult> PutAsync(int id, [FromBody] SaveCategoryResource resource)
+        public async Task<IActionResult> PutAsync(int id, [FromBody] CategorySaveResource resource)
         {
             var category = _mapper.Map<Category>(resource);
             var result = await _categoryService.UpdateAsync(id, category);

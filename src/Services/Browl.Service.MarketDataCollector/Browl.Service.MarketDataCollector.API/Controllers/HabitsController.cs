@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using Browl.Service.MarketDataCollector.Domain.Dtos.Habit;
 using Browl.Service.MarketDataCollector.Domain.Interfaces.Services;
+using Browl.Service.MarketDataCollector.Domain.Resources.Habit;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.JsonPatch.Exceptions;
 using Microsoft.AspNetCore.Mvc;
@@ -35,20 +35,20 @@ public class HabitsController : ControllerBase
     [HttpGet("{id}")]
     public async Task<IActionResult> GetAsync(int id)
     {
-        return Ok(_mapper.Map<HabitDto>(await _habitService.GetById(id)));
+        return Ok(_mapper.Map<HabitResource>(await _habitService.GetById(id)));
     }
 
     [HttpGet]
     public async Task<IActionResult> GetAsync()
     {
-        return Ok(_mapper.Map<ICollection<HabitDto>>(await _habitService.GetAll()));
+        return Ok(_mapper.Map<ICollection<HabitResource>>(await _habitService.GetAll()));
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateAsync(CreateHabitDto request)
+    public async Task<IActionResult> CreateAsync(CreateHabitResource request)
     {
         var habit = await _habitService.Create(request.Name, request.Description);
-        var habitDto = _mapper.Map<HabitDto>(habit);
+        var habitDto = _mapper.Map<HabitResource>(habit);
         return CreatedAtAction("Get", "Habits", new
         {
             id =
@@ -58,7 +58,7 @@ public class HabitsController : ControllerBase
 
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateAsync(int id, UpdateHabitDto request)
+    public async Task<IActionResult> UpdateAsync(int id, UpdateHabitResource request)
     {
         var habit = await _habitService.UpdateById(id, request);
         if (habit == null) return NotFound();
@@ -66,11 +66,11 @@ public class HabitsController : ControllerBase
     }
 
     [HttpPatch("{id}")]
-    public async Task<IActionResult> UpdateAsync(int id, [FromBody] JsonPatchDocument<UpdateHabitDto> patch)
+    public async Task<IActionResult> UpdateAsync(int id, [FromBody] JsonPatchDocument<UpdateHabitResource> patch)
     {
         var habit = await _habitService.GetById(id);
         if (habit == null) return NotFound();
-        var updateHabitDto = new UpdateHabitDto
+        var updateHabitDto = new UpdateHabitResource
         {
             Name = habit.Name,
             Description = habit.Description

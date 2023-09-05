@@ -7,8 +7,8 @@ public static class AutoMapperConfiguration
     public static void AddAutoMapperConfiguration(this IServiceCollection services)
     {
         services.AddAutoMapper(
-            typeof(NovoClienteMappingProfile),
-            typeof(AlteraClienteMappingProfile),
-            typeof(UsuarioMappingProfile));
+            typeof(CustomerNewProfile),
+            typeof(CustomerUpdateProfile),
+            typeof(UserProfile));
     }
 }

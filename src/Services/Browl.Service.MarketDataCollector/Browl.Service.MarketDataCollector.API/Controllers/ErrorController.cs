@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace CL.WebApi.Controllers;
+namespace Browl.Service.MarketDataCollector.API.Controllers;
 
 [ApiExplorerSettings(IgnoreApi = true)]
 [ApiController]

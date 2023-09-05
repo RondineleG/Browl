@@ -3,9 +3,9 @@ using FluentValidation;
 
 namespace Browl.Service.MarketDataCollector.Application.Validator;
 
-public class NovoEnderecoValidator : AbstractValidator<AddressNewResource>
+public class AddressNewValidator : AbstractValidator<AddressNewResource>
 {
-    public NovoEnderecoValidator()
+    public AddressNewValidator()
     {
         RuleFor(p => p.CEP).NotEmpty().NotNull();
         RuleFor(p => p.Estado).NotNull();

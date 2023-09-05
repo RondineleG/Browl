@@ -7,20 +7,21 @@ namespace Browl.Service.MarketDataCollector.Controller;
 
 [Route("api/[controller]")]
 [ApiController]
-public class ClientesController : ControllerBase
+public class CustomersController : ControllerBase
 {
     private readonly ICustomerManager clienteManager;
-    private readonly ILogger<ClientesController> logger;
+    private readonly ILogger<CustomersController> logger;
 
-    public ClientesController(ICustomerManager clienteManager, ILogger<ClientesController> logger)
+    public CustomersController(ICustomerManager clienteManager, ILogger<CustomersController> logger)
     {
         this.clienteManager = clienteManager;
         this.logger = logger;
     }
 
     /// <summary>
-    /// Retorna todos clientes cadastrados na base.
+    /// Lists all customers.
     /// </summary>
+    /// <returns>List os customers.</returns>
     [HttpGet]
     [ProducesResponseType(typeof(CustomerViewResource), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
@@ -36,9 +37,9 @@ public class ClientesController : ControllerBase
     }
 
     /// <summary>
-    /// Retorna um cliente consultado pelo id.
+    /// Return customer searching by id.
     /// </summary>
-    /// <param name="id" example="123">Id do cliente.</param>
+    /// <param name="id" example="123">Id</param>
     [HttpGet("{id}")]
     [ProducesResponseType(typeof(CustomerViewResource), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
@@ -54,37 +55,37 @@ public class ClientesController : ControllerBase
     }
 
     /// <summary>
-    /// Insere um novo cliente
+    /// Create new customer
     /// </summary>
-    /// <param name="novoCliente"></param>
+    /// <param name="customerResource"></param>
     [HttpPost]
     [ProducesResponseType(typeof(CustomerViewResource), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> Post(CustomerResource novoCliente)
+    public async Task<IActionResult> Post(CustomerResource customerResource)
     {
-        logger.LogInformation("Objeto recebido {@novoCliente}", novoCliente);
+        logger.LogInformation("Objeto recebido {@novoCliente}", customerResource);
 
         CustomerViewResource clienteInserido;
         using (Operation.Time("Tempo de adição de um novo cliente."))
         {
             logger.LogInformation("Foi requisitada a inserção de um novo cliente.");
-            clienteInserido = await clienteManager.PostAsync(novoCliente);
+            clienteInserido = await clienteManager.PostAsync(customerResource);
         }
         return CreatedAtAction(nameof(Get), new { id = clienteInserido.Id }, clienteInserido);
     }
 
     /// <summary>
-    /// Altera um cliente.
+    /// Update customer.
     /// </summary>
-    /// <param name="alteraCliente"></param>
+    /// <param name="customerUpdateResource"></param>
     [HttpPut]
     [ProducesResponseType(typeof(CustomerViewResource), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> Put(CustomerUpdateResource alteraCliente)
+    public async Task<IActionResult> Put(CustomerUpdateResource customerUpdateResource)
     {
-        var clienteAtualizado = await clienteManager.PutAsync(alteraCliente);
+        var clienteAtualizado = await clienteManager.PutAsync(customerUpdateResource);
         if (clienteAtualizado == null)
         {
             return NotFound();
@@ -93,10 +94,10 @@ public class ClientesController : ControllerBase
     }
 
     /// <summary>
-    /// Exclui um cliente.
+    /// Delete customer.
     /// </summary>
-    /// <param name="id" example="123">Id do cliente</param>
-    /// <remarks>Ao excluir um cliente o mesmo será removido permanentemente da base.</remarks>
+    /// <param name="id" example="123">Id</param>
+    /// <remarks>When deleting a customer, it will be permanently removed from the base.</remarks>
     [HttpDelete("{id}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]

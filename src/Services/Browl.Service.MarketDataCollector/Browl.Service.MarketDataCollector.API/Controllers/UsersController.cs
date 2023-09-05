@@ -8,11 +8,11 @@ namespace Browl.Service.MarketDataCollector.Controller;
 
 [Route("api/[controller]")]
 [ApiController]
-public class UsuariosController : ControllerBase
+public class UsersController : ControllerBase
 {
     private readonly IUserManager manager;
 
-    public UsuariosController(IUserManager manager)
+    public UsersController(IUserManager manager)
     {
         this.manager = manager;
     }
@@ -29,6 +29,11 @@ public class UsuariosController : ControllerBase
         return Unauthorized();
     }
 
+
+    /// <summary>
+    /// Lists all users.
+    /// </summary>
+    /// <returns>List os users.</returns>
     [Authorize(Roles = "Presidente, Lider")]
     [HttpGet]
     public async Task<IActionResult> Get()

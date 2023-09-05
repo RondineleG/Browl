@@ -4,5 +4,5 @@ namespace Browl.Service.MarketDataCollector.Domain.Interfaces.Services;
 
 public interface IJwtService
 {
-    string GenerateToken(User usuario);
+    string GenerateToken(User user);
 }

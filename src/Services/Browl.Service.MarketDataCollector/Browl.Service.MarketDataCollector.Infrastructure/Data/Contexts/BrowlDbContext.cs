@@ -17,15 +17,14 @@ public class BrowlDbContext : DbContext
     public DbSet<Category> Categories { get; set; }
     public DbSet<Product> Products { get; set; }
     public DbSet<Habit>? Habits { get; set; }
-    public DbSet<User>? Users { get; set; }
     public DbSet<Progress>? Progress { get; set; }
     public DbSet<Reminder>? Reminders { get; set; }
     public DbSet<Goal>? Goals { get; set; }
-    public DbSet<Cliente> Clientes { get; set; }
-    public DbSet<Endereco> Enderecos { get; set; }
-    public DbSet<Telefone> Telefones { get; set; }
-    public DbSet<Usuario> Usuarios { get; set; }
-    public DbSet<Funcao> Funcoes { get; set; }
+    public DbSet<Customer> Customers { get; set; }
+    public DbSet<Address> Addresses { get; set; }
+    public DbSet<Telephone> Telephones { get; set; }
+    public DbSet<User> Users { get; set; }
+    public DbSet<Role> Roles { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -39,12 +38,11 @@ public class BrowlDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
         modelBuilder.Entity<Habit>().HasQueryFilter(a => a.TenantName == TenantName);
-        modelBuilder.ApplyConfiguration(new ClienteConfiguration());
-        modelBuilder.ApplyConfiguration(new EnderecoConfiguration());
-        modelBuilder.ApplyConfiguration(new TelefoneConfiguration());
-        modelBuilder.ApplyConfiguration(new UsuarioConfiguration());
+        modelBuilder.ApplyConfiguration(new CustomerConfiguration());
+        modelBuilder.ApplyConfiguration(new AddressConfiguration());
+        modelBuilder.ApplyConfiguration(new TelephoneConfiguration());
+        modelBuilder.ApplyConfiguration(new UserConfiguration());
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-        //SeedData.Seed(modelBuilder);
     }
 
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())

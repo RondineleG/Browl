@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Browl.Service.MarketDataCollector.Infrastructure.Data.Configurations;
 
-public class ClienteConfiguration : IEntityTypeConfiguration<Cliente>
+public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
 {
-    public void Configure(EntityTypeBuilder<Cliente> builder)
+    public void Configure(EntityTypeBuilder<Customer> builder)
     {
         builder.Property(p => p.Nome).HasMaxLength(200).IsRequired();
         builder.Property(p => p.Sexo).HasConversion(
             p => p.ToString(),
-            p => (Sexo)Enum.Parse(typeof(Sexo), p));
+            p => (Gender)Enum.Parse(typeof(Gender), p));
     }
 }

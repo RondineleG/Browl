@@ -5,38 +5,38 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Browl.Service.MarketDataCollector.Infrastructure.Data.Repositories;
 
-public class ClienteRepository : BaseRepository, IClienteRepository
+public class CustomerRepository : BaseRepository, ICustomerRepository
 {
     private readonly BrowlDbContext _browlDbContext;
 
-    public ClienteRepository(BrowlDbContext context) : base(context) { }
+    public CustomerRepository(BrowlDbContext context) : base(context) { }
 
-    public async Task<IEnumerable<Cliente>> GetClientesAsync()
+    public async Task<IEnumerable<Customer>> GetClientesAsync()
     {
-        return await _browlDbContext.Clientes
+        return await _browlDbContext.Customers
             .Include(p => p.Endereco)
             .Include(p => p.Telefones)
             .AsNoTracking().ToListAsync();
     }
 
-    public async Task<Cliente> GetClienteAsync(int id)
+    public async Task<Customer> GetClienteAsync(int id)
     {
-        return await _browlDbContext.Clientes
+        return await _browlDbContext.Customers
             .Include(p => p.Endereco)
             .Include(p => p.Telefones)
             .SingleOrDefaultAsync(p => p.Id == id);
     }
 
-    public async Task<Cliente> InsertClienteAsync(Cliente cliente)
+    public async Task<Customer> InsertClienteAsync(Customer cliente)
     {
-        await _browlDbContext.Clientes.AddAsync(cliente);
+        await _browlDbContext.Customers.AddAsync(cliente);
         await _browlDbContext.SaveChangesAsync();
         return cliente;
     }
 
-    public async Task<Cliente> UpdateClienteAsync(Cliente cliente)
+    public async Task<Customer> UpdateClienteAsync(Customer cliente)
     {
-        var clienteConsultado = await _browlDbContext.Clientes
+        var clienteConsultado = await _browlDbContext.Customers
                                              .Include(p => p.Endereco)
                                              .Include(p => p.Telefones)
                                              .FirstOrDefaultAsync(p => p.Id == cliente.Id);
@@ -51,7 +51,7 @@ public class ClienteRepository : BaseRepository, IClienteRepository
         return clienteConsultado;
     }
 
-    private static void UpdateClienteTelefones(Cliente cliente, Cliente clienteConsultado)
+    private static void UpdateClienteTelefones(Customer cliente, Customer clienteConsultado)
     {
         clienteConsultado.Telefones.Clear();
         foreach (var telefone in cliente.Telefones)
@@ -60,14 +60,14 @@ public class ClienteRepository : BaseRepository, IClienteRepository
         }
     }
 
-    public async Task<Cliente> DeleteClienteAsync(int id)
+    public async Task<Customer> DeleteClienteAsync(int id)
     {
-        var clienteConsultado = await _browlDbContext.Clientes.FindAsync(id);
+        var clienteConsultado = await _browlDbContext.Customers.FindAsync(id);
         if (clienteConsultado == null)
         {
             return null;
         }
-        var clienteRemovido = _browlDbContext.Clientes.Remove(clienteConsultado);
+        var clienteRemovido = _browlDbContext.Customers.Remove(clienteConsultado);
         await _browlDbContext.SaveChangesAsync();
         return clienteRemovido.Entity;
     }

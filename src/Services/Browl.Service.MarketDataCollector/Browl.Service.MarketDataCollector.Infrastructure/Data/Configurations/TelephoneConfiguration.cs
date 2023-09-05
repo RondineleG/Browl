@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Browl.Service.MarketDataCollector.Infrastructure.Data.Configurations;
 
-public class TelefoneConfiguration : IEntityTypeConfiguration<Telefone>
+public class TelephoneConfiguration : IEntityTypeConfiguration<Telephone>
 {
-    public void Configure(EntityTypeBuilder<Telefone> builder)
+    public void Configure(EntityTypeBuilder<Telephone> builder)
     {
         builder.HasKey(p => new { p.ClienteId, p.Numero });
     }

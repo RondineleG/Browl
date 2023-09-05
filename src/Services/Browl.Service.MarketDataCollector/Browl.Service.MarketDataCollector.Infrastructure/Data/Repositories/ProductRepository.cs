@@ -1,6 +1,7 @@
 using Browl.Service.MarketDataCollector.Domain.Entities;
 using Browl.Service.MarketDataCollector.Domain.Interfaces.Repositories;
 using Browl.Service.MarketDataCollector.Domain.Queries;
+using Browl.Service.MarketDataCollector.Domain.Queries.Base;
 using Browl.Service.MarketDataCollector.Infrastructure.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
 

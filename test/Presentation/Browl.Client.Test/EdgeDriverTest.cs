@@ -2,10 +2,12 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Interactions;
+using System;
+using System.ComponentModel;
 
 namespace Browl.Client.Test
 {
-	public class EdgeDriverTest
+	public class EdgeDriverTest : IDisposable 
 	{
 		private IWebDriver _webDriver;
 

@@ -5,7 +5,6 @@
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
-		<DocumentationFile>C:\Users\Rerum\Videos\Browl\src\Services\Browl.Service.MarketDataCollector\Browl.Service.MarketDataCollector.API\Browl.Service.MarketDataCollector.API.xml</DocumentationFile>
 		<NoWarn>1591</NoWarn>
 	</PropertyGroup>
 

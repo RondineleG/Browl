@@ -1,9 +1,9 @@
-﻿using Browl.Service.MarketDataCollector.Domain.Dtos.Telefone;
+﻿using Browl.Service.MarketDataCollector.Domain.Resources.Telephone;
 using FluentValidation;
 
 namespace Browl.Service.MarketDataCollector.Application.Validator;
 
-public class NovoTelefoneValidator : AbstractValidator<NovoTelefone>
+public class NovoTelefoneValidator : AbstractValidator<TelephoneNewResource>
 {
     public NovoTelefoneValidator()
     {

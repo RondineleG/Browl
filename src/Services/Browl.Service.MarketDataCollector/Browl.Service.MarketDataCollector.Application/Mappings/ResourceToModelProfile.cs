@@ -4,15 +4,15 @@ using Browl.Service.MarketDataCollector.Domain.Entities;
 using Browl.Service.MarketDataCollector.Domain.Enums;
 using Browl.Service.MarketDataCollector.Domain.Queries;
 
-namespace Browl.Service.MarketDataCollector.Infrastructure.Mapping
+namespace Browl.Service.MarketDataCollector.Application.Mappings
 {
     public class ResourceToModelProfile : Profile
     {
         public ResourceToModelProfile()
         {
-            CreateMap<SaveCategoryResource, Category>();
+            CreateMap<CategorySaveResource, Category>();
 
-            CreateMap<SaveProductResource, Product>()
+            CreateMap<ProductSaveResource, Product>()
                 .ForMember(src => src.UnitOfMeasurement, opt => opt.MapFrom(src => (UnitOfMeasurement)src.UnitOfMeasurement));
 
             CreateMap<ProductsQueryResource, ProductsQuery>();

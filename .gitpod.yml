@@ -13,3 +13,4 @@ tasks:
 vscode:
   extensions:
     - muhammad-sammy.csharp
+    - ms-dotnettools.vscode-dotnet-runtime

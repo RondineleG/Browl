@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Browl.Service.MarketDataCollector.Infrastructure.Data.Repositories;
 
-public class UsuarioRepository :BaseRepository, IUsuarioRepository
+public class UsuarioRepository : BaseRepository, IUsuarioRepository
 {
     private readonly BrowlDbContext _browlDbContext;
 
-     public UsuarioRepository(BrowlDbContext context) : base(context) { }
+    public UsuarioRepository(BrowlDbContext context) : base(context) { }
 
     public async Task<IEnumerable<Usuario>> GetAsync()
     {

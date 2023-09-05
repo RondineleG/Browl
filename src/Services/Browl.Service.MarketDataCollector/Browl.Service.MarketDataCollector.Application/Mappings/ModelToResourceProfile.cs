@@ -2,9 +2,9 @@ using AutoMapper;
 using Browl.Service.MarketDataCollector.Application.Resources;
 using Browl.Service.MarketDataCollector.Domain.Entities;
 using Browl.Service.MarketDataCollector.Domain.Extensions;
-using Browl.Service.MarketDataCollector.Domain.Queries;
+using Browl.Service.MarketDataCollector.Domain.Queries.Base;
 
-namespace Browl.Service.MarketDataCollector.Infrastructure.Mapping
+namespace Browl.Service.MarketDataCollector.Application.Mappings
 {
     public class ModelToResourceProfile : Profile
     {

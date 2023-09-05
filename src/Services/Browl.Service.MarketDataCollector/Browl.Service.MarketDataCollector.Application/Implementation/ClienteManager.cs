@@ -15,7 +15,7 @@ public class ClienteManager : IClienteManager
 
     public ClienteManager()
     {
-            
+
     }
     public ClienteManager(IClienteRepository clienteRepository, IMapper mapper, ILogger<ClienteManager> logger)
     {

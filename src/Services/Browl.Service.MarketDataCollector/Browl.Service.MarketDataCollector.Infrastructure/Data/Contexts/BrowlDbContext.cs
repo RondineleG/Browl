@@ -26,7 +26,7 @@ public class BrowlDbContext : DbContext
     public DbSet<Telefone> Telefones { get; set; }
     public DbSet<Usuario> Usuarios { get; set; }
     public DbSet<Funcao> Funcoes { get; set; }
-    
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         var tenantConnectionString = _tenantService.GetConnectionString();

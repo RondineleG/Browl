@@ -15,6 +15,6 @@ public static class DataBaseConfiguration
         using var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope();
         using var context = serviceScope.ServiceProvider.GetService<BrowlDbContext>();
         //context.Database.Migrate();
-       // context.Database.EnsureCreated();
+        // context.Database.EnsureCreated();
     }
 }

@@ -16,7 +16,7 @@ public class UsuarioManager : IUsuarioManager
 
     public UsuarioManager()
     {
-            
+
     }
     public UsuarioManager(IUsuarioRepository repository, IMapper mapper, IJwtService jwt)
     {

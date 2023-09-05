@@ -7,9 +7,9 @@ namespace Browl.Service.MarketDataCollector.Infrastructure.Data.Repositories;
 
 public class UserRepository : BaseRepository, IUserRepository
 {
-    private readonly BrowlDbContext _browlDbContext;
-
-    public UserRepository(BrowlDbContext context) : base(context) { }
+    public UserRepository(BrowlDbContext bowlDbContext) : base(bowlDbContext)
+    {
+    }
 
     public async Task<IEnumerable<User>> GetAsync()
     {
@@ -34,23 +34,23 @@ public class UserRepository : BaseRepository, IUserRepository
 
     private async Task InsertUsuarioFuncaoAsync(User usuario)
     {
-        var funcoesConsultas = new List<Role>();
+        var searchingRoles = new List<Role>();
         foreach (var funcao in usuario.Roles)
         {
-            var funcaoConsultada = await _browlDbContext.Roles.FindAsync(funcao.Id);
-            funcoesConsultas.Add(funcaoConsultada);
+            var role = await _browlDbContext.Roles.FindAsync(funcao.Id);
+            searchingRoles.Add(role);
         }
-        usuario.Roles = funcoesConsultas;
+        usuario.Roles = searchingRoles;
     }
 
-    public async Task<User> UpdateAsync(User usuario)
+    public async Task<User> UpdateAsync(User user)
     {
-        var usuarioConsultado = await _browlDbContext.Users.FindAsync(usuario.Login);
+        var usuarioConsultado = await _browlDbContext.Users.FindAsync(user.Login);
         if (usuarioConsultado == null)
         {
             return null;
         }
-        _browlDbContext.Entry(usuarioConsultado).CurrentValues.SetValues(usuario);
+        _browlDbContext.Entry(usuarioConsultado).CurrentValues.SetValues(user);
         await _browlDbContext.SaveChangesAsync();
         return usuarioConsultado;
     }

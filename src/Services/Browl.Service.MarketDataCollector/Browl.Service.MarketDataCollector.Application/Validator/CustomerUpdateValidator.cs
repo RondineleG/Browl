@@ -3,11 +3,11 @@ using FluentValidation;
 
 namespace Browl.Service.MarketDataCollector.Application.Validator;
 
-public class AlteraClienteValidator : AbstractValidator<CustomerUpdateResource>
+public class CustomerUpdateValidator : AbstractValidator<CustomerUpdateResource>
 {
-    public AlteraClienteValidator()
+    public CustomerUpdateValidator()
     {
         RuleFor(p => p.Id).NotNull().NotEmpty().GreaterThan(0);
-        Include(new NovoClienteValidator());
+        Include(new CustomerNewValidator());
     }
 }

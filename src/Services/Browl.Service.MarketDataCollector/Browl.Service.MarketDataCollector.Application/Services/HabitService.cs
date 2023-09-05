@@ -1,6 +1,6 @@
-﻿using Browl.Service.MarketDataCollector.Domain.Dtos.Habit;
-using Browl.Service.MarketDataCollector.Domain.Entities;
+﻿using Browl.Service.MarketDataCollector.Domain.Entities;
 using Browl.Service.MarketDataCollector.Domain.Interfaces.Services;
+using Browl.Service.MarketDataCollector.Domain.Resources.Habit;
 using Browl.Service.MarketDataCollector.Infrastructure.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
 
@@ -27,7 +27,7 @@ namespace Browl.Service.MarketDataCollector.Application.Services
             _dbContext.Habits.Remove(habit);
             await _dbContext.SaveChangesAsync();
         }
-        public async Task<Habit?> UpdateById(int id, UpdateHabitDto request)
+        public async Task<Habit?> UpdateById(int id, UpdateHabitResource request)
         {
             var habit = await _dbContext.Habits!.FindAsync(id);
             if (habit == null) return null;

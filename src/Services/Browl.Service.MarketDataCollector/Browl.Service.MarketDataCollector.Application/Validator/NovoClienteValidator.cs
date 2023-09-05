@@ -1,9 +1,9 @@
-﻿using Browl.Service.MarketDataCollector.Domain.Dtos.Cliente;
+﻿using Browl.Service.MarketDataCollector.Domain.Resources.Customer;
 using FluentValidation;
 
 namespace Browl.Service.MarketDataCollector.Application.Validator;
 
-public class NovoClienteValidator : AbstractValidator<NovoCliente>
+public class NovoClienteValidator : AbstractValidator<CustomerResource>
 {
     public NovoClienteValidator()
     {

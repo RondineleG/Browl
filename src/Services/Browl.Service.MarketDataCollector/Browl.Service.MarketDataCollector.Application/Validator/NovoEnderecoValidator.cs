@@ -1,9 +1,9 @@
-﻿using Browl.Service.MarketDataCollector.Domain.Dtos.Endereco;
+﻿using Browl.Service.MarketDataCollector.Domain.Resources.Address;
 using FluentValidation;
 
 namespace Browl.Service.MarketDataCollector.Application.Validator;
 
-public class NovoEnderecoValidator : AbstractValidator<NovoEndereco>
+public class NovoEnderecoValidator : AbstractValidator<AddressNewResource>
 {
     public NovoEnderecoValidator()
     {

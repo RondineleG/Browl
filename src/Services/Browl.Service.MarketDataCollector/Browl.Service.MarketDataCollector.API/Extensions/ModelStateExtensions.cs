@@ -6,9 +6,7 @@ namespace Browl.Service.MarketDataCollector.Domain.Extensions
     {
         public static List<string> GetErrorMessages(this ModelStateDictionary dictionary)
         {
-            return dictionary.SelectMany(m => m.Value!.Errors)
-                             .Select(m => m.ErrorMessage)
-                             .ToList();
+            return dictionary.SelectMany(m => m.Value!.Errors).Select(m => m.ErrorMessage).ToList();
         }
     }
 }

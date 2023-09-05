@@ -1,6 +1,7 @@
 using Browl.Service.MarketDataCollector.Domain.Communication;
 using Browl.Service.MarketDataCollector.Domain.Entities;
 using Browl.Service.MarketDataCollector.Domain.Queries;
+using Browl.Service.MarketDataCollector.Domain.Queries.Base;
 
 namespace Browl.Service.MarketDataCollector.Domain.Interfaces.Services
 {

@@ -1,3 +1,5 @@
+using Browl.Service.MarketDataCollector.Domain.Queries.Base;
+
 namespace Browl.Service.MarketDataCollector.Domain.Queries
 {
     public class ProductsQuery : Query

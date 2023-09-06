@@ -5,7 +5,6 @@ using Browl.Service.MarketDataCollector.Domain.Interfaces.Services;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using Moq;
-using Xunit;
 
 namespace Browl.Service.MarketDataCollector.Application.Services.Facts
 {

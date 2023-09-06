@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
-	<Target Name="PostBuild">
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
     <Exec Command="npm install" />
-    <Exec Command="npm run buildcss" /> 
+	<Exec Command="npm run buildcss" /> 
   </Target>
 	<PropertyGroup>
 		<TargetFramework>net7.0</TargetFramework>

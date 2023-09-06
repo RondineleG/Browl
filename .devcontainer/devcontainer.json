@@ -21,7 +21,9 @@
 				"syncfusioninc.blazor-vscode-extensions",
 				"ms-dotnettools.vscode-dotnet-runtime",
 				"ms-dotnettools.blazorwasm-companion",
-				"PKief.material-icon-theme"
+				"PKief.material-icon-theme",
+				"Codeium.codeium",
+				"sourcegraph.cody-ai"
 			]
           }
     },

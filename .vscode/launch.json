@@ -2,22 +2,21 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "RunClient",
+            "name": "RunBrowlClient",
             "type": "blazorwasm",
             "request": "launch",
-            "preLaunchTask": "build-client",
-            "cwd": "${workspaceFolder}/Browl.Client",
-            "url": "https://localhost:5900"
+            "preLaunchTask": "Browl.Client",
+            "cwd": "${workspaceFolder}/src/Presentation/Browl.Client/",
+            "url": "https://localhost:1400"
         },
         {
-            "name": "RunHabitService",
+            "name": "RunBrowlServiceMarketDataCollector",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build-habit-service",
-            "program": "${workspaceFolder}/Browl.Service.MarketDataCollector/bin/Debug/net7.0/Browl.Service.MarketDataCollector.dll",
+            "preLaunchTask": "dotnet: watch Browl.Service.MarketDataCollector.API",
+            "program": "${workspaceFolder}/src/Services/Browl.Service.MarketDataCollector/Browl.Service.MarketDataCollector.API",
             "args": [],
-            "cwd":
-              "${workspaceFolder}/Browl.Service.MarketDataCollector",
+            "cwd": "${workspaceFolder}/src/Services/Browl.Service.MarketDataCollector/Browl.Service.MarketDataCollector.API",
             "stopAtEntry": false,
             "console": "integratedTerminal"
         },
@@ -26,8 +25,8 @@
         {
             "name": "Run All",
             "configurations": [
-                "RunHabitService",
-                "RunClient"
+                "RunBrowlServiceMarketDataCollector",
+                "RunBrowlClient"
             ]
         }
     ]

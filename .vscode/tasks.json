@@ -2,12 +2,12 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build-client",
+            "label": "Browl.Client",
             "type": "shell",
             "command": "dotnet",
             "args": [
                 "build",
-                "${workspaceFolder}/Browl.Client/Browl.Client.csproj"
+                "${workspaceFolder}/src/Presentation/Browl.Client/Browl.Client.csproj"
             ],
             "group": {
                 "kind": "build",
@@ -15,17 +15,26 @@
             }
         },
         {
-            "label": "build-habit-service",
+            "label": "BrowlServiceMarketDataCollector",
             "type": "shell",
             "command": "dotnet",
             "args": [
                 "build",
-                "${workspaceFolder}/Browl.Service.MarketDataCollector/Browl.Service.MarketDataCollector.csproj"
+                "${workspaceFolder}/src/Services/Browl.Service.MarketDataCollector/Browl.Service.MarketDataCollector.API"
             ],
             "group": {
                 "kind": "build",
                 "isDefault": true
             }
         },
+        {
+            "type": "dotnet",
+            "task": "watch Browl.Service.MarketDataCollector.API",
+            "file": "${workspaceFolder}\\src\\Services\\Browl.Service.MarketDataCollector\\Browl.Service.MarketDataCollector.API\\Browl.Service.MarketDataCollector.API.csproj",
+            "problemMatcher": [
+                "$msCompile"
+            ],
+            "label": "dotnet: watch Browl.Service.MarketDataCollector.API"
+        }
     ]
 }

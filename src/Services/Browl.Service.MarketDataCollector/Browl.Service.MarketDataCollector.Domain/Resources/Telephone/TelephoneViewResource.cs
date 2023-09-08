@@ -2,11 +2,11 @@
 
 public class TelephoneViewResource : ICloneable
 {
-    public int Id { get; set; }
-    public string Numero { get; set; }
+	public int Id { get; set; }
+	public required string Numero { get; set; }
 
-    public object Clone()
-    {
-        return MemberwiseClone();
-    }
+	public object Clone()
+	{
+		return MemberwiseClone();
+	}
 }

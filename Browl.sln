@@ -80,9 +80,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Browl.Service.MarketDataCol
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Browl.Service.MarketDataCollector.Application.Test", "test\Services\Browl.Service.MarketDataCollector.Test\Browl.Service.MarketDataCollector.Application.Test\Browl.Service.MarketDataCollector.Application.Test.csproj", "{D3458E46-B1F2-4CAF-BDFD-94AB31F6528A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Browl.Service.MarketDataCollector.Infrastructure.Test", "test\Services\Browl.Service.MarketDataCollector.Test\Browl.Service.MarketDataCollector.Infrastructure.Test\Browl.Service.MarketDataCollector.Infrastructure.Test.csproj", "{14DFBDD1-124E-4E8F-9F90-270FE83F0704}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Browl.Service.MarketDataCollector.Infrastructure.Test", "test\Services\Browl.Service.MarketDataCollector.Test\Browl.Service.MarketDataCollector.Infrastructure.Test\Browl.Service.MarketDataCollector.Infrastructure.Test.csproj", "{14DFBDD1-124E-4E8F-9F90-270FE83F0704}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Browl.Client.Test", "test\Presentation\Browl.Client.Test\Browl.Client.Test.csproj", "{72694572-0D50-4A39-A657-73133F074AF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Browl.Client.Test", "test\Presentation\Browl.Client.Test\Browl.Client.Test.csproj", "{72694572-0D50-4A39-A657-73133F074AF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Browl.Service.MarketDataCollector.FakeData", "test\Services\Browl.Service.MarketDataCollector.Test\Browl.Service.MarketDataCollector.FakeData\Browl.Service.MarketDataCollector.FakeData.csproj", "{7A01F807-7685-48FB-BAD0-9303E96A53B5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FakeData", "FakeData", "{361920A2-8B95-47B1-AA42-C9ADD6D28D23}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -130,6 +134,10 @@ Global
 		{72694572-0D50-4A39-A657-73133F074AF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72694572-0D50-4A39-A657-73133F074AF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72694572-0D50-4A39-A657-73133F074AF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A01F807-7685-48FB-BAD0-9303E96A53B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A01F807-7685-48FB-BAD0-9303E96A53B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A01F807-7685-48FB-BAD0-9303E96A53B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A01F807-7685-48FB-BAD0-9303E96A53B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -154,6 +162,8 @@ Global
 		{D3458E46-B1F2-4CAF-BDFD-94AB31F6528A} = {DB8F8AA6-A0F4-487D-B807-787C5117DD35}
 		{14DFBDD1-124E-4E8F-9F90-270FE83F0704} = {DB8F8AA6-A0F4-487D-B807-787C5117DD35}
 		{72694572-0D50-4A39-A657-73133F074AF7} = {1B3CDB1E-8F3E-4900-A61F-B13C974872FF}
+		{7A01F807-7685-48FB-BAD0-9303E96A53B5} = {361920A2-8B95-47B1-AA42-C9ADD6D28D23}
+		{361920A2-8B95-47B1-AA42-C9ADD6D28D23} = {DB8F8AA6-A0F4-487D-B807-787C5117DD35}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {09C8AF50-40D4-48F2-A03D-9BC7AB6D3538}

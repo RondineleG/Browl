@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Bogus" Version="34.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\src\Services\Browl.Service.MarketDataCollector\Browl.Service.MarketDataCollector.Domain\Browl.Service.MarketDataCollector.Domain.csproj" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<Using Include="Bogus" />
+	</ItemGroup>
+	
+</Project>

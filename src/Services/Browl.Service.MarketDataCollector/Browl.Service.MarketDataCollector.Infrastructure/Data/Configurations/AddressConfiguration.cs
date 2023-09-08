@@ -6,11 +6,11 @@ namespace Browl.Service.MarketDataCollector.Infrastructure.Data.Configurations;
 
 public class AddressConfiguration : IEntityTypeConfiguration<Address>
 {
-    public void Configure(EntityTypeBuilder<Address> builder)
-    {
-        builder.HasKey(p => p.ClienteId);
-        builder.Property(p => p.Estado).HasConversion(
-            p => p.ToString(),
-            p => (State)Enum.Parse(typeof(State), p));
-    }
+	public void Configure(EntityTypeBuilder<Address> builder)
+	{
+		_ = builder.HasKey(p => p.ClienteId);
+		_ = builder.Property(p => p.Estado).HasConversion(
+			p => p.ToString(),
+			p => (State)Enum.Parse(typeof(State), p));
+	}
 }

@@ -2,5 +2,5 @@
 
 public class ReferenceRoleResource
 {
-    public int Id { get; set; }
+	public int Id { get; set; }
 }

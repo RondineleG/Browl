@@ -1,7 +1,8 @@
-namespace Browl.Service.MarketDataCollector.Application.Resources
+using Browl.Service.MarketDataCollector.Domain.Resources.Query;
+
+namespace Browl.Service.MarketDataCollector.Domain.Resources.Product;
+
+public record ProductsQueryResource : QueryResource
 {
-    public record ProductsQueryResource : QueryResource
-    {
-        public int CategoryId { get; init; }
-    }
+	public int CategoryId { get; init; }
 }

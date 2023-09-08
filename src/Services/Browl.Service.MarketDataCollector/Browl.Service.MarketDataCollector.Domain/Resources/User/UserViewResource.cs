@@ -2,7 +2,6 @@
 
 public class UserViewResource
 {
-    public string Login { get; set; }
-
-    public ICollection<RoleViewResource> Funcoes { get; set; }
+	public required string Login { get; set; }
+	public required ICollection<RoleViewResource> Funcoes { get; set; }
 }

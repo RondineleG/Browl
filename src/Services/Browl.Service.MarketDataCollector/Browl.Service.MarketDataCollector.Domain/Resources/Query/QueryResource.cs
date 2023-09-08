@@ -1,8 +1,8 @@
-namespace Browl.Service.MarketDataCollector.Application.Resources
+namespace Browl.Service.MarketDataCollector.Domain.Resources.Query
 {
-    public record QueryResource
-    {
-        public int Page { get; init; }
-        public int ItemsPerPage { get; init; }
-    }
+	public record QueryResource
+	{
+		public int Page { get; init; }
+		public int ItemsPerPage { get; init; }
+	}
 }

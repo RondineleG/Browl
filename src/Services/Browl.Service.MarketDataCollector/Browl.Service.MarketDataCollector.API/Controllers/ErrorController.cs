@@ -8,11 +8,11 @@ namespace Browl.Service.MarketDataCollector.API.Controllers;
 [ApiController]
 public class ErrorController : ControllerBase
 {
-    [Route("error")]
-    public ErrorResponseResource Error()
-    {
-        Response.StatusCode = 500;
-        var id = Activity.Current?.Id ?? HttpContext?.TraceIdentifier;
-        return new ErrorResponseResource(id);
-    }
+	[Route("error")]
+	public ErrorResponseResource Error()
+	{
+		Response.StatusCode = 500;
+		string? id = Activity.Current?.Id ?? HttpContext?.TraceIdentifier;
+		return new ErrorResponseResource(id);
+	}
 }

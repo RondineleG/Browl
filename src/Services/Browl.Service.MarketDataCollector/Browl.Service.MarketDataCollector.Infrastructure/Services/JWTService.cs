@@ -10,32 +10,32 @@ namespace Browl.Service.MarketDataCollector.Infrastructure.Services;
 
 public class JwtService : IJwtService
 {
-    private readonly IConfiguration _configuration;
+	private readonly IConfiguration _configuration;
 
-    public JwtService(IConfiguration configuration)
-    {
-        _configuration = configuration;
-    }
+	public JwtService(IConfiguration configuration)
+	{
+		_configuration = configuration;
+	}
 
-    public string GenerateToken(User usuario)
-    {
-        var tokenHandler = new JwtSecurityTokenHandler();
-        var key = Encoding.ASCII.GetBytes(_configuration.GetSection("JWT:Secret").Value);
-        var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.Name, usuario.Login)
-            };
-        claims.AddRange(usuario.Roles.Select(p => new Claim(ClaimTypes.Role, p.Descricao)));
-        var tokenDescriptor = new SecurityTokenDescriptor
-        {
-            Subject = new ClaimsIdentity(claims),
-            Audience = _configuration.GetSection("JWT:Audience").Value,
-            Issuer = _configuration.GetSection("JWT:Issuer").Value,
-            Expires = DateTime.UtcNow.AddMinutes(Convert.ToInt32(_configuration.GetSection("JWT:ExpiraEmMinutos").Value)),
-            SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha512Signature)
-        };
+	public string GenerateToken(User usuario)
+	{
+		JwtSecurityTokenHandler tokenHandler = new();
+		byte[] key = Encoding.ASCII.GetBytes(_configuration.GetSection("JWT:Secret").Value);
+		List<Claim> claims = new()
+		{
+				new Claim(ClaimTypes.Name, usuario.Login)
+			};
+		claims.AddRange(usuario.Roles.Select(p => new Claim(ClaimTypes.Role, p.Descricao)));
+		SecurityTokenDescriptor tokenDescriptor = new()
+		{
+			Subject = new ClaimsIdentity(claims),
+			Audience = _configuration.GetSection("JWT:Audience").Value,
+			Issuer = _configuration.GetSection("JWT:Issuer").Value,
+			Expires = DateTime.UtcNow.AddMinutes(Convert.ToInt32(_configuration.GetSection("JWT:ExpiraEmMinutos").Value)),
+			SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha512Signature)
+		};
 
-        var token = tokenHandler.CreateToken(tokenDescriptor);
-        return tokenHandler.WriteToken(token);
-    }
+		SecurityToken token = tokenHandler.CreateToken(tokenDescriptor);
+		return tokenHandler.WriteToken(token);
+	}
 }

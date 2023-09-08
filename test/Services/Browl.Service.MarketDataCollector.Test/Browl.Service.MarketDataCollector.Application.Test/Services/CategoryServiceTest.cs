@@ -1,98 +1,68 @@
+using AutoMapper;
+using Browl.Service.MarketDataCollector.Application.Mappings;
+using Browl.Service.MarketDataCollector.Application.Services;
+using Browl.Service.MarketDataCollector.Application.Test.Builders;
 using Browl.Service.MarketDataCollector.Domain.Communication;
 using Browl.Service.MarketDataCollector.Domain.Entities;
 using Browl.Service.MarketDataCollector.Domain.Interfaces.Repositories;
 using Browl.Service.MarketDataCollector.Domain.Interfaces.Services;
+using Browl.Service.MarketDataCollector.Domain.Resources.Category;
+using Browl.Service.MarketDataCollector.FakeData.Category;
+using FluentAssertions;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
-using Moq;
+using NSubstitute;
 
-namespace Browl.Service.MarketDataCollector.Application.Services.Facts
+namespace Browl.Service.MarketDataCollector.Application.Test.Services
 {
 	public class CategoryServiceTest
 	{
 		private readonly ICategoryService _categoryService;
-		private readonly Mock<ICategoryRepository> _mockCategoryRepository;
-		private readonly Mock<IUnitOfWork> _mockUnitOfWork;
-		private readonly Mock<IMemoryCache> _mockCache;
-		private readonly Mock<ILogger<CategoryService>> _mockLogger;
-
+		private readonly ICategoryRepository _categoryRepository;
+		private readonly IUnitOfWork _unitOfWork;
+		private readonly IMapper _mapper;
+		private readonly IMemoryCache _memoryCache;
+		private readonly ILogger<CategoryService> logger;
+		private readonly Category Category;
+		private readonly CategoryFaker _categoryFaker;
 		public CategoryServiceTest()
 		{
-			_mockCategoryRepository = new Mock<ICategoryRepository>();
-			_mockUnitOfWork = new Mock<IUnitOfWork>();
-			_mockCache = new Mock<IMemoryCache>();
-			_mockLogger = new Mock<ILogger<CategoryService>>();
-			_categoryService = new CategoryService(_mockCategoryRepository.Object, _mockUnitOfWork.Object, _mockCache.Object, _mockLogger.Object);
+			_categoryRepository = Substitute.For<ICategoryRepository>();
+			_unitOfWork = Substitute.For<IUnitOfWork>();
+			_mapper = new MapperConfiguration(p => p.AddProfile<ModelToResourceProfile>()).CreateMapper();
+			_memoryCache = Substitute.For<IMemoryCache>();
+			logger = Substitute.For<ILogger<CategoryService>>();
+			_categoryService = new CategoryService(_categoryRepository, _unitOfWork, _memoryCache, logger);
+			_categoryFaker = new CategoryFaker();
+			Category = _categoryFaker.Generate();
 		}
 
 		[Fact]
-		public async Task ListAsync_ReturnsCategories_WhenCacheIsEmpty()
+		public async Task AddNewCategory()
 		{
 			// Arrange
-			List<Category> categories = new List<Category>()
-	{
-		new Category { Id = 1, Name = "Category 1" },
-		new Category { Id = 2, Name = "Category 2" },
-	};
-
-			var cacheKey = "your_cache_key"; // Replace with your actual cache key
-			var cacheEntry = new Mock<ICacheEntry>();
-			cacheEntry.SetupProperty(e => e.Value);
-
-			_mockCache.Setup(c => c.CreateEntry(It.IsAny<object>())).Returns(cacheEntry.Object);
-
-			_mockCategoryRepository.Setup(r => r.ListAsync()).ReturnsAsync(categories);
+			CategoryResourceBuilder resourceBuilder = new();
+			CategoryResource categoryResource = resourceBuilder.BuildResource();
+			Category category = new(categoryResource);
 
 			// Act
-			var result = await _categoryService.ListAsync();
+			_ = await _categoryService.SaveAsync(category);
 
 			// Assert
-			Assert.Equal(categories, result);
-
-			_mockCache.Verify(c => c.CreateEntry(It.IsAny<object>()), Times.Once);
-			_mockCategoryRepository.Verify(r => r.ListAsync(), Times.Once);
+			await _categoryRepository.Received(1).AddAsync(Arg.Is<Category>(c =>
+				c.Id == categoryResource.Id &&
+				c.Name == categoryResource.Name));
 		}
-
 		[Fact]
-		public async Task SaveAsync_ReturnsResponseWithCategory_WhenCategoryIsSavedSuccessfully()
+		public async Task InsertClienteAsync_Sucesso()
 		{
-			// Arrange
-			Category category = new Category { Id = 1, Name = "Category 1" };
+			CategoryResource controle = _mapper.Map<CategoryResource>(Category);
+			Response<Category> retorno = await _categoryService.SaveAsync(Category); ;
 
-			_mockCategoryRepository.Setup(r => r.AddAsync(category)).Verifiable();
-			_mockUnitOfWork.Setup(u => u.CompleteAsync()).Returns(Task.CompletedTask).Verifiable();
+			await _categoryRepository.Received().AddAsync(Arg.Any<Category>());
 
-			// Act
-			var result = await _categoryService.SaveAsync(category);
-
-			// Assert
-			Assert.Equal(new Response<Category>(category), result);
-			_mockCategoryRepository.Verify(r => r.AddAsync(category), Times.Once);
-			_mockUnitOfWork.Verify(u => u.CompleteAsync(), Times.Once);
+			_ = retorno.Should().BeEquivalentTo(controle);
 		}
-
-		[Fact]
-		public async Task SaveAsync_ReturnsErrorResponse_WhenAnErrorOccursWhileSavingCategory()
-		{
-			// Arrange
-			Category category = new Category { Id = 1, Name = "Category 1" };
-			string errorMessage = "An error occurred.";
-
-			_mockCategoryRepository.Setup(r => r.AddAsync(category)).ThrowsAsync(new Exception());
-			_mockLogger.Setup(l => l.LogError(It.IsAny<Exception>(), It.IsAny<string>())).Verifiable();
-
-			// Act
-			var result = await _categoryService.SaveAsync(category);
-
-			// Assert
-			Assert.Equal(new Response<Category>(errorMessage), result);
-			_mockCategoryRepository.Verify(r => r.AddAsync(category), Times.Once);
-			_mockUnitOfWork.Verify(u => u.CompleteAsync(), Times.Never);
-			_mockLogger.Verify(l => l.LogError(It.IsAny<Exception>(), It.IsAny<string>()), Times.Once);
-		}
-
-
-
 	}
 }
 

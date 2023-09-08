@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+
 using Browl.Service.MarketDataCollector.Domain.Interfaces.Services;
 using Browl.Service.MarketDataCollector.Domain.Resources.Habit;
+
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.JsonPatch.Exceptions;
 using Microsoft.AspNetCore.Mvc;
@@ -27,16 +29,10 @@ public class HabitsController : ControllerBase
 
 	[MapToApiVersion("1.0")]
 	[HttpGet("version")]
-	public virtual IActionResult GetVersion()
-	{
-		return Ok("Response from version 1.0");
-	}
+	public virtual IActionResult GetVersion() => Ok("Response from version 1.0");
 
 	[HttpGet("{id}")]
-	public async Task<IActionResult> GetAsync(int id)
-	{
-		return Ok(_mapper.Map<HabitResource>(await _habitService.GetById(id)));
-	}
+	public async Task<IActionResult> GetAsync(int id) => Ok(_mapper.Map<HabitResource>(await _habitService.GetById(id)));
 
 
 	/// <summary>
@@ -44,16 +40,13 @@ public class HabitsController : ControllerBase
 	/// </summary>
 	/// <returns>List os habits.</returns>
 	[HttpGet]
-	public async Task<IActionResult> GetAsync()
-	{
-		return Ok(_mapper.Map<ICollection<HabitResource>>(await _habitService.GetAll()));
-	}
+	public async Task<IActionResult> GetAsync() => Ok(_mapper.Map<ICollection<HabitResource>>(await _habitService.GetAll()));
 
 	[HttpPost]
 	public async Task<IActionResult> CreateAsync(CreateHabitResource request)
 	{
-		Domain.Entities.Habit habit = await _habitService.Create(request.Name, request.Description);
-		HabitResource habitDto = _mapper.Map<HabitResource>(habit);
+		var habit = await _habitService.Create(request.Name, request.Description);
+		var habitDto = _mapper.Map<HabitResource>(habit);
 		return CreatedAtAction("Get", "Habits", new
 		{
 			id =
@@ -65,14 +58,14 @@ public class HabitsController : ControllerBase
 	[HttpPut("{id}")]
 	public async Task<IActionResult> UpdateAsync(int id, UpdateHabitResource request)
 	{
-		Domain.Entities.Habit? habit = await _habitService.UpdateById(id, request);
+		var habit = await _habitService.UpdateById(id, request);
 		return habit == null ? NotFound() : Ok(habit);
 	}
 
 	[HttpPatch("{id}")]
 	public async Task<IActionResult> UpdateAsync(int id, [FromBody] JsonPatchDocument<UpdateHabitResource> patch)
 	{
-		Domain.Entities.Habit habit = await _habitService.GetById(id);
+		var habit = await _habitService.GetById(id);
 		if (habit == null)
 		{
 			return NotFound();

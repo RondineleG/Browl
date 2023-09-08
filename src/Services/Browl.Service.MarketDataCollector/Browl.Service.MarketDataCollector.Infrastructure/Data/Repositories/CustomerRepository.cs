@@ -1,6 +1,7 @@
 ﻿using Browl.Service.MarketDataCollector.Domain.Entities;
 using Browl.Service.MarketDataCollector.Domain.Interfaces.Repositories;
 using Browl.Service.MarketDataCollector.Infrastructure.Data.Contexts;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace Browl.Service.MarketDataCollector.Infrastructure.Data.Repositories;
@@ -11,21 +12,15 @@ public class CustomerRepository : BaseRepository, ICustomerRepository
 
 	public CustomerRepository(BrowlDbContext context) : base(context) { }
 
-	public async Task<IEnumerable<Customer>> GetAsync()
-	{
-		return await _browlDbContext.Customers
+	public async Task<IEnumerable<Customer>> GetAsync() => await _browlDbContext.Customers
 			.Include(p => p.Endereco)
 			.Include(p => p.Telefones)
 			.AsNoTracking().ToListAsync();
-	}
 
-	public async Task<Customer> GetAsync(int id)
-	{
-		return await _browlDbContext.Customers
+	public async Task<Customer> GetAsync(int id) => await _browlDbContext.Customers
 			.Include(p => p.Endereco)
 			.Include(p => p.Telefones)
 			.SingleOrDefaultAsync(p => p.Id == id);
-	}
 
 	public async Task<Customer> PostAsync(Customer cliente)
 	{
@@ -36,7 +31,7 @@ public class CustomerRepository : BaseRepository, ICustomerRepository
 
 	public async Task<Customer> PutAsync(Customer cliente)
 	{
-		Customer? clienteConsultado = await _browlDbContext.Customers
+		var clienteConsultado = await _browlDbContext.Customers
 											 .Include(p => p.Endereco)
 											 .Include(p => p.Telefones)
 											 .FirstOrDefaultAsync(p => p.Id == cliente.Id);
@@ -54,7 +49,7 @@ public class CustomerRepository : BaseRepository, ICustomerRepository
 	private static void UpdateClienteTelefones(Customer cliente, Customer clienteConsultado)
 	{
 		clienteConsultado.Telefones.Clear();
-		foreach (Telephone telefone in cliente.Telefones)
+		foreach (var telefone in cliente.Telefones)
 		{
 			clienteConsultado.Telefones.Add(telefone);
 		}
@@ -62,12 +57,12 @@ public class CustomerRepository : BaseRepository, ICustomerRepository
 
 	public async Task<Customer> DeleteAsync(int id)
 	{
-		Customer? clienteConsultado = await _browlDbContext.Customers.FindAsync(id);
+		var clienteConsultado = await _browlDbContext.Customers.FindAsync(id);
 		if (clienteConsultado == null)
 		{
 			return null;
 		}
-		Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry<Customer> clienteRemovido = _browlDbContext.Customers.Remove(clienteConsultado);
+		var clienteRemovido = _browlDbContext.Customers.Remove(clienteConsultado);
 		_ = await _browlDbContext.SaveChangesAsync();
 		return clienteRemovido.Entity;
 	}

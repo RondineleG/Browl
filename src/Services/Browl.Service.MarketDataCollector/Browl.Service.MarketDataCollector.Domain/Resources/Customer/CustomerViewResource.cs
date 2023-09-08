@@ -21,7 +21,7 @@ public class CustomerViewResource : ICloneable
 
 	public object Clone()
 	{
-		CustomerViewResource cliente = (CustomerViewResource)MemberwiseClone();
+		var cliente = (CustomerViewResource)MemberwiseClone();
 		cliente.Endereco = (AddressViewResource)cliente.Endereco.Clone();
 		List<TelephoneViewResource> telefones = new();
 		cliente.Telefones.ToList().ForEach(p => telefones.Add((TelephoneViewResource)p.Clone()));
@@ -29,8 +29,5 @@ public class CustomerViewResource : ICloneable
 		return cliente;
 	}
 
-	public CustomerViewResource CloneTipado()
-	{
-		return (CustomerViewResource)Clone();
-	}
+	public CustomerViewResource CloneTipado() => (CustomerViewResource)Clone();
 }

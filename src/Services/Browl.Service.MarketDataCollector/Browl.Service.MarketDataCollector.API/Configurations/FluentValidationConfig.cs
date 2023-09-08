@@ -1,10 +1,14 @@
-﻿using Browl.Service.MarketDataCollector.Application.Validator;
+﻿using System.Globalization;
+using System.Text.Json.Serialization;
+
+using Browl.Service.MarketDataCollector.Application.Validator;
+
 using FluentValidation.AspNetCore;
+
 using MicroElements.Swashbuckle.FluentValidation.AspNetCore;
+
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.Globalization;
-using System.Text.Json.Serialization;
 
 namespace Browl.Service.MarketDataCollector.API.Configurations;
 

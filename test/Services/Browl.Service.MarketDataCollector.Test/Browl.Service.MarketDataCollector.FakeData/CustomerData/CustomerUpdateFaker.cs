@@ -8,7 +8,7 @@ public class CustomerUpdateFaker : Faker<Customer>
 {
 	public CustomerUpdateFaker()
 	{
-		int id = new Faker().Random.Number(1, 100);
+		var id = new Faker().Random.Number(1, 100);
 		_ = RuleFor(o => o.Id, _ => id);
 		_ = RuleFor(o => o.Nome, f => f.Person.FullName);
 		_ = RuleFor(o => o.Sexo, f => f.PickRandom<Gender>());

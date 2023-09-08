@@ -1,23 +1,22 @@
-namespace Browl.Service.MarketDataCollector.Domain.Communication
+namespace Browl.Service.MarketDataCollector.Domain.Communication;
+
+public record Response<T>
 {
-	public record Response<T>
+	public bool Success { get; init; }
+	public string? Message { get; init; }
+	public T? Resource { get; init; }
+
+	public Response(T resource)
 	{
-		public bool Success { get; init; }
-		public string? Message { get; init; }
-		public T? Resource { get; init; }
+		Success = true;
+		Message = null;
+		Resource = resource;
+	}
 
-		public Response(T resource)
-		{
-			Success = true;
-			Message = null;
-			Resource = resource;
-		}
-
-		public Response(string message)
-		{
-			Success = false;
-			Message = message;
-			Resource = default;
-		}
+	public Response(string message)
+	{
+		Success = false;
+		Message = message;
+		Resource = default;
 	}
 }

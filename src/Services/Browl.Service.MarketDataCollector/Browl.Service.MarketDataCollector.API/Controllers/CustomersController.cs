@@ -1,6 +1,8 @@
 ﻿using Browl.Service.MarketDataCollector.Domain.Interfaces.Managers;
 using Browl.Service.MarketDataCollector.Domain.Resources.Customer;
+
 using Microsoft.AspNetCore.Mvc;
+
 using SerilogTimings;
 
 namespace Browl.Service.MarketDataCollector.API.Controllers;
@@ -28,7 +30,7 @@ public class CustomersController : ControllerBase
 	[ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
 	public async Task<IActionResult> Get()
 	{
-		IEnumerable<CustomerViewResource> clientes = await clienteManager.GetAsync();
+		var clientes = await clienteManager.GetAsync();
 		return clientes.Any() ? Ok(clientes) : NotFound();
 	}
 
@@ -42,7 +44,7 @@ public class CustomersController : ControllerBase
 	[ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
 	public async Task<IActionResult> Get(int id)
 	{
-		CustomerViewResource cliente = await clienteManager.GetAsync(id);
+		var cliente = await clienteManager.GetAsync(id);
 		return cliente.Id == 0 ? NotFound() : Ok(cliente);
 	}
 
@@ -77,7 +79,7 @@ public class CustomersController : ControllerBase
 	[ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
 	public async Task<IActionResult> Put(CustomerUpdateResource customerUpdateResource)
 	{
-		CustomerViewResource clienteAtualizado = await clienteManager.PutAsync(customerUpdateResource);
+		var clienteAtualizado = await clienteManager.PutAsync(customerUpdateResource);
 		return clienteAtualizado == null ? NotFound() : Ok(clienteAtualizado);
 	}
 
@@ -92,7 +94,7 @@ public class CustomersController : ControllerBase
 	[ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
 	public async Task<IActionResult> Delete(int id)
 	{
-		CustomerResource clienteExcliudo = await clienteManager.DeleteAsync(id);
+		var clienteExcliudo = await clienteManager.DeleteAsync(id);
 		return clienteExcliudo == null ? NotFound() : NoContent();
 	}
 }

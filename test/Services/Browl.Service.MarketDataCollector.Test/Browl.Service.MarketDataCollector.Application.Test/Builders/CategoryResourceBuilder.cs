@@ -1,30 +1,23 @@
 ﻿using Browl.Service.MarketDataCollector.Domain.Entities;
 using Browl.Service.MarketDataCollector.Domain.Resources.Category;
 
-namespace Browl.Service.MarketDataCollector.Application.Test.Builders
+namespace Browl.Service.MarketDataCollector.Application.Test.Builders;
+
+public class CategoryResourceBuilder
 {
-	public class CategoryResourceBuilder
+	private readonly int _id = 1;
+	private string _name = "My new Category";
+	public Category Build() => new(BuildResource());
+
+	public CategoryResource BuildResource() => new()
 	{
-		private readonly int _id = 1;
-		private string _name = "My new Category";
-		public Category Build()
-		{
-			return new Category(BuildResource());
-		}
+		Id = _id,
+		Name = _name
+	};
 
-		public CategoryResource BuildResource()
-		{
-			return new CategoryResource()
-			{
-				Id = _id,
-				Name = _name
-			};
-		}
-
-		public CategoryResourceBuilder WithName(string name)
-		{
-			_name = name;
-			return this;
-		}
+	public CategoryResourceBuilder WithName(string name)
+	{
+		_name = name;
+		return this;
 	}
 }

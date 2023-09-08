@@ -9,8 +9,5 @@ public class AddressViewResource : ICloneable
 	public required string Numero { get; set; }
 	public required string Complemento { get; set; }
 
-	public object Clone()
-	{
-		return MemberwiseClone();
-	}
+	public object Clone() => MemberwiseClone();
 }

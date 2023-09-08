@@ -1,13 +1,12 @@
 using Browl.Service.MarketDataCollector.Domain.Entities;
 
-namespace Browl.Service.MarketDataCollector.Domain.Interfaces.Repositories
+namespace Browl.Service.MarketDataCollector.Domain.Interfaces.Repositories;
+
+public interface ICategoryRepository
 {
-	public interface ICategoryRepository
-	{
-		Task<IEnumerable<Category>> ListAsync();
-		Task AddAsync(Category category);
-		Task<Category> FindByIdAsync(int id);
-		void Update(Category category);
-		void Remove(Category category);
-	}
+	Task<IEnumerable<Category>> ListAsync();
+	Task AddAsync(Category category);
+	Task<Category> FindByIdAsync(int id);
+	void Update(Category category);
+	void Remove(Category category);
 }

@@ -1,4 +1,5 @@
 ﻿using Browl.Service.MarketDataCollector.Infrastructure.Data.Contexts;
+
 using Microsoft.EntityFrameworkCore;
 namespace Browl.Service.MarketDataCollector.API.Configurations;
 
@@ -12,7 +13,7 @@ public static class DataBaseConfiguration
 
 	public static void UseDatabaseConfiguration(this IApplicationBuilder app)
 	{
-		using IServiceScope serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope();
-		using BrowlDbContext? context = serviceScope.ServiceProvider.GetService<BrowlDbContext>();
+		using var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope();
+		using var context = serviceScope.ServiceProvider.GetService<BrowlDbContext>();
 	}
 }

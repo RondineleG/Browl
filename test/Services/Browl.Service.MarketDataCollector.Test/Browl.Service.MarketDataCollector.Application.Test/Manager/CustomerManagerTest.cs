@@ -1,12 +1,17 @@
 ﻿using AutoMapper;
+
 using Browl.Service.MarketDataCollector.Application.Implementation;
 using Browl.Service.MarketDataCollector.Application.Mappings;
 using Browl.Service.MarketDataCollector.Domain.Entities;
 using Browl.Service.MarketDataCollector.Domain.Interfaces.Managers;
 using Browl.Service.MarketDataCollector.Domain.Interfaces.Repositories;
+using Browl.Service.MarketDataCollector.Domain.Resources.Customer;
 using Browl.Service.MarketDataCollector.FakeData.CustomerData;
+
 using FluentAssertions;
+
 using Microsoft.Extensions.Logging;
+
 using NSubstitute;
 using NSubstitute.ReturnsExtensions;
 
@@ -43,10 +48,10 @@ public class CustomerManagerTest
 	[Fact]
 	public async Task GetCustomersAsync_Sucesso()
 	{
-		List<Customer> listaCustomers = CustomerFaker.Generate(10);
+		var listaCustomers = CustomerFaker.Generate(10);
 		_ = repository.GetAsync().Returns(listaCustomers);
-		IEnumerable<Customer> controle = mapper.Map<IEnumerable<Customer>, IEnumerable<Customer>>(listaCustomers);
-		IEnumerable<Domain.Resources.Customer.CustomerViewResource> retorno = await manager.GetAsync();
+		var controle = mapper.Map<IEnumerable<Customer>, IEnumerable<Customer>>(listaCustomers);
+		var retorno = await manager.GetAsync();
 
 		_ = await repository.Received().GetAsync();
 		_ = retorno.Should().BeEquivalentTo(controle);
@@ -57,7 +62,7 @@ public class CustomerManagerTest
 	{
 		_ = repository.GetAsync().Returns(new List<Customer>());
 
-		IEnumerable<Domain.Resources.Customer.CustomerViewResource> retorno = await manager.GetAsync();
+		var retorno = await manager.GetAsync();
 
 		_ = await repository.Received().GetAsync();
 		_ = retorno.Should().BeEquivalentTo(new List<Customer>());
@@ -67,8 +72,8 @@ public class CustomerManagerTest
 	public async Task GetAsync_Sucesso()
 	{
 		_ = repository.GetAsync(Arg.Any<int>()).Returns(Customer);
-		Customer controle = mapper.Map<Customer>(Customer);
-		Domain.Resources.Customer.CustomerViewResource retorno = await manager.GetAsync(Customer.Id);
+		var controle = mapper.Map<Customer>(Customer);
+		var retorno = await manager.GetAsync(Customer.Id);
 
 		_ = await repository.Received().GetAsync(Arg.Any<int>());
 		_ = retorno.Should().BeEquivalentTo(controle);
@@ -78,8 +83,8 @@ public class CustomerManagerTest
 	public async Task GetAsync_NaoEncontrado()
 	{
 		_ = repository.GetAsync(Arg.Any<int>()).Returns(new Customer());
-		Customer controle = mapper.Map<Customer>(new Customer());
-		Domain.Resources.Customer.CustomerViewResource retorno = await manager.GetAsync(1);
+		var controle = mapper.Map<Customer>(new Customer());
+		var retorno = await manager.GetAsync(1);
 
 		_ = await repository.Received().GetAsync(Arg.Any<int>());
 		_ = retorno.Should().BeEquivalentTo(controle);
@@ -89,22 +94,27 @@ public class CustomerManagerTest
 	public async Task PostAsync_Sucesso()
 	{
 		_ = repository.PostAsync(Arg.Any<Customer>()).Returns(Customer);
-		Customer controle = mapper.Map<Customer>(Customer);
-		var retorno = await manager.PostAsync(NovoCustomer);
+		var controle = mapper.Map<Customer>(Customer);
+
+		var novoCustomerResource = mapper.Map<CustomerResource>(NovoCustomer);
+
+		var retorno = await manager.PostAsync(novoCustomerResource);
 
 		_ = await repository.Received().PostAsync(Arg.Any<Customer>());
-		retorno.Should().BeEquivalentTo(controle);
+		_ = retorno.Should().BeEquivalentTo(controle);
 	}
 
 	[Fact]
 	public async Task PutAsync_Sucesso()
 	{
 		_ = repository.PutAsync(Arg.Any<Customer>()).Returns(Customer);
-		Customer controle = mapper.Map<Customer>(Customer);
-		var retorno = await manager.PutAsync(AlteraCustomer);
+		var controle = mapper.Map<Customer>(Customer);
+		var novoCustomerResource = mapper.Map<CustomerUpdateResource>(AlteraCustomer);
+
+		var retorno = await manager.PutAsync(novoCustomerResource);
 
 		_ = await repository.Received().PutAsync(Arg.Any<Customer>());
-		retorno.Should().BeEquivalentTo(controle);
+		_ = retorno.Should().BeEquivalentTo(controle);
 	}
 
 	[Fact]
@@ -112,18 +122,20 @@ public class CustomerManagerTest
 	{
 		_ = repository.PutAsync(Arg.Any<Customer>()).ReturnsNull();
 
-		var retorno = await manager.PutAsync(AlteraCustomer);
+		var novoCustomerResource = mapper.Map<CustomerUpdateResource>(AlteraCustomer);
+
+		var retorno = await manager.PutAsync(novoCustomerResource);
 
 		_ = await repository.Received().PutAsync(Arg.Any<Customer>());
-		retorno.Should().BeNull();
+		_ = retorno.Should().BeNull();
 	}
 
 	[Fact]
 	public async Task DeleteAsync_Sucesso()
 	{
 		_ = repository.DeleteAsync(Arg.Any<int>()).Returns(Customer);
-		Customer controle = mapper.Map<Customer>(Customer);
-		Domain.Resources.Customer.CustomerResource retorno = await manager.DeleteAsync(Customer.Id);
+		var controle = mapper.Map<Customer>(Customer);
+		var retorno = await manager.DeleteAsync(Customer.Id);
 
 		_ = await repository.Received().DeleteAsync(Arg.Any<int>());
 		_ = retorno.Should().BeEquivalentTo(controle);
@@ -134,7 +146,7 @@ public class CustomerManagerTest
 	{
 		_ = repository.DeleteAsync(Arg.Any<int>()).ReturnsNull();
 
-		Domain.Resources.Customer.CustomerResource retorno = await manager.DeleteAsync(1);
+		var retorno = await manager.DeleteAsync(1);
 
 		_ = await repository.Received().DeleteAsync(Arg.Any<int>());
 		_ = retorno.Should().BeNull();

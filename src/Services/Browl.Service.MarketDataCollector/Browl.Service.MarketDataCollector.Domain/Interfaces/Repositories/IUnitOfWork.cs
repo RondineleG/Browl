@@ -1,7 +1,6 @@
-namespace Browl.Service.MarketDataCollector.Domain.Interfaces.Repositories
+namespace Browl.Service.MarketDataCollector.Domain.Interfaces.Repositories;
+
+public interface IUnitOfWork
 {
-	public interface IUnitOfWork
-	{
-		Task CompleteAsync();
-	}
+	Task CompleteAsync();
 }

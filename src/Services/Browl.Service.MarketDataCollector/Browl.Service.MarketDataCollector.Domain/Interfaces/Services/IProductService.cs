@@ -3,13 +3,12 @@ using Browl.Service.MarketDataCollector.Domain.Entities;
 using Browl.Service.MarketDataCollector.Domain.Queries;
 using Browl.Service.MarketDataCollector.Domain.Queries.Base;
 
-namespace Browl.Service.MarketDataCollector.Domain.Interfaces.Services
+namespace Browl.Service.MarketDataCollector.Domain.Interfaces.Services;
+
+public interface IProductService
 {
-	public interface IProductService
-	{
-		Task<QueryResult<Product>> ListAsync(ProductsQuery query);
-		Task<Response<Product>> SaveAsync(Product product);
-		Task<Response<Product>> UpdateAsync(int id, Product product);
-		Task<Response<Product>> DeleteAsync(int id);
-	}
+	Task<QueryResult<Product>> ListAsync(ProductsQuery query);
+	Task<Response<Product>> SaveAsync(Product product);
+	Task<Response<Product>> UpdateAsync(int id, Product product);
+	Task<Response<Product>> DeleteAsync(int id);
 }

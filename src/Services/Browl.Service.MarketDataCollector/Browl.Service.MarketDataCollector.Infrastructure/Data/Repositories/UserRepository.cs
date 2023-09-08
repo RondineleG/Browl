@@ -1,6 +1,7 @@
 ﻿using Browl.Service.MarketDataCollector.Domain.Entities;
 using Browl.Service.MarketDataCollector.Domain.Interfaces.Repositories;
 using Browl.Service.MarketDataCollector.Infrastructure.Data.Contexts;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace Browl.Service.MarketDataCollector.Infrastructure.Data.Repositories;
@@ -11,18 +12,12 @@ public class UserRepository : BaseRepository, IUserRepository
 	{
 	}
 
-	public async Task<IEnumerable<User>> GetAsync()
-	{
-		return await _browlDbContext.Users.AsNoTracking().ToListAsync();
-	}
+	public async Task<IEnumerable<User>> GetAsync() => await _browlDbContext.Users.AsNoTracking().ToListAsync();
 
-	public async Task<User> GetAsync(string login)
-	{
-		return await _browlDbContext.Users
+	public async Task<User> GetAsync(string login) => await _browlDbContext.Users
 			.Include(p => p.Roles)
 			.AsNoTracking()
 			.SingleOrDefaultAsync(p => p.Login == login);
-	}
 
 	public async Task<User> InsertAsync(User usuario)
 	{
@@ -35,9 +30,9 @@ public class UserRepository : BaseRepository, IUserRepository
 	private async Task InsertUsuarioFuncaoAsync(User usuario)
 	{
 		List<Role> searchingRoles = new();
-		foreach (Role funcao in usuario.Roles)
+		foreach (var funcao in usuario.Roles)
 		{
-			Role? role = await _browlDbContext.Roles.FindAsync(funcao.Id);
+			var role = await _browlDbContext.Roles.FindAsync(funcao.Id);
 			searchingRoles.Add(role);
 		}
 		usuario.Roles = searchingRoles;
@@ -45,7 +40,7 @@ public class UserRepository : BaseRepository, IUserRepository
 
 	public async Task<User> UpdateAsync(User user)
 	{
-		User? usuarioConsultado = await _browlDbContext.Users.FindAsync(user.Login);
+		var usuarioConsultado = await _browlDbContext.Users.FindAsync(user.Login);
 		if (usuarioConsultado == null)
 		{
 			return null;

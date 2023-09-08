@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
+
 using Browl.Service.MarketDataCollector.Domain.Entities;
 using Browl.Service.MarketDataCollector.Domain.Interfaces.Managers;
 using Browl.Service.MarketDataCollector.Domain.Interfaces.Repositories;
 using Browl.Service.MarketDataCollector.Domain.Interfaces.Services;
 using Browl.Service.MarketDataCollector.Domain.Resources.User;
+
 using Microsoft.AspNetCore.Identity;
 
 namespace Browl.Service.MarketDataCollector.Application.Implementation;
@@ -21,19 +23,13 @@ public class UserManager : IUserManager
 		_jwtService = jwtService;
 	}
 
-	public async Task<IEnumerable<UserViewResource>> GetAsync()
-	{
-		return _mapper.Map<IEnumerable<User>, IEnumerable<UserViewResource>>(await _userRepository.GetAsync());
-	}
+	public async Task<IEnumerable<UserViewResource>> GetAsync() => _mapper.Map<IEnumerable<User>, IEnumerable<UserViewResource>>(await _userRepository.GetAsync());
 
-	public async Task<UserViewResource> GetAsync(string login)
-	{
-		return _mapper.Map<UserViewResource>(await _userRepository.GetAsync(login));
-	}
+	public async Task<UserViewResource> GetAsync(string login) => _mapper.Map<UserViewResource>(await _userRepository.GetAsync(login));
 
 	public async Task<UserViewResource> InsertAsync(UserNewResource novoUsuario)
 	{
-		User usuario = _mapper.Map<User>(novoUsuario);
+		var usuario = _mapper.Map<User>(novoUsuario);
 		ConverteSenhaEmHash(usuario);
 		return _mapper.Map<UserViewResource>(await _userRepository.InsertAsync(usuario));
 	}
@@ -52,14 +48,14 @@ public class UserManager : IUserManager
 
 	public async Task<UserLoggedResource?> ValidaUsuarioEGeraTokenAsync(User usuario)
 	{
-		User usuarioConsultado = await _userRepository.GetAsync(usuario.Login);
+		var usuarioConsultado = await _userRepository.GetAsync(usuario.Login);
 		if (usuarioConsultado == null)
 		{
 			return null;
 		}
 		if (await ValidateAndUpdateHashAsync(usuario, usuarioConsultado.Password))
 		{
-			UserLoggedResource usuarioLogado = _mapper.Map<UserLoggedResource>(usuarioConsultado);
+			var usuarioLogado = _mapper.Map<UserLoggedResource>(usuarioConsultado);
 			usuarioLogado.Token = _jwtService.GenerateToken(usuarioConsultado);
 			return usuarioLogado;
 		}
@@ -69,7 +65,7 @@ public class UserManager : IUserManager
 	private async Task<bool> ValidateAndUpdateHashAsync(User usuario, string hash)
 	{
 		PasswordHasher<User> passwordHasher = new();
-		PasswordVerificationResult status = passwordHasher.VerifyHashedPassword(usuario, hash, usuario.Password);
+		var status = passwordHasher.VerifyHashedPassword(usuario, hash, usuario.Password);
 		switch (status)
 		{
 			case Microsoft.AspNetCore.Identity.PasswordVerificationResult.Failed:

@@ -1,4 +1,5 @@
 ﻿using Bogus.Extensions.Brazil;
+
 using Browl.Service.MarketDataCollector.Domain.Entities;
 using Browl.Service.MarketDataCollector.FakeData.AddressData;
 using Browl.Service.MarketDataCollector.FakeData.TelephoneData;

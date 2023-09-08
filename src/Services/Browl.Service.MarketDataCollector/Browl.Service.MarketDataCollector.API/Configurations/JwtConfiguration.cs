@@ -1,8 +1,10 @@
-﻿using Browl.Service.MarketDataCollector.Domain.Interfaces.Services;
+﻿using System.Text;
+
+using Browl.Service.MarketDataCollector.Domain.Interfaces.Services;
 using Browl.Service.MarketDataCollector.Infrastructure.Services;
+
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using System.Text;
 
 namespace Browl.Service.MarketDataCollector.API.Configurations;
 
@@ -12,7 +14,7 @@ public static class JwtConfiguration
 	{
 		_ = services.AddScoped<IJwtService, JwtService>();
 
-		byte[] chave = Encoding.ASCII.GetBytes(configuration.GetSection("JWT:Secret").Value);
+		var chave = Encoding.ASCII.GetBytes(configuration.GetSection("JWT:Secret").Value);
 
 		_ = services.AddAuthentication(p =>
 	   {

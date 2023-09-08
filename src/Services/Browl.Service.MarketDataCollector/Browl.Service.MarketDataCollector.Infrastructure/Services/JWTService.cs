@@ -1,10 +1,12 @@
-﻿using Browl.Service.MarketDataCollector.Domain.Entities;
-using Browl.Service.MarketDataCollector.Domain.Interfaces.Services;
-using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
+﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+
+using Browl.Service.MarketDataCollector.Domain.Entities;
+using Browl.Service.MarketDataCollector.Domain.Interfaces.Services;
+
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Browl.Service.MarketDataCollector.Infrastructure.Services;
 
@@ -12,15 +14,12 @@ public class JwtService : IJwtService
 {
 	private readonly IConfiguration _configuration;
 
-	public JwtService(IConfiguration configuration)
-	{
-		_configuration = configuration;
-	}
+	public JwtService(IConfiguration configuration) => _configuration = configuration;
 
 	public string GenerateToken(User usuario)
 	{
 		JwtSecurityTokenHandler tokenHandler = new();
-		byte[] key = Encoding.ASCII.GetBytes(_configuration.GetSection("JWT:Secret").Value);
+		var key = Encoding.ASCII.GetBytes(_configuration.GetSection("JWT:Secret").Value);
 		List<Claim> claims = new()
 		{
 				new Claim(ClaimTypes.Name, usuario.Login)
@@ -35,7 +34,7 @@ public class JwtService : IJwtService
 			SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha512Signature)
 		};
 
-		SecurityToken token = tokenHandler.CreateToken(tokenDescriptor);
+		var token = tokenHandler.CreateToken(tokenDescriptor);
 		return tokenHandler.WriteToken(token);
 	}
 }

@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
+
 using Browl.Service.MarketDataCollector.Domain.Entities;
 using Browl.Service.MarketDataCollector.Domain.Interfaces.Managers;
 using Browl.Service.MarketDataCollector.Domain.Interfaces.Repositories;
 using Browl.Service.MarketDataCollector.Domain.Resources.Customer;
+
 using Microsoft.Extensions.Logging;
 
 namespace Browl.Service.MarketDataCollector.Application.Implementation;
@@ -22,33 +24,33 @@ public class CustomerManager : ICustomerManager
 
 	public async Task<IEnumerable<CustomerViewResource>> GetAsync()
 	{
-		IEnumerable<Customer> clientes = await _customerRepository.GetAsync();
+		var clientes = await _customerRepository.GetAsync();
 		return _mapper.Map<IEnumerable<Customer>, IEnumerable<CustomerViewResource>>(clientes);
 	}
 
 	public async Task<CustomerViewResource> GetAsync(int id)
 	{
-		Customer cliente = await _customerRepository.GetAsync(id);
+		var cliente = await _customerRepository.GetAsync(id);
 		return _mapper.Map<CustomerViewResource>(cliente);
 	}
 
 	public async Task<CustomerResource> DeleteAsync(int id)
 	{
-		Customer cliente = await _customerRepository.DeleteAsync(id);
+		var cliente = await _customerRepository.DeleteAsync(id);
 		return _mapper.Map<CustomerResource>(cliente);
 	}
 
 	public async Task<CustomerViewResource> PostAsync(CustomerResource novoCliente)
 	{
 		_logger.LogInformation("Chamada de negócio para inserir um cliente.");
-		Customer cliente = _mapper.Map<Customer>(novoCliente);
+		var cliente = _mapper.Map<Customer>(novoCliente);
 		cliente = await _customerRepository.PostAsync(cliente);
 		return _mapper.Map<CustomerViewResource>(cliente);
 	}
 
 	public async Task<CustomerViewResource> PutAsync(CustomerUpdateResource alteraCliente)
 	{
-		Customer cliente = _mapper.Map<Domain.Entities.Customer>(alteraCliente);
+		var cliente = _mapper.Map<Domain.Entities.Customer>(alteraCliente);
 		cliente = await _customerRepository.PutAsync(cliente);
 		return _mapper.Map<CustomerViewResource>(cliente);
 	}

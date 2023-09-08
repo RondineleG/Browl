@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+
 using Browl.Service.MarketDataCollector.Domain.Entities;
 using Browl.Service.MarketDataCollector.Domain.Resources.Address;
 using Browl.Service.MarketDataCollector.Domain.Resources.Customer;

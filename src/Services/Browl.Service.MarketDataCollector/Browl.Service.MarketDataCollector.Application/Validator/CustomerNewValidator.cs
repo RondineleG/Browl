@@ -1,4 +1,5 @@
 ﻿using Browl.Service.MarketDataCollector.Domain.Resources.Customer;
+
 using FluentValidation;
 
 namespace Browl.Service.MarketDataCollector.Application.Validator;

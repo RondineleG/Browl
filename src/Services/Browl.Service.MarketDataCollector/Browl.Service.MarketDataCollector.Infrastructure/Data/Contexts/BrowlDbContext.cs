@@ -1,17 +1,16 @@
-﻿using Browl.Service.MarketDataCollector.Domain.Entities;
+﻿using System.Reflection;
+
+using Browl.Service.MarketDataCollector.Domain.Entities;
 using Browl.Service.MarketDataCollector.Domain.Interfaces.Services;
 using Browl.Service.MarketDataCollector.Infrastructure.Data.Configurations;
+
 using Microsoft.EntityFrameworkCore;
-using System.Reflection;
 
 namespace Browl.Service.MarketDataCollector.Infrastructure.Data.Contexts;
 public class BrowlDbContext : DbContext
 {
 	private readonly ITenantService _tenantService;
-	public BrowlDbContext(DbContextOptions options, ITenantService service) : base(options)
-	{
-		_tenantService = service;
-	}
+	public BrowlDbContext(DbContextOptions options, ITenantService service) : base(options) => _tenantService = service;
 
 	public string TenantName => _tenantService.GetTenant()?.TenantName ?? string.Empty;
 
@@ -29,7 +28,7 @@ public class BrowlDbContext : DbContext
 
 	protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 	{
-		string tenantConnectionString = _tenantService.GetConnectionString();
+		var tenantConnectionString = _tenantService.GetConnectionString();
 		if (!string.IsNullOrEmpty(tenantConnectionString))
 		{
 			_ = optionsBuilder.UseSqlServer(_tenantService.GetConnectionString());

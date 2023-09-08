@@ -1,9 +1,11 @@
 ﻿using Browl.Service.MarketDataCollector.API.Configurations;
 using Browl.Service.MarketDataCollector.API.Extensions;
+
 using Microsoft.AspNetCore.Mvc.Versioning;
+
 using Serilog;
 
-WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddApiVersioning(opt =>
 {
@@ -25,8 +27,8 @@ builder.Services.AddFluentValidationConfiguration();
 builder.Services.AddAutoMapperConfiguration();
 builder.Services.AddSwaggerConfiguration();
 builder.Services.AddMemoryCache();
-string? ambiente = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-IConfigurationRoot configuration = new ConfigurationBuilder()
+var ambiente = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+var configuration = new ConfigurationBuilder()
 						 .SetBasePath(Directory.GetCurrentDirectory())
 						 .AddJsonFile("appsettings.json")
 						 .AddJsonFile($"appsettings.{ambiente}.json", optional: true)
@@ -34,7 +36,7 @@ IConfigurationRoot configuration = new ConfigurationBuilder()
 Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(configuration).CreateLogger();
 builder.Host.UseSerilog((ctx, lc) => lc.WriteTo.Console());
 
-WebApplication app = builder.Build();
+var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
 	_ = app.UseDeveloperExceptionPage();

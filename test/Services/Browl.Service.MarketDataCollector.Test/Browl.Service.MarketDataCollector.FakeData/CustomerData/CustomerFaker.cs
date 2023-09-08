@@ -1,4 +1,5 @@
 ﻿using Bogus.Extensions.Brazil;
+
 using Browl.Service.MarketDataCollector.Domain.Entities;
 using Browl.Service.MarketDataCollector.FakeData.AddressData;
 using Browl.Service.MarketDataCollector.FakeData.TelephoneData;
@@ -9,7 +10,7 @@ public class CustomerFaker : Faker<Customer>
 {
 	public CustomerFaker()
 	{
-		int id = new Faker().Random.Number(1, 999999);
+		var id = new Faker().Random.Number(1, 999999);
 		_ = RuleFor(o => o.Id, _ => id);
 		_ = RuleFor(o => o.Nome, f => f.Person.FullName);
 		_ = RuleFor(o => o.Sexo, f => f.PickRandom<Gender>());

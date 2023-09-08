@@ -9,8 +9,5 @@ public class User
 	public string Password { get; set; }
 	public ICollection<Role> Roles { get; set; }
 
-	public User()
-	{
-		Roles = new HashSet<Role>();
-	}
+	public User() => Roles = new HashSet<Role>();
 }

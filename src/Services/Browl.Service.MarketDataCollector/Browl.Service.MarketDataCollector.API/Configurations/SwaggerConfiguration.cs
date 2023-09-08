@@ -1,5 +1,6 @@
-﻿using Microsoft.OpenApi.Models;
-using System.Reflection;
+﻿using System.Reflection;
+
+using Microsoft.OpenApi.Models;
 
 namespace Browl.Service.MarketDataCollector.API.Configurations;
 
@@ -28,8 +29,8 @@ public static class SwaggerConfiguration
 				TermsOfService = new Uri("https://www.mit.edu/~amini/LICENSE.md")
 			});
 
-			string xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-			string xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+			var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+			var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
 			configuration.IncludeXmlComments(xmlPath);
 
 			configuration.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme

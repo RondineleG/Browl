@@ -12,6 +12,24 @@ using System.Text;
 
 namespace Browl.Service.AuthSecurity.API.Controllers;
 
+/// <summary>
+/// AuthController handles authentication operations like user registration and login.
+/// </summary>
+/// <remarks>
+/// This API controller inherits from MainController to get common error handling methods.
+/// It depends on ASP.NET Core Identity for user management.
+/// 
+/// The main methods are:
+/// 
+/// - Register: Creates a new user account based on a User model.
+/// - Login: Authenticates a user based on a UserLogin model.
+/// - GenerateJWT: Generates a JWT token for an authenticated user.
+/// - GetClaimsUser: Gets identity claims for a user. 
+/// - EncodeToken: Encodes a JWT token from identity claims.
+///
+/// Both Register and Login return a custom API response via the CustomResponse method.
+/// The JWT token is added to the response on success.
+/// </remarks>
 [Route("api/identity/auth")]
 public class AuthController : MainController
 {
@@ -27,6 +45,12 @@ public class AuthController : MainController
         _userManager = userManager;
         _appSettings = appSettings.Value;
     }
+
+    /// <summary>
+    /// Registers a new user.
+    /// </summary>
+    /// <param name="user">The user object containing registration details.</param>
+    /// <returns>The result of the registration.</returns>
 
     [HttpPost("new-account")]
     public async Task<ActionResult> Register(User user)
@@ -58,6 +82,12 @@ public class AuthController : MainController
         return CustomResponse();
     }
 
+    /// <summary>
+    /// Authenticates a user.
+    /// </summary>
+    /// <param name="usuarioLogin">The user login object containing login details.</param>
+    /// <returns>The result of the authentication.</returns>
+
     [HttpPost("authenticate")]
     public async Task<ActionResult> Login(UserLogin usuarioLogin)
     {
@@ -83,6 +113,11 @@ public class AuthController : MainController
         AddErrorProcessing("Incorrect username or password");
         return CustomResponse();
     }
+    /// <summary>
+    /// Generates a JWT token for a user.
+    /// </summary>
+    /// <param name="email">The email of the user.</param>
+    /// <returns>The generated JWT token.</returns>
 
     private async Task<UserResponse> GenerateJWT(string email)
     {
@@ -95,6 +130,12 @@ public class AuthController : MainController
         return GetResponseToken(encodedToken, user, claims);
     }
 
+    /// <summary>
+    /// Retrieves claims for a user.
+    /// </summary>
+    /// <param name="claims">The existing claims for the user.</param>
+    /// <param name="user">The user object.</param>
+    /// <returns>The claims identity for the user.</returns>
     private async Task<ClaimsIdentity> GetClaimsUser(ICollection<Claim> claims, IdentityUser user)
     {
         IList<string> userRoles = await _userManager.GetRolesAsync(user);
@@ -115,6 +156,22 @@ public class AuthController : MainController
         return identityClaims;
     }
 
+    /// <summary>
+    /// Encodes a JWT token from a ClaimsIdentity object.
+    /// </summary>
+    /// <param name="identityClaims">The ClaimsIdentity containing the claims for the token.</param>
+    /// <returns>The encoded JWT token string.</returns>
+    /// <remarks>
+    /// This method:
+    /// - Creates a JwtSecurityTokenHandler instance 
+    /// - Gets the secret key from the app settings
+    /// - Creates a SecurityTokenDescriptor with:
+    ///   - Issuer, Audience, Subject, Expiration from app settings
+    ///   - SigningCredentials using HMAC SHA256 algorithm
+    /// - Writes the token using the token handler
+    /// - Returns the encoded token string
+    /// </remarks>
+
     private string EncodeToken(ClaimsIdentity identityClaims)
     {
         JwtSecurityTokenHandler tokenHandler = new();
@@ -131,6 +188,25 @@ public class AuthController : MainController
         return tokenHandler.WriteToken(token);
     }
 
+
+    /// <summary>
+    /// Returns a UserResponse object containing the encoded JWT token and user details.
+    /// </summary>
+    /// <param name="encodedToken">The encoded JWT token string.</param>
+    /// <param name="user">The IdentityUser object for the authenticated user.</param>
+    /// <param name="claims">The list of claims for the user.</param>
+    /// <returns>A UserResponse object containing the encoded token and user details.</returns>
+    /// <remarks>
+    /// This method creates and populates a UserResponse object with:
+    /// - The encoded JWT token string
+    /// - The token expiration time based on app settings
+    /// - A UserToken object containing:
+    ///   - The user ID
+    ///   - Email 
+    ///   - The user claims
+    ///   
+    /// The UserResponse is returned to the client with the authentication response.
+    /// </remarks>
     private UserResponse GetResponseToken(string encodedToken, IdentityUser user, IEnumerable<Claim> claims)
     {
         return new UserResponse
@@ -146,6 +222,24 @@ public class AuthController : MainController
         };
     }
 
+    /// <summary>
+    /// Converts a DateTime to a Unix epoch timestamp in seconds.
+    /// </summary>
+    /// <param name="date">The DateTime to convert.</param>
+    /// <returns>The Unix timestamp in seconds.</returns>
+    /// <remarks>
+    /// The Unix epoch (or Unix time or POSIX time or Unix timestamp) is the number of seconds that have elapsed since January 1, 1970. 
+    ///
+    /// This method converts the provided DateTime to a long representing seconds since the Unix epoch by:
+    ///
+    /// - Calling ToUniversalTime() to convert to UTC.
+    /// - Subtracting the Unix epoch DateTimeOffset (January 1, 1970).
+    /// - Calculating total seconds by calling TotalSeconds on the timespan.
+    /// - Casting the double to a long.
+    /// - Rounding the seconds value.
+    ///
+    /// The returned long can be used as a Unix timestamp.
+    /// </remarks>
     private static long ToUnixEpochDate(DateTime date)
     {
         return (long)Math.Round((date.ToUniversalTime() - new DateTimeOffset(1970, 1, 1, 0, 0, 0, TimeSpan.Zero)).TotalSeconds);

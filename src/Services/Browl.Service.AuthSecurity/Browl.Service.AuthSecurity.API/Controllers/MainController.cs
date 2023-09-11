@@ -10,28 +10,24 @@ public abstract class MainController : Controller
 
     protected ActionResult CustomResponse(object? result = null)
     {
-        return IsValid()
-            ? Ok(result)
-            : BadRequest(new ValidationProblemDetails(new Dictionary<string, string[]>
+        if (ModelState.IsValid && !Erros.Any())
         {
-            { "Messages", Erros.ToArray() }
-        }));
-    }
-
-    protected ActionResult CustomResponse(ModelStateDictionary modelState)
-    {
-        IEnumerable<ModelError> erros = modelState.Values.SelectMany(e => e.Errors);
-        foreach (ModelError? erro in erros)
-        {
-            AddErrorProcessing(erro.ErrorMessage);
+            return Ok(result);
         }
 
-        return CustomResponse();
-    }
+        var allErrors = new List<string>();
+        if (ModelState.ErrorCount > 0)
+        {
+            var modelErrors = ModelState.Values.SelectMany(v => v.Errors);
+            allErrors.AddRange(modelErrors.Select(e => e.ErrorMessage));
+        }
 
-    protected bool IsValid()
-    {
-        return !Erros.Any();
+        allErrors.AddRange(Erros);
+
+        return BadRequest(new ValidationProblemDetails(new Dictionary<string, string[]>
+        {
+            { "Messages", allErrors.ToArray() }
+        }));
     }
 
     protected void AddErrorProcessing(string erro)

@@ -7,8 +7,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Browl.Service.AuthSecurity.API.Controllers
 {
-    [Authorize(Roles = "SuperAdmin")]
-    [Route("api/identity/auth")]
+    //[Authorize(Roles = "SuperAdmin")]
+    [Route("api/identity/auth/")]
     public class UsersController : Controller
     {
         private readonly SignInManager<IdentityUser> _signInManager;

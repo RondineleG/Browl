@@ -1,4 +1,5 @@
 ﻿using Browl.Service.AuthSecurity.Domain.Constants;
+using Browl.Service.AuthSecurity.Domain.Enums;
 
 using Microsoft.AspNetCore.Identity;
 

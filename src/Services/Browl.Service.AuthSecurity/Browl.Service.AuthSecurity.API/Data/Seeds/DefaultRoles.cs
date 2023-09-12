@@ -1,4 +1,5 @@
 ﻿using Browl.Service.AuthSecurity.Domain.Constants;
+using Browl.Service.AuthSecurity.Domain.Enums;
 
 using Microsoft.AspNetCore.Identity;
 
@@ -10,6 +11,7 @@ public static class DefaultRoles
     {
         _ = await roleManager.CreateAsync(new IdentityRole(Roles.SuperAdmin.ToString()));
         _ = await roleManager.CreateAsync(new IdentityRole(Roles.Admin.ToString()));
+        _ = await roleManager.CreateAsync(new IdentityRole(Roles.Moderator.ToString()));
         _ = await roleManager.CreateAsync(new IdentityRole(Roles.Basic.ToString()));
     }
 }

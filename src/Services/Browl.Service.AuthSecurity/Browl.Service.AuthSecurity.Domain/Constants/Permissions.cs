@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Browl.Service.AuthSecurity.Domain.Constants
+﻿namespace Browl.Service.AuthSecurity.Domain.Constants
 {
     public static class Permissions
     {

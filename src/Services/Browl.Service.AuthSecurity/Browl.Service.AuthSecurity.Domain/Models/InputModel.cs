@@ -4,14 +4,10 @@ namespace Browl.Service.AuthSecurity.Domain.Models;
 
 public class InputModel
 {
-    [Required]
-    [Display(Name = "Email / Username")]
-    public string Email { get; set; }
-
-    [Required]
-    [DataType(DataType.Password)]
-    public string Password { get; set; }
-
-    [Display(Name = "Remember me?")]
-    public bool RememberMe { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string Username { get; set; }
+    [Phone]
+    public string PhoneNumber { get; set; }
+    public byte[] ProfilePicture { get; set; }
 }

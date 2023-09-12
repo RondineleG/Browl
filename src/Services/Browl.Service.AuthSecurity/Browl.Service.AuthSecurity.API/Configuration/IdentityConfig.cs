@@ -1,7 +1,5 @@
 ﻿using Browl.Service.AuthSecurity.API.Data;
 using Browl.Service.AuthSecurity.Domain.Extensions;
-using Browl.Service.AuthSecurity.Domain.Interfaces;
-using Browl.Service.AuthSecurity.Domain.Services;
 
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -78,8 +76,6 @@ public static class IdentityConfig
                 IssuerSigningKey = new SymmetricSecurityKey(Key)
             };
         });
-
-        services.AddSingleton<IUserManagerService, UserManagerService>();
 
         return services;
     }

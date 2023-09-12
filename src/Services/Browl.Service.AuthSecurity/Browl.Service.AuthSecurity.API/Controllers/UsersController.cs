@@ -1,8 +1,6 @@
-﻿using Browl.Service.AuthSecurity.Domain.Constants;
-using Browl.Service.AuthSecurity.Domain.Interfaces;
+﻿using Browl.Service.AuthSecurity.Domain.Entities;
 using Browl.Service.AuthSecurity.Domain.Models;
 
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,45 +14,13 @@ namespace Browl.Service.AuthSecurity.API.Controllers
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
-        private readonly IUserManagerService _userManagerService;
 
-        public UsersController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, RoleManager<IdentityRole> roleManager, IUserManagerService userManagerService)
+        public UsersController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
-            _userManagerService = userManagerService;
         }
-
-        [HttpGet]
-        public List<string> Get()
-        {
-            var users = new List<string>
-        {
-            "Satinder Singh",
-            "Amit Sarna",
-            "Davin Jon"
-        };
-
-            return users;
-        }
-
-
-        [AllowAnonymous]
-        [HttpPost]
-        [Route("authenticate")]
-        public IActionResult Authenticate(Users usersdata)
-        {
-            var token = _userManagerService.Authenticate(usersdata);
-
-            if (token == null)
-            {
-                return Unauthorized();
-            }
-
-            return Ok(token);
-        }
-
 
         [HttpGet("list-roles")]
         public async Task<IActionResult> GetRoles()

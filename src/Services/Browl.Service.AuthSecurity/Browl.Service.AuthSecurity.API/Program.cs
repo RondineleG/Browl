@@ -8,6 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddIdentityConfiguration(builder.Configuration);
+
+builder.Services.AddDatabaseConfiguration(builder.Configuration);
 builder.Services.AddApiConfiguration(builder.Environment);
 builder.Services.AddSwaggerConfiguration();
 

@@ -1,5 +1,7 @@
 ﻿using Browl.Service.AuthSecurity.API.Data;
 using Browl.Service.AuthSecurity.Domain.Extensions;
+using Browl.Service.AuthSecurity.Domain.Interfaces;
+using Browl.Service.AuthSecurity.Domain.Services;
 
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -49,6 +51,35 @@ public static class IdentityConfig
                 ValidIssuer = appSettings.Issuer
             };
         });
+
+        return services;
+    }
+
+
+
+    public static IServiceCollection AddJWConfiguration(this IServiceCollection services, IConfiguration configuration)
+    {
+        services.AddAuthentication(x =>
+        {
+            x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        }).AddJwtBearer(o =>
+        {
+            var Key = Encoding.UTF8.GetBytes(configuration["JWT:Key"]);
+            o.SaveToken = true;
+            o.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = false,
+                ValidateAudience = false,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                ValidIssuer = configuration["JWT:Issuer"],
+                ValidAudience = configuration["JWT:Audience"],
+                IssuerSigningKey = new SymmetricSecurityKey(Key)
+            };
+        });
+
+        services.AddSingleton<IUserManagerService, UserManagerService>();
 
         return services;
     }

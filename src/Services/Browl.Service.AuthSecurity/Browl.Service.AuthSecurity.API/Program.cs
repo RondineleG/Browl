@@ -3,15 +3,15 @@ using Browl.Service.AuthSecurity.API.Data.Seeds;
 
 using Microsoft.AspNetCore.Identity;
 
-WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
-WebApplication app = builder.Build();
+var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-//builder.Services.AddSwaggerGen();
 builder.Services.AddIdentityConfiguration(builder.Configuration);
 builder.Services.AddApiConfiguration(builder.Environment);
 builder.Services.AddSwaggerConfiguration();
+
+var app = builder.Build();
 
 IServiceProvider services = app.Services;
 ILoggerFactory loggerFactory = services.GetRequiredService<ILoggerFactory>();
@@ -32,15 +32,13 @@ try
 
     if (app.Environment.IsDevelopment())
     {
-        // app.UseSwagger();
-        //app.UseSwaggerUI();
 
-        IApplicationBuilder unused4 = app.UseSwaggerConfiguration();
+        var unused4 = app.UseSwaggerConfiguration();
 
-        IApplicationBuilder unused3 = app.UseApiConfiguration(app.Environment);
+        var unused3 = app.UseApiConfiguration(app.Environment);
     }
-    IApplicationBuilder unused2 = app.UseHttpsRedirection();
-    IApplicationBuilder unused1 = app.UseAuthorization();
+    var unused2 = app.UseHttpsRedirection();
+    var unused1 = app.UseAuthorization();
     ControllerActionEndpointConventionBuilder unused = app.MapControllers();
     app.Run();
 }

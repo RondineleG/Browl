@@ -17,12 +17,12 @@ public static class IdentityConfig
     public static IServiceCollection AddIdentityConfiguration(this IServiceCollection services,
         IConfiguration configuration)
     {
-        IServiceCollection unused3 = services.AddDbContext<ApplicationDbContext>(options =>
+        IServiceCollection unused3 = services.AddDbContext<BrowlAuthSecurityDbContext>(options =>
             options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
         IdentityBuilder unused2 = services.AddDefaultIdentity<IdentityUser>()
             .AddRoles<IdentityRole>()
-            .AddEntityFrameworkStores<ApplicationDbContext>()
+            .AddEntityFrameworkStores<BrowlAuthSecurityDbContext>()
             .AddDefaultTokenProviders();
 
         // JWT

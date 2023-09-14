@@ -1,4 +1,4 @@
-﻿namespace Browl.Service.AuthSecurity.Domain.Enums;
+﻿namespace Browl.Service.AuthSecurity.API.Enums;
 public enum Roles
 {
     SuperAdmin,

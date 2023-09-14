@@ -18,8 +18,4 @@
 		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.32.3" />
 	</ItemGroup>
 
-	<ItemGroup>
-		<ProjectReference Include="..\Browl.Service.AuthSecurity.Domain\Browl.Service.AuthSecurity.Domain.csproj" />
-	</ItemGroup>
-
 </Project>

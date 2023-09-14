@@ -1,5 +1,5 @@
 ﻿using Browl.Service.AuthSecurity.API.Data;
-using Browl.Service.AuthSecurity.Domain.Extensions;
+using Browl.Service.AuthSecurity.API.Entities;
 
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;

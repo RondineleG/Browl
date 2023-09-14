@@ -11,9 +11,17 @@ public static class DataBaseConfiguration
 		_ = services.AddDbContext<BrowlDbContext>(options => { _ = options.UseInMemoryDatabase(configuration.GetConnectionString("memory") ?? "data-in-memory"); });
 	}
 
+<<<<<<< HEAD
 	public static void UseDatabaseConfiguration(this IApplicationBuilder app)
 	{
 		using var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope();
 		using var context = serviceScope.ServiceProvider.GetService<BrowlDbContext>();
 	}
+=======
+    public static void UseDatabaseConfiguration(this IApplicationBuilder app)
+    {
+        using var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope();
+        using var context = serviceScope.ServiceProvider.GetService<BrowlDbContext>();
+    }
+>>>>>>> dev
 }

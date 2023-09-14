@@ -33,6 +33,7 @@ public class CategoriesController : MainController
 		return _mapper.Map<IEnumerable<CategoryResource>>(categories);
 	}
 
+<<<<<<< HEAD
 	/// <summary>
 	/// Saves a new category.
 	/// </summary>
@@ -45,6 +46,20 @@ public class CategoriesController : MainController
 	{
 		var category = _mapper.Map<Category>(resource);
 		var result = await _categoryService.SaveAsync(category);
+=======
+        /// <summary>
+        /// Saves a new category.
+        /// </summary>
+        /// <param name="resource">Category data.</param>
+        /// <returns>Response for the request.</returns>
+        [HttpPost]
+        [ProducesResponseType(typeof(CategoryResource), 201)]
+        [ProducesResponseType(typeof(ErrorResource), 400)]
+        public async Task<IActionResult> PostAsync([FromBody] CategorySaveResource resource)
+        {
+            var category = _mapper.Map<Category>(resource);
+            var result = await _categoryService.SaveAsync(category);
+>>>>>>> dev
 
 		if (!result.Success)
 		{
@@ -55,6 +70,7 @@ public class CategoriesController : MainController
 		return Ok(categoryResource);
 	}
 
+<<<<<<< HEAD
 	/// <summary>
 	/// Updates an existing category according to an identifier.
 	/// </summary>
@@ -68,6 +84,21 @@ public class CategoriesController : MainController
 	{
 		var category = _mapper.Map<Category>(resource);
 		var result = await _categoryService.UpdateAsync(id, category);
+=======
+        /// <summary>
+        /// Updates an existing category according to an identifier.
+        /// </summary>
+        /// <param name="id">Category identifier.</param>
+        /// <param name="resource">Updated category data.</param>
+        /// <returns>Response for the request.</returns>
+        [HttpPut("{id}")]
+        [ProducesResponseType(typeof(CategoryResource), 200)]
+        [ProducesResponseType(typeof(ErrorResource), 400)]
+        public async Task<IActionResult> PutAsync(int id, [FromBody] CategorySaveResource resource)
+        {
+            var category = _mapper.Map<Category>(resource);
+            var result = await _categoryService.UpdateAsync(id, category);
+>>>>>>> dev
 
 		if (!result.Success)
 		{

@@ -4,6 +4,7 @@ namespace Browl.Service.MarketDataCollector.Domain.Interfaces.Managers;
 
 public interface ICustomerManager
 {
+<<<<<<< HEAD
 	Task<CustomerResource> DeleteAsync(int id);
 
 	Task<CustomerViewResource> GetAsync(int id);
@@ -13,4 +14,15 @@ public interface ICustomerManager
 	Task<CustomerViewResource> PostAsync(CustomerResource cliente);
 
 	Task<CustomerViewResource> PutAsync(CustomerUpdateResource cliente);
+=======
+    Task<CustomerResource> DeleteAsync(int id);
+
+    Task<CustomerViewResource> GetAsync(int id);
+
+    Task<IEnumerable<CustomerViewResource>> GetAsync();
+
+    Task<CustomerViewResource> PostAsync(CustomerResource cliente);
+
+    Task<CustomerViewResource> PutAsync(CustomerUpdateResource cliente);
+>>>>>>> dev
 }

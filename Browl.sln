@@ -84,9 +84,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Browl.Service.MarketDataCol
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Browl.Client.Test", "test\Presentation\Browl.Client.Test\Browl.Client.Test.csproj", "{72694572-0D50-4A39-A657-73133F074AF7}"
 EndProject
+<<<<<<< HEAD
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Browl.Service.MarketDataCollector.FakeData", "test\Services\Browl.Service.MarketDataCollector.Test\Browl.Service.MarketDataCollector.FakeData\Browl.Service.MarketDataCollector.FakeData.csproj", "{7A01F807-7685-48FB-BAD0-9303E96A53B5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FakeData", "FakeData", "{361920A2-8B95-47B1-AA42-C9ADD6D28D23}"
+=======
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Browl.Service.MarketDataCollector.FakeData", "test\Services\Browl.Service.MarketDataCollector.Test\Browl.Service.MarketDataCollector.FakeData\Browl.Service.MarketDataCollector.FakeData.csproj", "{7A01F807-7685-48FB-BAD0-9303E96A53B5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FakeData", "FakeData", "{361920A2-8B95-47B1-AA42-C9ADD6D28D23}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Browl.Service.AuthSecurity", "Browl.Service.AuthSecurity", "{09EE67D6-ADE1-4A0A-8766-974D00A71209}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Browl.Service.AuthSecurity.API", "src\Services\Browl.Service.AuthSecurity\Browl.Service.AuthSecurity.API\Browl.Service.AuthSecurity.API.csproj", "{051A7F26-D824-420B-B642-741C6CD41F13}"
+>>>>>>> dev
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -138,6 +148,13 @@ Global
 		{7A01F807-7685-48FB-BAD0-9303E96A53B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A01F807-7685-48FB-BAD0-9303E96A53B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A01F807-7685-48FB-BAD0-9303E96A53B5}.Release|Any CPU.Build.0 = Release|Any CPU
+<<<<<<< HEAD
+=======
+		{051A7F26-D824-420B-B642-741C6CD41F13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{051A7F26-D824-420B-B642-741C6CD41F13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{051A7F26-D824-420B-B642-741C6CD41F13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{051A7F26-D824-420B-B642-741C6CD41F13}.Release|Any CPU.Build.0 = Release|Any CPU
+>>>>>>> dev
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -164,6 +181,11 @@ Global
 		{72694572-0D50-4A39-A657-73133F074AF7} = {1B3CDB1E-8F3E-4900-A61F-B13C974872FF}
 		{7A01F807-7685-48FB-BAD0-9303E96A53B5} = {361920A2-8B95-47B1-AA42-C9ADD6D28D23}
 		{361920A2-8B95-47B1-AA42-C9ADD6D28D23} = {DB8F8AA6-A0F4-487D-B807-787C5117DD35}
+<<<<<<< HEAD
+=======
+		{09EE67D6-ADE1-4A0A-8766-974D00A71209} = {758EAD6C-01B5-4816-97E5-CA0E5F217D34}
+		{051A7F26-D824-420B-B642-741C6CD41F13} = {09EE67D6-ADE1-4A0A-8766-974D00A71209}
+>>>>>>> dev
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {09C8AF50-40D4-48F2-A03D-9BC7AB6D3538}

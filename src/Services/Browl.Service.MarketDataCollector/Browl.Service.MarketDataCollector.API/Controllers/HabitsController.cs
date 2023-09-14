@@ -1,8 +1,13 @@
 ﻿using AutoMapper;
+<<<<<<< HEAD
 
 using Browl.Service.MarketDataCollector.Domain.Interfaces.Services;
 using Browl.Service.MarketDataCollector.Domain.Resources.Habit;
 
+=======
+using Browl.Service.MarketDataCollector.Domain.Interfaces.Services;
+using Browl.Service.MarketDataCollector.Domain.Resources.Habit;
+>>>>>>> dev
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.JsonPatch.Exceptions;
 using Microsoft.AspNetCore.Mvc;
@@ -31,6 +36,7 @@ public class HabitsController : ControllerBase
 	[HttpGet("version")]
 	public virtual IActionResult GetVersion() => Ok("Response from version 1.0");
 
+<<<<<<< HEAD
 	[HttpGet("{id}")]
 	public async Task<IActionResult> GetAsync(int id) => Ok(_mapper.Map<HabitResource>(await _habitService.GetById(id)));
 
@@ -53,6 +59,69 @@ public class HabitsController : ControllerBase
 		  habitDto.Id
 		}, habitDto);
 	}
+=======
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetAsync(int id)
+    {
+        return Ok(_mapper.Map<HabitResource>(await _habitService.GetById(id)));
+    }
+
+
+    /// <summary>
+    /// Lists all habits.
+    /// </summary>
+    /// <returns>List os habits.</returns>
+    [HttpGet]
+    public async Task<IActionResult> GetAsync()
+    {
+        return Ok(_mapper.Map<ICollection<HabitResource>>(await _habitService.GetAll()));
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> CreateAsync(CreateHabitResource request)
+    {
+        var habit = await _habitService.Create(request.Name, request.Description);
+        var habitDto = _mapper.Map<HabitResource>(habit);
+        return CreatedAtAction("Get", "Habits", new
+        {
+            id =
+          habitDto.Id
+        }, habitDto);
+    }
+
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> UpdateAsync(int id, UpdateHabitResource request)
+    {
+        var habit = await _habitService.UpdateById(id, request);
+        if (habit == null) return NotFound();
+        return Ok(habit);
+    }
+
+    [HttpPatch("{id}")]
+    public async Task<IActionResult> UpdateAsync(int id, [FromBody] JsonPatchDocument<UpdateHabitResource> patch)
+    {
+        var habit = await _habitService.GetById(id);
+        if (habit == null) return NotFound();
+        var updateHabitDto = new UpdateHabitResource
+        {
+            Name = habit.Name,
+            Description = habit.Description
+        };
+        try
+        {
+            patch.ApplyTo(updateHabitDto, ModelState);
+            if (!TryValidateModel(updateHabitDto)) return
+              ValidationProblem(ModelState);
+            await _habitService.UpdateById(id, updateHabitDto);
+            return NoContent();
+        }
+        catch (JsonPatchException ex)
+        {
+            return BadRequest(new { error = ex.Message });
+        }
+    }
+>>>>>>> dev
 
 
 	[HttpPut("{id}")]

@@ -11,6 +11,7 @@ namespace Browl.Service.MarketDataCollector.API.Configurations;
 
 public static class DependencyInjectionConfiguration
 {
+<<<<<<< HEAD
 	public static void AddDependencyInjectionConfiguration(this IServiceCollection services, IConfiguration configuration)
 	{
 		_ = services.AddScoped<ITenantService, TenantService>();
@@ -31,4 +32,26 @@ public static class DependencyInjectionConfiguration
 		_ = services.AddScoped<ICategoryService, CategoryService>();
 		_ = services.AddScoped<IProductService, ProductService>();
 	}
+=======
+    public static void AddDependencyInjectionConfiguration(this IServiceCollection services, IConfiguration configuration)
+    {
+        services.AddScoped<ITenantService, TenantService>();
+        services.AddScoped<IHabitService, HabitService>();
+        services.Configure<TenantSettings>(configuration.GetSection(nameof(TenantSettings)));
+        services.AddScoped<ICustomerRepository, CustomerRepository>();
+        services.AddScoped<ICustomerManager, CustomerManager>();
+        services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IUserManager, UserManager>();
+        services.Configure<RouteOptions>(options => options.LowercaseUrls = true);
+        services.AddControllers().ConfigureApiBehaviorOptions(options =>
+          {
+              options.InvalidModelStateResponseFactory = InvalidModelStateResponse.ProduceErrorResponse;
+          });
+        services.AddScoped<ICategoryRepository, CategoryRepository>();
+        services.AddScoped<IProductRepository, ProductRepository>();
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
+        services.AddScoped<ICategoryService, CategoryService>();
+        services.AddScoped<IProductService, ProductService>();
+    }
+>>>>>>> dev
 }

@@ -1,19 +1,23 @@
 using Browl.Service.AuthSecurity.API.Configuration;
-using Browl.Service.AuthSecurity.API.Data.Seeds;
 
 using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddDatabaseConfiguration(builder.Configuration);
+builder.Services.AddJWConfiguration(builder.Configuration);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddIdentityConfiguration(builder.Configuration);
-
-builder.Services.AddDatabaseConfiguration(builder.Configuration);
 builder.Services.AddApiConfiguration(builder.Environment);
 builder.Services.AddSwaggerConfiguration();
 
 var app = builder.Build();
+
+app.UseAuthentication();
+app.UseAuthorization();
+app.UseApiConfiguration(builder.Environment);
+app.UseIdentityConfiguration();
+app.UseSwaggerConfiguration();
 
 IServiceProvider services = app.Services;
 ILoggerFactory loggerFactory = services.GetRequiredService<ILoggerFactory>();
@@ -25,11 +29,8 @@ try
         IServiceProvider serviceProvider = scope.ServiceProvider;
         UserManager<IdentityUser> userManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
         RoleManager<IdentityRole> roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-        await DefaultRoles.SeedAsync(userManager, roleManager);
-        await DefaultUsers.SeedBasicUserAsync(userManager, roleManager);
-        await DefaultUsers.SeedSuperAdminAsync(userManager, roleManager);
-        logger.LogInformation("Finished Seeding Default Data");
-        logger.LogInformation("Application Starting");
+        logger.LogInformation("userManager", userManager);
+        logger.LogInformation("roleManager", roleManager);
     }
 
     if (app.Environment.IsDevelopment())

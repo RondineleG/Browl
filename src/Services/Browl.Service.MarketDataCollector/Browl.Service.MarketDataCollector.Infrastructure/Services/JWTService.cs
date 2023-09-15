@@ -16,7 +16,6 @@ public class JwtService : IJwtService
 
 	public JwtService(IConfiguration configuration) => _configuration = configuration;
 
-<<<<<<< HEAD
 	public string GenerateToken(User usuario)
 	{
 		JwtSecurityTokenHandler tokenHandler = new();
@@ -34,25 +33,6 @@ public class JwtService : IJwtService
 			Expires = DateTime.UtcNow.AddMinutes(Convert.ToInt32(_configuration.GetSection("JWT:ExpiraEmMinutos").Value)),
 			SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha512Signature)
 		};
-=======
-    public string GenerateToken(User usuario)
-    {
-        var tokenHandler = new JwtSecurityTokenHandler();
-        var key = Encoding.ASCII.GetBytes(_configuration.GetSection("JWT:Secret").Value);
-        var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.Name, usuario.Login)
-            };
-        claims.AddRange(usuario.Roles.Select(p => new Claim(ClaimTypes.Role, p.Descricao)));
-        var tokenDescriptor = new SecurityTokenDescriptor
-        {
-            Subject = new ClaimsIdentity(claims),
-            Audience = _configuration.GetSection("JWT:Audience").Value,
-            Issuer = _configuration.GetSection("JWT:Issuer").Value,
-            Expires = DateTime.UtcNow.AddMinutes(Convert.ToInt32(_configuration.GetSection("JWT:ExpiraEmMinutos").Value)),
-            SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha512Signature)
-        };
->>>>>>> dev
 
 		var token = tokenHandler.CreateToken(tokenDescriptor);
 		return tokenHandler.WriteToken(token);

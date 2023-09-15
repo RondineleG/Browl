@@ -1,6 +1,7 @@
 using AutoMapper;
 
 using Browl.Service.MarketDataCollector.API.Configurations.MainController;
+using Browl.Service.MarketDataCollector.Application.Resources;
 using Browl.Service.MarketDataCollector.Domain.Entities;
 using Browl.Service.MarketDataCollector.Domain.Interfaces.Services;
 using Browl.Service.MarketDataCollector.Domain.Queries;
@@ -29,7 +30,7 @@ public class ProductsController : MainController
 	/// <returns>List of products.</returns>
 	[HttpGet]
 	[ProducesResponseType(typeof(QueryResultResource<ProductResource>), 200)]
-	public async Task<QueryResultResource<ProductResource>> ListAsync([FromQuery] ProductsQueryResource query)
+	public async Task<QueryResultResource<ProductResource>> GetAsync([FromQuery] ProductsQueryResource query)
 	{
 		var productsQuery = _mapper.Map<ProductsQuery>(query);
 		var queryResult = await _productService.ListAsync(productsQuery);
@@ -37,7 +38,6 @@ public class ProductsController : MainController
 		return _mapper.Map<QueryResultResource<ProductResource>>(queryResult);
 	}
 
-<<<<<<< HEAD
 	/// <summary>
 	/// Saves a new product.
 	/// </summary>
@@ -50,20 +50,6 @@ public class ProductsController : MainController
 	{
 		var product = _mapper.Map<Product>(resource);
 		var result = await _productService.SaveAsync(product);
-=======
-        /// <summary>
-        /// Saves a new product.
-        /// </summary>
-        /// <param name="resource">Product data.</param>
-        /// <returns>Response for the request.</returns>
-        [HttpPost]
-        [ProducesResponseType(typeof(ProductResource), 201)]
-        [ProducesResponseType(typeof(ErrorResource), 400)]
-        public async Task<IActionResult> PostAsync([FromBody] ProductSaveResource resource)
-        {
-            var product = _mapper.Map<Product>(resource);
-            var result = await _productService.SaveAsync(product);
->>>>>>> dev
 
 		if (!result.Success)
 		{
@@ -74,7 +60,6 @@ public class ProductsController : MainController
 		return Ok(productResource);
 	}
 
-<<<<<<< HEAD
 	/// <summary>
 	/// Updates an existing product according to an identifier.
 	/// </summary>
@@ -88,21 +73,6 @@ public class ProductsController : MainController
 	{
 		var product = _mapper.Map<Product>(resource);
 		var result = await _productService.UpdateAsync(id, product);
-=======
-        /// <summary>
-        /// Updates an existing product according to an identifier.
-        /// </summary>
-        /// <param name="id">Product identifier.</param>
-        /// <param name="resource">Product data.</param>
-        /// <returns>Response for the request.</returns>
-        [HttpPut("{id}")]
-        [ProducesResponseType(typeof(ProductResource), 201)]
-        [ProducesResponseType(typeof(ErrorResource), 400)]
-        public async Task<IActionResult> PutAsync(int id, [FromBody] ProductSaveResource resource)
-        {
-            var product = _mapper.Map<Product>(resource);
-            var result = await _productService.UpdateAsync(id, product);
->>>>>>> dev
 
 		if (!result.Success)
 		{

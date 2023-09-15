@@ -14,11 +14,9 @@ namespace Browl.Service.MarketDataCollector.API.Configurations;
 
 public static class FluentValidationConfig
 {
-<<<<<<< HEAD
-	[Obsolete]
 	public static void AddFluentValidationConfiguration(this IServiceCollection services)
 	{
-		_ = services.AddControllers()
+		services.AddControllers()
 			.AddNewtonsoftJson(x =>
 			{
 				x.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
@@ -27,31 +25,12 @@ public static class FluentValidationConfig
 			.AddJsonOptions(p => p.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()))
 			.AddFluentValidation(p =>
 		   {
-			   _ = p.RegisterValidatorsFromAssemblyContaining<CustomerNewValidator>();
-			   _ = p.RegisterValidatorsFromAssemblyContaining<AddressNewValidator>();
-			   _ = p.RegisterValidatorsFromAssemblyContaining<CustomerUpdateValidator>();
-			   _ = p.RegisterValidatorsFromAssemblyContaining<TelephoneNewValidator>();
+			   p.RegisterValidatorsFromAssemblyContaining<CustomerNewValidator>();
+			   p.RegisterValidatorsFromAssemblyContaining<AddressNewValidator>();
+			   p.RegisterValidatorsFromAssemblyContaining<CustomerUpdateValidator>();
+			   p.RegisterValidatorsFromAssemblyContaining<TelephoneNewValidator>();
 			   p.ValidatorOptions.LanguageManager.Culture = new CultureInfo("pt-BR");
 		   });
-=======
-    public static void AddFluentValidationConfiguration(this IServiceCollection services)
-    {
-        services.AddControllers()
-            .AddNewtonsoftJson(x =>
-            {
-                x.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-                x.SerializerSettings.Converters.Add(new StringEnumConverter());
-            })
-            .AddJsonOptions(p => p.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()))
-            .AddFluentValidation(p =>
-           {
-               p.RegisterValidatorsFromAssemblyContaining<CustomerNewValidator>();
-               p.RegisterValidatorsFromAssemblyContaining<AddressNewValidator>();
-               p.RegisterValidatorsFromAssemblyContaining<CustomerUpdateValidator>();
-               p.RegisterValidatorsFromAssemblyContaining<TelephoneNewValidator>();
-               p.ValidatorOptions.LanguageManager.Culture = new CultureInfo("pt-BR");
-           });
->>>>>>> dev
 
 		_ = services.AddFluentValidationRulesToSwagger();
 	}

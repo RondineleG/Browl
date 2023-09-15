@@ -2,7 +2,6 @@
 
 public class ErrorResponseResource
 {
-<<<<<<< HEAD
 	public string Id { get; set; }
 	public DateTime Data { get; set; }
 	public string Mensagem { get; set; }
@@ -13,16 +12,4 @@ public class ErrorResponseResource
 		Data = DateTime.Now;
 		Mensagem = "Erro inesperado.";
 	}
-=======
-    public string Id { get; set; }
-    public DateTime Data { get; set; }
-    public string Mensagem { get; set; }
-
-    public ErrorResponseResource(string id)
-    {
-        Id = id;
-        Data = DateTime.Now;
-        Mensagem = "Erro inesperado.";
-    }
->>>>>>> dev
 }

@@ -12,40 +12,7 @@ public class BrowlDbContext : DbContext
 	private readonly ITenantService _tenantService;
 	public BrowlDbContext(DbContextOptions options, ITenantService service) : base(options) => _tenantService = service;
 
-<<<<<<< HEAD
 	public string TenantName => _tenantService.GetTenant()?.TenantName ?? string.Empty;
-=======
-    public DbSet<Category> Categories { get; set; }
-    public DbSet<Product> Products { get; set; }
-    public DbSet<Habit>? Habits { get; set; }
-    public DbSet<Progress>? Progress { get; set; }
-    public DbSet<Reminder>? Reminders { get; set; }
-    public DbSet<Goal>? Goals { get; set; }
-    public DbSet<Customer> Customers { get; set; }
-    public DbSet<Address> Addresses { get; set; }
-    public DbSet<Telephone> Telephones { get; set; }
-    public DbSet<User> Users { get; set; }
-    public DbSet<Role> Roles { get; set; }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        var tenantConnectionString = _tenantService.GetConnectionString();
-        if (!string.IsNullOrEmpty(tenantConnectionString))
-        {
-            optionsBuilder.UseSqlServer(_tenantService.GetConnectionString());
-        }
-    }
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        base.OnModelCreating(modelBuilder);
-        modelBuilder.Entity<Habit>().HasQueryFilter(a => a.TenantName == TenantName);
-        modelBuilder.ApplyConfiguration(new CustomerConfiguration());
-        modelBuilder.ApplyConfiguration(new AddressConfiguration());
-        modelBuilder.ApplyConfiguration(new TelephoneConfiguration());
-        modelBuilder.ApplyConfiguration(new UserConfiguration());
-        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-    }
->>>>>>> dev
 
 	public DbSet<Category> Categories { get; set; }
 	public DbSet<Product> Products { get; set; }

@@ -1,23 +1,15 @@
-<<<<<<< HEAD
-﻿using System.Diagnostics;
-
 using Browl.Service.MarketDataCollector.Domain.Resources.Erro;
 
 using Microsoft.AspNetCore.Mvc;
 
-=======
-﻿using Browl.Service.MarketDataCollector.Domain.Resources.Erro;
-using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
->>>>>>> dev
 namespace Browl.Service.MarketDataCollector.API.Controllers;
 
 [ApiExplorerSettings(IgnoreApi = true)]
 [ApiController]
 public class ErrorController : ControllerBase
 {
-<<<<<<< HEAD
 	[Route("error")]
 	public ErrorResponseResource Error()
 	{
@@ -25,13 +17,4 @@ public class ErrorController : ControllerBase
 		var id = Activity.Current?.Id ?? HttpContext?.TraceIdentifier;
 		return new ErrorResponseResource(id);
 	}
-=======
-    [Route("error")]
-    public ErrorResponseResource Error()
-    {
-        Response.StatusCode = 500;
-        var id = Activity.Current?.Id ?? HttpContext?.TraceIdentifier;
-        return new ErrorResponseResource(id);
-    }
->>>>>>> dev
 }

@@ -1,9 +1,12 @@
-﻿using Browl.Service.AuthSecurity.API.Entities;
+﻿using Browl.Service.AuthSecurity.API.Controllers.Base;
+using Browl.Service.AuthSecurity.API.Entities;
 using Browl.Service.AuthSecurity.Domain.Entities;
+
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -47,29 +50,35 @@ public class AuthController : MainController
     /// <summary>
     /// Registers a new user.
     /// </summary>
-    /// <param name="user">The user object containing registration details.</param>
+    /// <param name="userRegister">The user object containing registration details.</param>
     /// <returns>The result of the registration.</returns>
 
     [HttpPost("new-account")]
-    public async Task<ActionResult> Register(User user)
+    public async Task<ActionResult> Register(UserRegister userRegister)
     {
         if (!ModelState.IsValid)
         {
             return CustomResponse(ModelState);
         }
 
-        IdentityUser identityUser = new()
+       var  identityUser = new User()
         {
-            UserName = user.UserName,
-            Email = user.Email,
-            EmailConfirmed = true
+           UserName = userRegister.UserName,
+           FirstName = userRegister.FirstName,
+		   LastName = userRegister.LastName,
+		   UserNameChangeLimit = userRegister.UserNameChangeLimit,
+		   ProfilePicture = userRegister.ProfilePicture,
+		   Email = userRegister.Email,
+           EmailConfirmed = true,
+		   Password = userRegister.Password,
+		   PasswordConfirmation = userRegister.PasswordConfirmation
         };
 
-        IdentityResult result = await _userManager.CreateAsync(identityUser, user.Password);
+        IdentityResult result = await _userManager.CreateAsync(identityUser, userRegister.Password);
 
         if (result.Succeeded)
         {
-            return CustomResponse(await GenerateJWT(user.Email));
+            return CustomResponse(await GenerateJWT(userRegister.Email));
         }
 
         foreach (IdentityError error in result.Errors)

@@ -1,43 +1,56 @@
-﻿namespace Browl.Service.AuthSecurity.API.Configuration;
+﻿using Browl.Service.AuthSecurity.API.Data;
+using Browl.Service.AuthSecurity.Domain.Entities;
+
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+
+namespace Browl.Service.AuthSecurity.API.Configuration;
 
 public static class ApiConfig
 {
-    public static IServiceCollection AddApiConfiguration(this IServiceCollection services, IWebHostEnvironment hostEnvironment)
-    {
-        _ = services.AddControllers();
+	public static IServiceCollection AddApiConfiguration(this IServiceCollection services, IWebHostEnvironment hostEnvironment, IConfiguration configuration)
+	{
+		services.AddControllers();
+		services.AddEndpointsApiExplorer();
 
-        IConfigurationBuilder builder = new ConfigurationBuilder()
-                .SetBasePath(hostEnvironment.ContentRootPath)
-                .AddJsonFile("appsettings.json", true, true)
-                .AddJsonFile($"appsettings.{hostEnvironment.EnvironmentName}.json", true, true)
-            .AddEnvironmentVariables();
+		IConfigurationBuilder builder = new ConfigurationBuilder()
+				.SetBasePath(hostEnvironment.ContentRootPath)
+				.AddJsonFile("appsettings.json", true, true)
+				.AddJsonFile($"appsettings.{hostEnvironment.EnvironmentName}.json", true, true)
+			.AddEnvironmentVariables();
+				
+		if (hostEnvironment.IsDevelopment())
+		{
+			builder.AddUserSecrets<Program>();
+		}
 
-        if (hostEnvironment.IsDevelopment())
-        {
-            _ = builder.AddUserSecrets<Program>();
-        }
+		return services;
+	}
 
-        return services;
-    }
+	public static IApplicationBuilder UseApiConfiguration(this IApplicationBuilder app, IWebHostEnvironment env)
+	{
+		//if (env.IsDevelopment())
+		//{
+		//	app.UseDeveloperExceptionPage();
+		//	app.UseSwagger();
+		//	app.UseSwaggerUI(c =>
+		//   {
+		//	   c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+		//   });
+		//}
 
-    public static IApplicationBuilder UseApiConfiguration(this IApplicationBuilder app, IWebHostEnvironment env)
-    {
-        if (env.IsDevelopment())
-        {
-            IApplicationBuilder unused5 = app.UseDeveloperExceptionPage();
-        }
+		app.UseHttpsRedirection();
 
-        IApplicationBuilder unused4 = app.UseHttpsRedirection();
+		app.UseRouting();
 
-        IApplicationBuilder unused3 = app.UseRouting();
+		app.UseAuthentication();
+		app.UseAuthorization();
 
-        IApplicationBuilder unused2 = app.UseIdentityConfiguration();
+		app.UseEndpoints(endpoints =>
+		{
+			 endpoints.MapControllers();
+		});
 
-        IApplicationBuilder unused1 = app.UseEndpoints(endpoints =>
-        {
-            ControllerActionEndpointConventionBuilder unused = endpoints.MapControllers();
-        });
-
-        return app;
-    }
+		return app;
+	}
 }

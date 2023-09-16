@@ -21,14 +21,14 @@ public static class SwaggerConfig
         return services;
     }
 
-    public static IApplicationBuilder UseSwaggerConfiguration(this IApplicationBuilder app)
-    {
-        IApplicationBuilder unused1 = app.UseSwagger();
-        IApplicationBuilder unused = app.UseSwaggerUI(c =>
-        {
-            c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
-        });
+	public static IApplicationBuilder UseSwaggerConfiguration(this IApplicationBuilder app)
+	{
+		app.UseSwagger();
+		app.UseSwaggerUI(c =>
+		{
+			c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+		});
 
-        return app;
-    }
+		return app;
+	}
 }

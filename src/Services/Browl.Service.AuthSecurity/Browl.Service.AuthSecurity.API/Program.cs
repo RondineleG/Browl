@@ -1,21 +1,17 @@
 using Browl.Service.AuthSecurity.API.Configuration;
+using Browl.Service.AuthSecurity.API.Data;
+using Browl.Service.AuthSecurity.Domain.Entities;
 
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDatabaseConfiguration(builder.Configuration);
-builder.Services.AddJWConfiguration(builder.Configuration);
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddIdentityConfiguration(builder.Configuration);
-builder.Services.AddApiConfiguration(builder.Environment);
+builder.Services.AddApiConfiguration(builder.Environment, builder.Configuration);
 builder.Services.AddSwaggerConfiguration();
 
 var app = builder.Build();
 
-app.UseAuthentication();
-app.UseAuthorization();
-app.UseApiConfiguration(builder.Environment);
 app.UseIdentityConfiguration();
 app.UseSwaggerConfiguration();
 
@@ -24,25 +20,22 @@ ILoggerFactory loggerFactory = services.GetRequiredService<ILoggerFactory>();
 ILogger logger = loggerFactory.CreateLogger("app");
 try
 {
-    using (IServiceScope scope = services.CreateScope())
+	var ser = builder.Services;
+	   
+	using (var scope = services.CreateScope())
     {
-        IServiceProvider serviceProvider = scope.ServiceProvider;
-        UserManager<IdentityUser> userManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
-        RoleManager<IdentityRole> roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-        logger.LogInformation("userManager", userManager);
-        logger.LogInformation("roleManager", roleManager);
-    }
+		var context = services.GetRequiredService<BrowlAuthSecurityDbContext>();
+		var userManager = services.GetRequiredService<UserManager<User>>();
+		var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+		await ContextSeed.SeedRolesAsync(userManager, roleManager);
+		await ContextSeed.SeedSuperAdminAsync(userManager, roleManager);
+	}
 
-    if (app.Environment.IsDevelopment())
+	if (app.Environment.IsDevelopment())
     {
-
-        var unused4 = app.UseSwaggerConfiguration();
-
-        var unused3 = app.UseApiConfiguration(app.Environment);
-    }
-    var unused2 = app.UseHttpsRedirection();
-    var unused1 = app.UseAuthorization();
-    ControllerActionEndpointConventionBuilder unused = app.MapControllers();
+		logger.LogWarning(app.Environment.EnvironmentName, $"EnvironmentName {app.Environment.EnvironmentName}");
+		Console.WriteLine("Is dev");
+	}
     app.Run();
 }
 catch (Exception ex)

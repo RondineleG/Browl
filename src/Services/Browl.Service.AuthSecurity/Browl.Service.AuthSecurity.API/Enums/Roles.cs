@@ -1,8 +1,10 @@
-﻿namespace Browl.Service.AuthSecurity.API.Enums;
-public enum Roles
+﻿namespace Browl.Service.AuthSecurity.API.Enums
 {
-    SuperAdmin,
-    Admin,
-    Moderator,
-    Basic
+	public enum Roles
+	{
+		SuperAdmin,
+		Admin,
+		Moderator,
+		Basic
+	}
 }

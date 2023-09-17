@@ -501,6 +501,9 @@ video {
 .ml-2 {
   margin-left: 0.5rem;
 }
+.ml-auto {
+  margin-left: auto;
+}
 .mr-2 {
   margin-right: 0.5rem;
 }
@@ -509,6 +512,9 @@ video {
 }
 .flex {
   display: flex;
+}
+.justify-center {
+  justify-content: center;
 }
 .rounded-md {
   border-radius: 0.375rem;

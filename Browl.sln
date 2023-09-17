@@ -92,6 +92,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Browl.Service.AuthSecurity"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Browl.Service.AuthSecurity.API", "src\Services\Browl.Service.AuthSecurity\Browl.Service.AuthSecurity.API\Browl.Service.AuthSecurity.API.csproj", "{051A7F26-D824-420B-B642-741C6CD41F13}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Browl.Service.AuthSecurity.Test", "Browl.Service.AuthSecurity.Test", "{544648A6-FDBF-43E2-9C7B-93BA0300C4D4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Browl.Service.AuthSecurity.API.Test", "test\Services\Browl.Service.AuthSecurity.Test\Browl.Service.AuthSecurity.API.Test\Browl.Service.AuthSecurity.API.Test.csproj", "{728FCF2F-3429-4A46-A16F-396B3D67741A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{1E1868B1-34EC-4C95-9E41-4AFE56CCB434}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -146,6 +152,10 @@ Global
 		{051A7F26-D824-420B-B642-741C6CD41F13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{051A7F26-D824-420B-B642-741C6CD41F13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{051A7F26-D824-420B-B642-741C6CD41F13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{728FCF2F-3429-4A46-A16F-396B3D67741A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{728FCF2F-3429-4A46-A16F-396B3D67741A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{728FCF2F-3429-4A46-A16F-396B3D67741A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{728FCF2F-3429-4A46-A16F-396B3D67741A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -174,6 +184,8 @@ Global
 		{361920A2-8B95-47B1-AA42-C9ADD6D28D23} = {DB8F8AA6-A0F4-487D-B807-787C5117DD35}
 		{09EE67D6-ADE1-4A0A-8766-974D00A71209} = {758EAD6C-01B5-4816-97E5-CA0E5F217D34}
 		{051A7F26-D824-420B-B642-741C6CD41F13} = {09EE67D6-ADE1-4A0A-8766-974D00A71209}
+		{544648A6-FDBF-43E2-9C7B-93BA0300C4D4} = {9EFCDE84-8614-410C-A41E-F21DA32CEC23}
+		{728FCF2F-3429-4A46-A16F-396B3D67741A} = {544648A6-FDBF-43E2-9C7B-93BA0300C4D4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {09C8AF50-40D4-48F2-A03D-9BC7AB6D3538}

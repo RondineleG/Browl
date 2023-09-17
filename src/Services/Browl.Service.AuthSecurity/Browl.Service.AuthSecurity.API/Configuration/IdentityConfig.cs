@@ -1,12 +1,12 @@
-﻿using Browl.Service.AuthSecurity.API.Data;
+﻿using System.Text;
+
+using Browl.Service.AuthSecurity.API.Data;
 using Browl.Service.AuthSecurity.API.Entities;
 
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-
-using System.Text;
 
 namespace Browl.Service.AuthSecurity.API.Configuration;
 
@@ -15,23 +15,23 @@ public static class IdentityConfig
 	public static IServiceCollection AddIdentityConfiguration(this IServiceCollection services,
 		IConfiguration configuration)
 	{
-		services.AddDbContext<BrowlAuthSecurityDbContext>(options =>
+		var unused3 = services.AddDbContext<BrowlAuthSecurityDbContext>(options =>
 			options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
-   
-		     services.AddDefaultIdentity<IdentityUser>()
-			.AddRoles<IdentityRole>()
-			.AddEntityFrameworkStores<BrowlAuthSecurityDbContext>()
-			.AddDefaultTokenProviders();
+
+		var unused2 = services.AddDefaultIdentity<IdentityUser>()
+	   .AddRoles<IdentityRole>()
+	   .AddEntityFrameworkStores<BrowlAuthSecurityDbContext>()
+	   .AddDefaultTokenProviders();
 
 		// JWT
 
 		var appSettingsSection = configuration.GetSection("AppSettings");
-		services.Configure<AppSettings>(appSettingsSection);
+		var unused1 = services.Configure<AppSettings>(appSettingsSection);
 
 		var appSettings = appSettingsSection.Get<AppSettings>();
-		byte[] key = Encoding.ASCII.GetBytes(appSettings.Secret);
+		var key = Encoding.ASCII.GetBytes(appSettings.Secret);
 
-		Microsoft.AspNetCore.Authentication.AuthenticationBuilder unused = services.AddAuthentication(options =>
+		var unused = services.AddAuthentication(options =>
 		{
 			options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
 			options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -55,8 +55,8 @@ public static class IdentityConfig
 
 	public static IApplicationBuilder UseIdentityConfiguration(this IApplicationBuilder app)
 	{
-		app.UseAuthentication();
-		app.UseAuthorization();
+		_ = app.UseAuthentication();
+		_ = app.UseAuthorization();
 
 		return app;
 	}

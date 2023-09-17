@@ -1,9 +1,8 @@
 using Browl.Service.AuthSecurity.API.Configuration;
 using Browl.Service.AuthSecurity.API.Data;
-using Browl.Service.AuthSecurity.Domain.Entities;
+using Browl.Service.AuthSecurity.API.Entities;
 
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddIdentityConfiguration(builder.Configuration);
@@ -15,15 +14,15 @@ var app = builder.Build();
 app.UseIdentityConfiguration();
 app.UseSwaggerConfiguration();
 
-IServiceProvider services = app.Services;
-ILoggerFactory loggerFactory = services.GetRequiredService<ILoggerFactory>();
-ILogger logger = loggerFactory.CreateLogger("app");
+var services = app.Services;
+var loggerFactory = services.GetRequiredService<ILoggerFactory>();
+var logger = loggerFactory.CreateLogger("app");
 try
 {
 	var ser = builder.Services;
-	   
+
 	using (var scope = services.CreateScope())
-    {
+	{
 		var context = services.GetRequiredService<BrowlAuthSecurityDbContext>();
 		var userManager = services.GetRequiredService<UserManager<User>>();
 		var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
@@ -32,18 +31,18 @@ try
 	}
 
 	if (app.Environment.IsDevelopment())
-    {
+	{
 		logger.LogWarning(app.Environment.EnvironmentName, $"EnvironmentName {app.Environment.EnvironmentName}");
 		Console.WriteLine("Is dev");
 	}
-    app.Run();
+	app.Run();
 }
 catch (Exception ex)
 {
-    logger.LogWarning(ex, "An error occurred seeding the DB");
+	logger.LogWarning(ex, "An error occurred seeding the DB");
 }
 finally
 {
-    app.Run();
+	app.Run();
 }
 

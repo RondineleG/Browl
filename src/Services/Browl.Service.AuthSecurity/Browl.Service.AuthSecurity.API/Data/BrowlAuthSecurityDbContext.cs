@@ -1,4 +1,4 @@
-﻿using Browl.Service.AuthSecurity.Domain.Entities;
+﻿using Browl.Service.AuthSecurity.API.Entities;
 
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -15,40 +15,40 @@ public class BrowlAuthSecurityDbContext : IdentityDbContext<User>
 	protected override void OnModelCreating(ModelBuilder builder)
 	{
 		base.OnModelCreating(builder);
-		builder.HasDefaultSchema("Identity");
-		builder.Entity<User>(entity =>
+		var unused14 = builder.HasDefaultSchema("Identity");
+		var unused13 = builder.Entity<User>(entity =>
 		{
-			entity.ToTable(name: "User");
+			var unused12 = entity.ToTable(name: "User");
 		});
 
-		builder.Entity<IdentityRole>(entity =>
+		var unused11 = builder.Entity<IdentityRole>(entity =>
 		{
-			entity.ToTable(name: "Role");
+			var unused10 = entity.ToTable(name: "Role");
 		});
-		builder.Entity<IdentityUserRole<string>>(entity =>
+		var unused9 = builder.Entity<IdentityUserRole<string>>(entity =>
 		{
-			entity.ToTable("UserRoles");
-		});
-
-		builder.Entity<IdentityUserClaim<string>>(entity =>
-		{
-			entity.ToTable("UserClaims");
+			var unused8 = entity.ToTable("UserRoles");
 		});
 
-		builder.Entity<IdentityUserLogin<string>>(entity =>
+		var unused7 = builder.Entity<IdentityUserClaim<string>>(entity =>
 		{
-			entity.ToTable("UserLogins");
+			var unused6 = entity.ToTable("UserClaims");
 		});
 
-		builder.Entity<IdentityRoleClaim<string>>(entity =>
+		var unused5 = builder.Entity<IdentityUserLogin<string>>(entity =>
 		{
-			entity.ToTable("RoleClaims");
+			var unused4 = entity.ToTable("UserLogins");
+		});
+
+		var unused3 = builder.Entity<IdentityRoleClaim<string>>(entity =>
+		{
+			var unused2 = entity.ToTable("RoleClaims");
 
 		});
 
-		builder.Entity<IdentityUserToken<string>>(entity =>
+		var unused1 = builder.Entity<IdentityUserToken<string>>(entity =>
 		{
-			entity.ToTable("UserTokens");
+			var unused = entity.ToTable("UserTokens");
 		});
 	}
 }

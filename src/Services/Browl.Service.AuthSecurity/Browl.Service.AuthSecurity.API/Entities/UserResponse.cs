@@ -1,7 +1,7 @@
-﻿namespace Browl.Service.AuthSecurity.Domain.Entities;
+﻿namespace Browl.Service.AuthSecurity.API.Entities;
 public class UserResponse
 {
-	public string AccessToken { get; set; }
+	public required string AccessToken { get; set; }
 	public double ExpiresIn { get; set; }
-	public UserToken UserToken { get; set; }
+	public required UserToken UserToken { get; set; }
 }

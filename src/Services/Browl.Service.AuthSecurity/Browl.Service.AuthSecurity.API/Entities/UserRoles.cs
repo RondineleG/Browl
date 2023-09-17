@@ -1,19 +1,11 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿namespace Browl.Service.AuthSecurity.API.Entities;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Browl.Service.AuthSecurity.API.Entities
+public class UserRoles
 {
-	public class UserRoles
-	{
-		public string UserId { get; set; }
-		public string FirstName { get; set; }
-		public string LastName { get; set; }
-		public string UserName { get; set; }
-		public string Email { get; set; }
-		public IEnumerable<string> Roles { get; set; }
-	}
+	public required string UserId { get; set; }
+	public required string FirstName { get; set; }
+	public required string LastName { get; set; }
+	public required string UserName { get; set; }
+	public required string Email { get; set; }
+	public required IEnumerable<string> Roles { get; set; }
 }

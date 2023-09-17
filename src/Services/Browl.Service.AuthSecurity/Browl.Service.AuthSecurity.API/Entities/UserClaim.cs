@@ -1,7 +1,7 @@
-﻿namespace Browl.Service.AuthSecurity.Domain.Entities;
+﻿namespace Browl.Service.AuthSecurity.API.Entities;
 
 public class UserClaim
 {
-	public string Value { get; set; }
-	public string Type { get; set; }
+	public required string Value { get; set; }
+	public required string Type { get; set; }
 }

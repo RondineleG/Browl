@@ -1,27 +1,21 @@
-﻿using Browl.Service.AuthSecurity.API.Data;
-using Browl.Service.AuthSecurity.Domain.Entities;
-
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-
-namespace Browl.Service.AuthSecurity.API.Configuration;
+﻿namespace Browl.Service.AuthSecurity.API.Configuration;
 
 public static class ApiConfig
 {
 	public static IServiceCollection AddApiConfiguration(this IServiceCollection services, IWebHostEnvironment hostEnvironment, IConfiguration configuration)
 	{
-		services.AddControllers();
-		services.AddEndpointsApiExplorer();
+		_ = services.AddControllers();
+		_ = services.AddEndpointsApiExplorer();
 
-		IConfigurationBuilder builder = new ConfigurationBuilder()
+		var builder = new ConfigurationBuilder()
 				.SetBasePath(hostEnvironment.ContentRootPath)
 				.AddJsonFile("appsettings.json", true, true)
 				.AddJsonFile($"appsettings.{hostEnvironment.EnvironmentName}.json", true, true)
 			.AddEnvironmentVariables();
-				
+
 		if (hostEnvironment.IsDevelopment())
 		{
-			builder.AddUserSecrets<Program>();
+			_ = builder.AddUserSecrets<Program>();
 		}
 
 		return services;
@@ -39,16 +33,16 @@ public static class ApiConfig
 		//   });
 		//}
 
-		app.UseHttpsRedirection();
+		var unused5 = app.UseHttpsRedirection();
 
-		app.UseRouting();
+		var unused4 = app.UseRouting();
 
-		app.UseAuthentication();
-		app.UseAuthorization();
+		var unused3 = app.UseAuthentication();
+		var unused2 = app.UseAuthorization();
 
-		app.UseEndpoints(endpoints =>
+		var unused1 = app.UseEndpoints(endpoints =>
 		{
-			 endpoints.MapControllers();
+			var unused = endpoints.MapControllers();
 		});
 
 		return app;

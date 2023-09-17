@@ -4,7 +4,7 @@ using Browl.Service.AuthSecurity.API.Entities;
 
 using Microsoft.AspNetCore.Identity;
 
-namespace Browl.Service.AuthSecurity.API.Service;
+namespace Browl.Service.AuthSecurity.API.Services.Interfaces;
 
 public interface IAuthenticateService
 {

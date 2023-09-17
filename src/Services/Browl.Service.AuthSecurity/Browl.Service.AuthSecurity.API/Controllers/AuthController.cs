@@ -4,7 +4,7 @@ using System.Text;
 
 using Browl.Service.AuthSecurity.API.Controllers.Base;
 using Browl.Service.AuthSecurity.API.Entities;
-using Browl.Service.AuthSecurity.API.Service;
+using Browl.Service.AuthSecurity.API.Services.Interfaces;
 
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;

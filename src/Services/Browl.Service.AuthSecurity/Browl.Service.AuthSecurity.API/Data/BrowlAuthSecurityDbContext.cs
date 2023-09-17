@@ -8,6 +8,9 @@ namespace Browl.Service.AuthSecurity.API.Data;
 
 public class BrowlAuthSecurityDbContext : IdentityDbContext<User>
 {
+
+	public DbSet<User> User { get; set; }
+
 	public BrowlAuthSecurityDbContext(DbContextOptions<BrowlAuthSecurityDbContext> options)
 		: base(options)
 	{

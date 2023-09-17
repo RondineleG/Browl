@@ -3,12 +3,13 @@ using System.Security.Claims;
 using System.Text;
 
 using Browl.Service.AuthSecurity.API.Entities;
+using Browl.Service.AuthSecurity.API.Services.Interfaces;
 
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Browl.Service.AuthSecurity.API.Service;
+namespace Browl.Service.AuthSecurity.API.Services;
 
 public class AuthenticateService : IAuthenticateService
 {

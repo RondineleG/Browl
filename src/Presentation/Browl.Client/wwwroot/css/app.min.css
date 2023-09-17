@@ -485,6 +485,9 @@ video {
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
 }
+.collapse {
+  visibility: collapse;
+}
 .m-10 {
   margin: 2.5rem;
 }
@@ -492,12 +495,14 @@ video {
   margin-left: auto;
   margin-right: auto;
 }
-.my-16 {
-  margin-top: 4rem;
-  margin-bottom: 4rem;
-}
 .mb-8 {
   margin-bottom: 2rem;
+}
+.ml-2 {
+  margin-left: 0.5rem;
+}
+.mr-2 {
+  margin-right: 0.5rem;
 }
 .mt-8 {
   margin-top: 2rem;
@@ -519,6 +524,10 @@ video {
 .p-4 {
   padding: 1rem;
 }
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -527,8 +536,8 @@ video {
   padding-top: 3rem;
   padding-bottom: 3rem;
 }
-.pt-16 {
-  padding-top: 4rem;
+.ps-3 {
+  padding-inline-start: 0.75rem;
 }
 .text-white {
   --tw-text-opacity: 1;

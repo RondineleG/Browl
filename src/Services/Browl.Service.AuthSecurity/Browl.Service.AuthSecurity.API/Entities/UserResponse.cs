@@ -5,3 +5,4 @@ public class UserResponse
 	public double ExpiresIn { get; set; }
 	public required UserToken UserToken { get; set; }
 }
+

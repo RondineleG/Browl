@@ -25,7 +25,8 @@ public static class ContextSeed
 			LastName = "Guimaraes",
 			UserNameChangeLimit = 10,
 			EmailConfirmed = true,
-			PhoneNumberConfirmed = true
+			PhoneNumberConfirmed = true,
+
 		};
 		if (userManager.Users.All(u => u.Id != defaultUser.Id))
 		{

@@ -1,4 +1,6 @@
-﻿namespace Browl.Service.AuthSecurity.API.Configuration;
+﻿using Browl.Service.AuthSecurity.API.Service;
+
+namespace Browl.Service.AuthSecurity.API.Configuration;
 
 public static class ApiConfig
 {
@@ -6,6 +8,8 @@ public static class ApiConfig
 	{
 		_ = services.AddControllers();
 		_ = services.AddEndpointsApiExplorer();
+
+		services.AddScoped<IAuthenticateService, AuthenticateService>();
 
 		var builder = new ConfigurationBuilder()
 				.SetBasePath(hostEnvironment.ContentRootPath)

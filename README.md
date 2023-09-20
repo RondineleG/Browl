@@ -23,11 +23,3 @@ This project aims to build a bot for cryptocurrency derivatives markets, as a re
 - **Book**: [Building Modern SaaS](https://www.oreilly.com/library/view/building-modern-saas/9781804610879/)
 
 - **Videos in Portuguese**: [YouTube Playlist](https://www.youtube.com/playlist?list=PLbq2QKd5ieAt0H551D_0E4bGIYRxbq5HL)
-
-
-- **Tutorial**: [Building RESTful APIs with ASP.NET Core](https://www.freecodecamp.org/news/an-awesome-guide-on-how-to-build-restful-apis-with-asp-net-core-87b818123e28)
-
-- **Book**: [Building Modern SaaS](https://www.oreilly.com/library/view/building-modern-saas/9781804610879/)
-
-- **Videos in Portuguese**: [YouTube Playlist](https://www.youtube.com/playlist?list=PLbq2QKd5ieAt0H551D_0E4bGIYRxbq5HL)
-

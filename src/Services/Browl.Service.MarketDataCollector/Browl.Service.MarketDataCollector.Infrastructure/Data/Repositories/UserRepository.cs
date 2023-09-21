@@ -7,7 +7,7 @@ namespace Browl.Service.MarketDataCollector.Infrastructure.Data.Repositories;
 
 public class UserRepository : BaseRepository, IUserRepository
 {
-	public UserRepository(BrowlDbContext bowlDbContext) : base(bowlDbContext)
+	public UserRepository(BrowlServiceMarketDataCollectorDbContext bowlDbContext) : base(bowlDbContext)
 	{
 	}
 

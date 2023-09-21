@@ -10,7 +10,7 @@ namespace Browl.Service.MarketDataCollector.Infrastructure.Data.Repositories;
 
 public class ProductRepository : BaseRepository, IProductRepository
 {
-	public ProductRepository(BrowlDbContext context) : base(context) { }
+	public ProductRepository(BrowlServiceMarketDataCollectorDbContext context) : base(context) { }
 
 	public async Task<QueryResult<Product>> ListAsync(ProductsQuery query)
 	{

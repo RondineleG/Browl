@@ -9,14 +9,14 @@ public static class ServiceCollectionExtensions
 	{
 		var options = services.GetOptions<TenantSettings>(nameof(TenantSettings));
 		var defaultConnectionString = options.DefaultConnectionString;
-		_ = services.AddDbContext<BrowlDbContext>(m => m.UseSqlServer(e => e.MigrationsAssembly(typeof(BrowlDbContext).Assembly.FullName)));
+		_ = services.AddDbContext<BrowlServiceMarketDataCollectorDbContext>(m => m.UseSqlServer(e => e.MigrationsAssembly(typeof(BrowlServiceMarketDataCollectorDbContext).Assembly.FullName)));
 		var tenants = options.Tenants;
 		foreach (var tenant in tenants)
 		{
 			var connectionString = string.IsNullOrEmpty(tenant.ConnectionString) ? defaultConnectionString : tenant.ConnectionString;
 			using var scope = services
 			  .BuildServiceProvider().CreateScope();
-			var dbContext = scope.ServiceProvider.GetRequiredService<BrowlDbContext>();
+			var dbContext = scope.ServiceProvider.GetRequiredService<BrowlServiceMarketDataCollectorDbContext>();
 			dbContext.Database.SetConnectionString(connectionString);
 			if (dbContext.Database.GetMigrations().Count() > 0)
 			{

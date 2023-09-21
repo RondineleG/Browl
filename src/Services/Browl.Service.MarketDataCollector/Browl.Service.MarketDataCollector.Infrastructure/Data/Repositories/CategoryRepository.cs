@@ -8,7 +8,7 @@ namespace Browl.Service.MarketDataCollector.Infrastructure.Data.Repositories;
 
 public class CategoryRepository : BaseRepository, ICategoryRepository
 {
-	public CategoryRepository(BrowlDbContext context) : base(context) { }
+	public CategoryRepository(BrowlServiceMarketDataCollectorDbContext context) : base(context) { }
 
 	public async Task<IEnumerable<Category>> ListAsync() => await _browlDbContext.Categories.AsNoTracking().ToListAsync();
 

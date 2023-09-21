@@ -5,8 +5,8 @@ namespace Browl.Service.MarketDataCollector.Infrastructure.Data.Repositories;
 
 public class UnitOfWork : IUnitOfWork
 {
-	private readonly BrowlDbContext _context;
+	private readonly BrowlServiceMarketDataCollectorDbContext _context;
 
-	public UnitOfWork(BrowlDbContext context) => _context = context;
+	public UnitOfWork(BrowlServiceMarketDataCollectorDbContext context) => _context = context;
 	public async Task CompleteAsync() => _ = await _context.SaveChangesAsync();
 }

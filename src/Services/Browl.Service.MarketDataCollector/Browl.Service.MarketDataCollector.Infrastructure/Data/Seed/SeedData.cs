@@ -6,7 +6,7 @@ namespace Browl.Service.MarketDataCollector.Infrastructure.Data.Seed;
 
 public static class SeedData
 {
-	public static async Task Seed(BrowlDbContext context)
+	public static async Task Seed(BrowlServiceMarketDataCollectorDbContext context)
 	{
 		List<Product> products = new()
 		{

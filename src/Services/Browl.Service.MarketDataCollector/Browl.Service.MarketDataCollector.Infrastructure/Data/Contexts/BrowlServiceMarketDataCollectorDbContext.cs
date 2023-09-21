@@ -7,10 +7,10 @@ using Browl.Service.MarketDataCollector.Infrastructure.Data.Configurations;
 using Microsoft.EntityFrameworkCore;
 
 namespace Browl.Service.MarketDataCollector.Infrastructure.Data.Contexts;
-public class BrowlDbContext : DbContext
+public class BrowlServiceMarketDataCollectorDbContext : DbContext
 {
 	private readonly ITenantService _tenantService;
-	public BrowlDbContext(DbContextOptions options, ITenantService service) : base(options) => _tenantService = service;
+	public BrowlServiceMarketDataCollectorDbContext(DbContextOptions options, ITenantService service) : base(options) => _tenantService = service;
 
 	public string TenantName => _tenantService.GetTenant()?.TenantName ?? string.Empty;
 

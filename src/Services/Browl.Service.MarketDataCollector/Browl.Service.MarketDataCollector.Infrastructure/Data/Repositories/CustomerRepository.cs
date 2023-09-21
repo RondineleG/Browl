@@ -7,9 +7,9 @@ namespace Browl.Service.MarketDataCollector.Infrastructure.Data.Repositories;
 
 public class CustomerRepository : BaseRepository, ICustomerRepository
 {
-	private new readonly BrowlDbContext _browlDbContext;
+	private new readonly BrowlServiceMarketDataCollectorDbContext _browlDbContext;
 
-	public CustomerRepository(BrowlDbContext context) : base(context) { }
+	public CustomerRepository(BrowlServiceMarketDataCollectorDbContext context) : base(context) { }
 
 	public async Task<IEnumerable<Customer>> GetAsync() => await _browlDbContext.Customers
 			.Include(p => p.Endereco)

@@ -9,8 +9,8 @@ namespace Browl.Service.MarketDataCollector.Application.Services;
 
 public class HabitService : IHabitService
 {
-	private readonly BrowlDbContext _dbContext;
-	public HabitService(BrowlDbContext dbContext) => _dbContext = dbContext;
+	private readonly BrowlServiceMarketDataCollectorDbContext _dbContext;
+	public HabitService(BrowlServiceMarketDataCollectorDbContext dbContext) => _dbContext = dbContext;
 
 	public async Task<Habit> Create(string name, string description)
 	{

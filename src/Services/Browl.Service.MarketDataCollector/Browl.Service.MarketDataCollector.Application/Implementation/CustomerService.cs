@@ -9,13 +9,13 @@ using Microsoft.Extensions.Logging;
 
 namespace Browl.Service.MarketDataCollector.Application.Implementation;
 
-public class CustomerManager : ICustomerManager
+public class CustomerService : ICustomerManager
 {
 	private readonly ICustomerRepository _customerRepository;
 	private readonly IMapper _mapper;
-	private readonly ILogger<CustomerManager> _logger;
+	private readonly ILogger<CustomerService> _logger;
 
-	public CustomerManager(ICustomerRepository customerRepository, IMapper mapper, ILogger<CustomerManager> logger)
+	public CustomerService(ICustomerRepository customerRepository, IMapper mapper, ILogger<CustomerService> logger)
 	{
 		_customerRepository = customerRepository;
 		_mapper = mapper;

@@ -20,7 +20,7 @@ namespace Browl.Service.MarketDataCollector.Application.Test.Manager;
 public class CustomerManagerTest
 {
 	private readonly ICustomerRepository repository;
-	private readonly ILogger<CustomerManager> logger;
+	private readonly ILogger<CustomerService> logger;
 	private readonly IMapper mapper;
 	private readonly ICustomerManager manager;
 	private readonly Customer Customer;
@@ -33,9 +33,9 @@ public class CustomerManagerTest
 	public CustomerManagerTest()
 	{
 		repository = Substitute.For<ICustomerRepository>();
-		logger = Substitute.For<ILogger<CustomerManager>>();
+		logger = Substitute.For<ILogger<CustomerService>>();
 		mapper = new MapperConfiguration(p => p.AddProfile<CustomerNewProfile>()).CreateMapper();
-		manager = new CustomerManager(repository, mapper, logger);
+		manager = new CustomerService(repository, mapper, logger);
 		CustomerFaker = new CustomerFaker();
 		NovoCustomerFaker = new CustomerNewFaker();
 		AlteraCustomerFaker = new CustomerUpdateFaker();

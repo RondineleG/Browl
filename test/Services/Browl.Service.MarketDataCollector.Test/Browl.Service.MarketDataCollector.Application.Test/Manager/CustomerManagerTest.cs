@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 
-using Browl.Service.MarketDataCollector.Application.Implementation;
 using Browl.Service.MarketDataCollector.Application.Mappings;
+using Browl.Service.MarketDataCollector.Application.Services;
 using Browl.Service.MarketDataCollector.Domain.Entities;
 using Browl.Service.MarketDataCollector.Domain.Interfaces.Managers;
 using Browl.Service.MarketDataCollector.Domain.Interfaces.Repositories;

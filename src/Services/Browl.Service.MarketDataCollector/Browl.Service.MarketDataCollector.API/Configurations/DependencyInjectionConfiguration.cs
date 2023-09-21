@@ -1,5 +1,4 @@
 ﻿using Browl.Service.MarketDataCollector.API.Configurations.MainController;
-using Browl.Service.MarketDataCollector.Application.Implementation;
 using Browl.Service.MarketDataCollector.Application.Services;
 using Browl.Service.MarketDataCollector.Domain.Entities;
 using Browl.Service.MarketDataCollector.Domain.Interfaces.Managers;

@@ -7,7 +7,7 @@ using Browl.Service.MarketDataCollector.Domain.Resources.Customer;
 
 using Microsoft.Extensions.Logging;
 
-namespace Browl.Service.MarketDataCollector.Application.Implementation;
+namespace Browl.Service.MarketDataCollector.Application.Services;
 
 public class CustomerService : ICustomerManager
 {
@@ -50,7 +50,7 @@ public class CustomerService : ICustomerManager
 
 	public async Task<CustomerViewResource> PutAsync(CustomerUpdateResource alteraCliente)
 	{
-		var cliente = _mapper.Map<Domain.Entities.Customer>(alteraCliente);
+		var cliente = _mapper.Map<Customer>(alteraCliente);
 		cliente = await _customerRepository.PutAsync(cliente);
 		return _mapper.Map<CustomerViewResource>(cliente);
 	}

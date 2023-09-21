@@ -8,14 +8,14 @@ using Browl.Service.MarketDataCollector.Domain.Resources.User;
 
 using Microsoft.AspNetCore.Identity;
 
-namespace Browl.Service.MarketDataCollector.Application.Implementation;
+namespace Browl.Service.MarketDataCollector.Application.Services;
 
-public class UserManager : IUserManager
+public class UserService : IUserManager
 {
 	private readonly IUserRepository _userRepository;
 	private readonly IMapper _mapper;
 	private readonly IJwtService _jwtService;
-	public UserManager(IUserRepository repository, IMapper mapper, IJwtService jwtService)
+	public UserService(IUserRepository repository, IMapper mapper, IJwtService jwtService)
 	{
 		_userRepository = repository;
 		_mapper = mapper;
@@ -73,13 +73,13 @@ public class UserManager : IUserManager
 		var status = passwordHasher.VerifyHashedPassword(usuario, hash, usuario.Password);
 		switch (status)
 		{
-			case Microsoft.AspNetCore.Identity.PasswordVerificationResult.Failed:
+			case PasswordVerificationResult.Failed:
 				return false;
 
-			case Microsoft.AspNetCore.Identity.PasswordVerificationResult.Success:
+			case PasswordVerificationResult.Success:
 				return true;
 
-			case Microsoft.AspNetCore.Identity.PasswordVerificationResult.SuccessRehashNeeded:
+			case PasswordVerificationResult.SuccessRehashNeeded:
 				await UpdateMedicoAsync(usuario);
 				return true;
 

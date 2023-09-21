@@ -1,8 +1,8 @@
 ﻿using Browl.Service.MarketDataCollector.Domain.Resources.Customer;
 
-namespace Browl.Service.MarketDataCollector.Domain.Interfaces.Managers;
+namespace Browl.Service.MarketDataCollector.Domain.Interfaces.Services;
 
-public interface ICustomerManager
+public interface ICustomerService
 {
 	Task<CustomerResource> DeleteAsync(int id);
 

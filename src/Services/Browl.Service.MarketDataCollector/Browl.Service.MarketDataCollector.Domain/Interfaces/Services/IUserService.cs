@@ -1,9 +1,9 @@
 ﻿using Browl.Service.MarketDataCollector.Domain.Entities;
 using Browl.Service.MarketDataCollector.Domain.Resources.User;
 
-namespace Browl.Service.MarketDataCollector.Domain.Interfaces.Managers;
+namespace Browl.Service.MarketDataCollector.Domain.Interfaces.Services;
 
-public interface IUserManager
+public interface IUserService
 {
 	Task<IEnumerable<UserViewResource>> GetAsync();
 

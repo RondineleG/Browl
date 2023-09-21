@@ -1,5 +1,5 @@
 ﻿using Browl.Service.MarketDataCollector.Domain.Entities;
-using Browl.Service.MarketDataCollector.Domain.Interfaces.Managers;
+using Browl.Service.MarketDataCollector.Domain.Interfaces.Services;
 using Browl.Service.MarketDataCollector.Domain.Resources.User;
 
 using Microsoft.AspNetCore.Authorization;
@@ -10,9 +10,9 @@ namespace Browl.Service.MarketDataCollector.Controller;
 [ApiController]
 public class UsersController : ControllerBase
 {
-	private readonly IUserManager manager;
+	private readonly IUserService manager;
 
-	public UsersController(IUserManager manager)
+	public UsersController(IUserService manager)
 	{
 		this.manager = manager;
 	}

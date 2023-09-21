@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 
 using Browl.Service.MarketDataCollector.Domain.Entities;
-using Browl.Service.MarketDataCollector.Domain.Interfaces.Managers;
 using Browl.Service.MarketDataCollector.Domain.Interfaces.Repositories;
 using Browl.Service.MarketDataCollector.Domain.Interfaces.Services;
 using Browl.Service.MarketDataCollector.Domain.Resources.User;
@@ -10,7 +9,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Browl.Service.MarketDataCollector.Application.Services;
 
-public class UserService : IUserManager
+public class UserService : IUserService
 {
 	private readonly IUserRepository _userRepository;
 	private readonly IMapper _mapper;

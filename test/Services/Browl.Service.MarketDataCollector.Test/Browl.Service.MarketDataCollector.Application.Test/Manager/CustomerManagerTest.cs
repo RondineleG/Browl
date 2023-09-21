@@ -3,8 +3,8 @@
 using Browl.Service.MarketDataCollector.Application.Mappings;
 using Browl.Service.MarketDataCollector.Application.Services;
 using Browl.Service.MarketDataCollector.Domain.Entities;
-using Browl.Service.MarketDataCollector.Domain.Interfaces.Managers;
 using Browl.Service.MarketDataCollector.Domain.Interfaces.Repositories;
+using Browl.Service.MarketDataCollector.Domain.Interfaces.Services;
 using Browl.Service.MarketDataCollector.Domain.Resources.Customer;
 using Browl.Service.MarketDataCollector.FakeData.CustomerData;
 
@@ -22,7 +22,7 @@ public class CustomerManagerTest
 	private readonly ICustomerRepository repository;
 	private readonly ILogger<CustomerService> logger;
 	private readonly IMapper mapper;
-	private readonly ICustomerManager manager;
+	private readonly ICustomerService manager;
 	private readonly Customer Customer;
 	private readonly Customer NovoCustomer;
 	private readonly Customer AlteraCustomer;

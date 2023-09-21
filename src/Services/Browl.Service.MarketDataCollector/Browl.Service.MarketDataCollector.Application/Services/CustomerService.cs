@@ -1,15 +1,15 @@
 ﻿using AutoMapper;
 
 using Browl.Service.MarketDataCollector.Domain.Entities;
-using Browl.Service.MarketDataCollector.Domain.Interfaces.Managers;
 using Browl.Service.MarketDataCollector.Domain.Interfaces.Repositories;
+using Browl.Service.MarketDataCollector.Domain.Interfaces.Services;
 using Browl.Service.MarketDataCollector.Domain.Resources.Customer;
 
 using Microsoft.Extensions.Logging;
 
 namespace Browl.Service.MarketDataCollector.Application.Services;
 
-public class CustomerService : ICustomerManager
+public class CustomerService : ICustomerService
 {
 	private readonly ICustomerRepository _customerRepository;
 	private readonly IMapper _mapper;

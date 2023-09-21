@@ -1,4 +1,4 @@
-﻿using Browl.Service.MarketDataCollector.Domain.Interfaces.Managers;
+﻿using Browl.Service.MarketDataCollector.Domain.Interfaces.Services;
 using Browl.Service.MarketDataCollector.Domain.Resources.Customer;
 
 using Microsoft.AspNetCore.Mvc;
@@ -11,10 +11,10 @@ namespace Browl.Service.MarketDataCollector.Controller;
 [ApiController]
 public class CustomersController : ControllerBase
 {
-	private readonly ICustomerManager clienteManager;
+	private readonly ICustomerService clienteManager;
 	private readonly ILogger<CustomersController> logger;
 
-	public CustomersController(ICustomerManager clienteManager, ILogger<CustomersController> logger)
+	public CustomersController(ICustomerService clienteManager, ILogger<CustomersController> logger)
 	{
 		this.clienteManager = clienteManager;
 		this.logger = logger;

@@ -1,7 +1,6 @@
 ﻿using Browl.Service.MarketDataCollector.API.Configurations.MainController;
 using Browl.Service.MarketDataCollector.Application.Services;
 using Browl.Service.MarketDataCollector.Domain.Entities;
-using Browl.Service.MarketDataCollector.Domain.Interfaces.Managers;
 using Browl.Service.MarketDataCollector.Domain.Interfaces.Repositories;
 using Browl.Service.MarketDataCollector.Domain.Interfaces.Services;
 using Browl.Service.MarketDataCollector.Infrastructure.Data.Repositories;
@@ -16,9 +15,9 @@ public static class DependencyInjectionConfiguration
 		services.AddScoped<IHabitService, HabitService>();
 		services.Configure<TenantSettings>(configuration.GetSection(nameof(TenantSettings)));
 		services.AddScoped<ICustomerRepository, CustomerRepository>();
-		services.AddScoped<ICustomerManager, CustomerService>();
+		services.AddScoped<ICustomerService, CustomerService>();
 		services.AddScoped<IUserRepository, UserRepository>();
-		services.AddScoped<IUserManager, UserService>();
+		services.AddScoped<IUserService, UserService>();
 		services.Configure<RouteOptions>(options => options.LowercaseUrls = true);
 		services.AddControllers().ConfigureApiBehaviorOptions(options =>
 		  {

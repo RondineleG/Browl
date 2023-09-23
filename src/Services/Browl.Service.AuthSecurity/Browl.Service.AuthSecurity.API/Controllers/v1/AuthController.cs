@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Browl.Service.AuthSecurity.API.Controllers.v1
 {
-	[Route("api/[controller]")]
+	[Route("api/v1/identity/auth")]
 	[ApiController]
 	public class AuthController : ControllerBase
 	{

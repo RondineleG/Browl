@@ -7,6 +7,14 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Serilog" Version="2.12.0" />
+		<PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
+		<PackageReference Include="Serilog.Extensions.Logging" Version="3.1.0" />
+		<PackageReference Include="Serilog.Settings.Configuration" Version="3.4.0" />
+		<PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.10" />
 		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.10" />
 		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.9" />
@@ -14,8 +22,20 @@
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.10" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.10" />
 		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
 		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.32.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Browl.Service.AuthSecurity.Application\Browl.Service.AuthSecurity.Application.csproj" />
+	  <ProjectReference Include="..\Browl.Service.AuthSecurity.Identity\Browl.Service.AuthSecurity.Identity.csproj" />
+	  <ProjectReference Include="..\Browl.Service.AuthSecurity.Infrastructure\Browl.Service.AuthSecurity.Infrastructure.csproj" />
+	  <ProjectReference Include="..\Browl.Service.AuthSecurity.Persistence\Browl.Service.AuthSecurity.Persistence.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="logs\" />
 	</ItemGroup>
 
 </Project>

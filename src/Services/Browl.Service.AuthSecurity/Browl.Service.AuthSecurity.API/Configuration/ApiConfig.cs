@@ -10,20 +10,29 @@ public static class ApiConfig
 	{
 		_ = services.AddControllers();
 		_ = services.AddEndpointsApiExplorer();
+		services.AddHttpContextAccessor();
 
 		services.AddScoped<IAuthenticateService, AuthenticateService>();
 		services.AddScoped<IUserService, UserService>();
 
+		// services.AddCors(options =>
+		// {
+		// 	options.AddPolicy(name: "BrowlCors",
+		// 		policy =>
+		// 		{
+		// 			policy.WithOrigins("https://localhost:7219")
+		// 			.AllowAnyHeader()
+		// 			.AllowAnyMethod();
+		// 		});
+		// });
+
 		services.AddCors(options =>
-		{
-			options.AddPolicy(name: "BrowlCors",
-				policy =>
-				{
-					policy.WithOrigins("https://localhost:7219")
-					.AllowAnyHeader()
-					.AllowAnyMethod();
-				});
-		});
+{
+	options.AddPolicy("all", builder => builder.AllowAnyOrigin()
+	.AllowAnyHeader()
+	.AllowAnyMethod());
+});
+
 
 		var builder = new ConfigurationBuilder()
 				.SetBasePath(hostEnvironment.ContentRootPath)
@@ -46,7 +55,8 @@ public static class ApiConfig
 		app.UseRouting();
 		app.UseAuthentication();
 		app.UseAuthorization();
-		app.UseCors("BrowlCors");
+		// app.UseCors("BrowlCors");
+		app.UseCors("all");
 		app.UseEndpoints(endpoints =>
 		{
 			var unused = endpoints.MapControllers();

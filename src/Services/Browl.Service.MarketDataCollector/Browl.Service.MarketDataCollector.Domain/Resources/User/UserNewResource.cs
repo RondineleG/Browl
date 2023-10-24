@@ -2,8 +2,8 @@
 
 public class UserNewResource
 {
-	public string Login { get; set; }
-	public string Senha { get; set; }
+	public required string Login { get; set; }
+	public required string Senha { get; set; }
 
-	public ICollection<ReferenceRoleResource> Funcoes { get; set; }
+	public required ICollection<ReferenceRoleResource> Funcoes { get; set; }
 }

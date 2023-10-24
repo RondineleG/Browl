@@ -1,8 +1,8 @@
+using System.Diagnostics;
+
 using Browl.Service.MarketDataCollector.Domain.Resources.Erro;
 
 using Microsoft.AspNetCore.Mvc;
-
-using System.Diagnostics;
 
 namespace Browl.Service.MarketDataCollector.API.Controllers;
 

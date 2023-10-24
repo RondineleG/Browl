@@ -1,16 +1,10 @@
-﻿using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-
-using Browl.Service.AuthSecurity.API.Controllers.Base;
+﻿using Browl.Service.AuthSecurity.API.Controllers.Base;
 using Browl.Service.AuthSecurity.API.Entities;
 using Browl.Service.AuthSecurity.API.Services.Interfaces;
 
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
 
 namespace Browl.Service.AuthSecurity.API.Controllers;
 
@@ -69,7 +63,7 @@ public class AuthController : MainController
 		return CustomResponse();
 	}
 
-	
+
 	[HttpPost("authenticate")]
 	public async Task<ActionResult> Login(UserLogin usuarioLogin)
 	{
@@ -95,5 +89,5 @@ public class AuthController : MainController
 		AddErrorProcessing("Incorrect username or password");
 		return CustomResponse();
 	}
-		
+
 }

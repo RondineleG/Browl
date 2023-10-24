@@ -10,13 +10,10 @@ namespace Browl.Service.AuthSecurity.API.Controllers;
 public class UserController : ControllerBase
 {
 	private readonly IUserService _userService;
-	public UserController(IUserService userService)
-	{
-		_userService = userService;
-	}
+	public UserController(IUserService userService) => _userService = userService;
 
 	[HttpPost("register")]
-	public async Task<IActionResult> UserRegistration(UserRegistrationResources userRegistration)
+	public async Task<IActionResult> UserRegistrationAsync(UserRegistrationResources userRegistration)
 	{
 		var result = await _userService.RegisterNewUserAsync(userRegistration);
 		if (result.IsUserRegistered)

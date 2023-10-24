@@ -5,28 +5,21 @@ using Browl.Service.MarketDataCollector.Domain.Resources.User;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Browl.Service.MarketDataCollector.Controller;
+namespace Browl.Service.MarketDataCollector.API.Controllers;
 [Route("api/[controller]")]
 [ApiController]
 public class UsersController : ControllerBase
 {
 	private readonly IUserService manager;
 
-	public UsersController(IUserService manager)
-	{
-		this.manager = manager;
-	}
+	public UsersController(IUserService manager) => this.manager = manager;
 
 	[HttpGet]
 	[Route("Login")]
-	public async Task<IActionResult> Login([FromBody] User usuario)
+	public async Task<IActionResult> LoginAsync([FromBody] User usuario)
 	{
 		var usuarioLogado = await manager.ValidaUsuarioEGeraTokenAsync(usuario);
-		if (usuarioLogado != null)
-		{
-			return Ok(usuarioLogado);
-		}
-		return Unauthorized();
+		return usuarioLogado != null ? Ok(usuarioLogado) : Unauthorized();
 	}
 
 
@@ -36,17 +29,17 @@ public class UsersController : ControllerBase
 	/// <returns>List os users.</returns>
 	[Authorize(Roles = "Presidente, Lider")]
 	[HttpGet]
-	public async Task<IActionResult> Get()
+	public async Task<IActionResult> GetAsync()
 	{
-		string login = User.Identity.Name;
+		var login = User.Identity.Name;
 		var usuario = await manager.GetAsync(login);
 		return Ok(usuario);
 	}
 
 	[HttpPost]
-	public async Task<IActionResult> Post(UserNewResource usuario)
+	public async Task<IActionResult> PostAsync(UserNewResource usuario)
 	{
 		var usuarioInserido = await manager.InsertAsync(usuario);
-		return CreatedAtAction(nameof(Get), new { login = usuario.Login }, usuarioInserido);
+		return CreatedAtAction(nameof(GetAsync), new { login = usuario.Login }, usuarioInserido);
 	}
 }

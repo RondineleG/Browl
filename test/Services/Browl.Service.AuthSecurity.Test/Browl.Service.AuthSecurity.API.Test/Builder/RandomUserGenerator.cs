@@ -1,13 +1,10 @@
-﻿using System;
-using System.Text;
-
-using Browl.Service.AuthSecurity.API.Entities;
+﻿using Browl.Service.AuthSecurity.API.Entities;
 
 namespace Browl.Service.AuthSecurity.API.Test.Builder;
 
 public static class RandomUserGenerator
 {
-	private static readonly Random Random = new Random();
+	private static readonly Random Random = new();
 
 	public static UserRegister GenerateRandomUser()
 	{

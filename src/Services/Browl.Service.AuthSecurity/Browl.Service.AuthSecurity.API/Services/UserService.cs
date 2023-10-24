@@ -13,7 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Browl.Service.AuthSecurity.API.Service;
+namespace Browl.Service.AuthSecurity.API.Services;
 
 public class UserService : IUserService
 {
@@ -26,16 +26,13 @@ public class UserService : IUserService
 		_tokenSettings = tokenSettings.Value;
 	}
 
-	private User FromUserRegistrationModelToUserModel(UserRegistrationResources userRegistration)
+	private User FromUserRegistrationModelToUserModel(UserRegistrationResources userRegistration) => new()
 	{
-		return new User
-		{
-			Email = userRegistration.Email,
-			FirstName = userRegistration.FirstName,
-			LastName = userRegistration.LastName,
-			Password = userRegistration.Password,
-		};
-	}
+		Email = userRegistration.Email,
+		FirstName = userRegistration.FirstName,
+		LastName = userRegistration.LastName,
+		Password = userRegistration.Password,
+	};
 
 	private string HashPassword(string plainPassword)
 	{
@@ -65,8 +62,8 @@ public class UserService : IUserService
 		var newUser = FromUserRegistrationModelToUserModel(userRegistration);
 		newUser.Password = HashPassword(newUser.Password);
 
-		_browlAuthSecurityDbContext.User.Add(newUser);
-		await _browlAuthSecurityDbContext.SaveChangesAsync();
+		var unused1 = _browlAuthSecurityDbContext.User.Add(newUser);
+		var unused = await _browlAuthSecurityDbContext.SaveChangesAsync();
 		return (true, "Success");
 	}
 
@@ -102,11 +99,13 @@ public class UserService : IUserService
 
 		var credentials = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256);
 
-		var cliams = new List<Claim>();
-		cliams.Add(new Claim("Sub", user.Id.ToString()));
-		cliams.Add(new Claim("FirstName", user.FirstName));
-		cliams.Add(new Claim("LastName", user.LastName));
-		cliams.Add(new Claim("Email", user.Email));
+		var cliams = new List<Claim>
+		{
+			new Claim("Sub", user.Id.ToString()),
+			new Claim("FirstName", user.FirstName),
+			new Claim("LastName", user.LastName),
+			new Claim("Email", user.Email)
+		};
 
 		var securityToken = new JwtSecurityToken(
 			issuer: _tokenSettings.Issuer,

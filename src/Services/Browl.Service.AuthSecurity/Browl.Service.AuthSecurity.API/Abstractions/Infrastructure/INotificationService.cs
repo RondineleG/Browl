@@ -1,10 +1,9 @@
 ﻿using Browl.Service.AuthSecurity.API.Contracts.Notifications;
 
-namespace HyBe.Application.Abstractions.Infrastructure
+namespace Browl.Service.AuthSecurity.API.Abstractions.Infrastructure;
+
+public interface INotificationService
 {
-	public interface INotificationService
-	{
-		IResult SendNotification(SendNotificationRequest request);
-	}
+	IResult SendNotification(SendNotificationRequest request);
 }
 

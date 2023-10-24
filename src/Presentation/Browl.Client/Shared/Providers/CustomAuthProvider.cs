@@ -1,29 +1,23 @@
-﻿using Blazored.LocalStorage;
+﻿using System.Security.Claims;
+using System.Text.Json;
+
+using Blazored.LocalStorage;
 
 using Microsoft.AspNetCore.Components.Authorization;
-
-using System.Security.Claims;
-using System.Text.Json;
 
 namespace Browl.Client.Shared.Providers;
 
 public class CustomAuthProvider : AuthenticationStateProvider
 {
 	private readonly ILocalStorageService _localStorageService;
-	public CustomAuthProvider(ILocalStorageService localStorageService)
-	{
-		_localStorageService = localStorageService;
-	}
+	public CustomAuthProvider(ILocalStorageService localStorageService) => _localStorageService = localStorageService;
 	public override async Task<AuthenticationState> GetAuthenticationStateAsync()
 	{
 		var jwtToken = await _localStorageService.GetItemAsync<string>("jwt-access-token");
-		if (string.IsNullOrEmpty(jwtToken))
-		{
-			return new AuthenticationState(
-				new ClaimsPrincipal(new ClaimsIdentity()));
-		}
-
-		return new AuthenticationState(new ClaimsPrincipal(
+		return string.IsNullOrEmpty(jwtToken)
+			? new AuthenticationState(
+				new ClaimsPrincipal(new ClaimsIdentity()))
+			: new AuthenticationState(new ClaimsPrincipal(
 			new ClaimsIdentity(ParseClaimsFromJwt(jwtToken), "JwtAuth")));
 	}
 
@@ -45,8 +39,5 @@ public class CustomAuthProvider : AuthenticationStateProvider
 		return Convert.FromBase64String(base64);
 	}
 
-	public void NotifyAuthState()
-	{
-		NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
-	}
+	public void NotifyAuthState() => NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
 }

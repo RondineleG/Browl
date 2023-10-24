@@ -11,14 +11,14 @@ public class CustomerNewProfile : Profile
 {
 	public CustomerNewProfile()
 	{
-		CreateMap<Customer, Customer>()
+		var unused5 = CreateMap<Customer, Customer>()
 			.ForMember(d => d.Criacao, o => o.MapFrom(_ => DateTime.Now))
 			.ForMember(d => d.DataNascimento, o => o.MapFrom(x => x.DataNascimento.Date));
 
-		CreateMap<AddressNewResource, Address>();
-		CreateMap<TelephoneNewResource, Telephone>();
-		CreateMap<Customer, CustomerViewResource>();
-		CreateMap<Address, AddressViewResource>();
-		CreateMap<Telephone, TelephoneViewResource>();
+		var unused4 = CreateMap<AddressNewResource, Address>();
+		var unused3 = CreateMap<TelephoneNewResource, Telephone>();
+		var unused2 = CreateMap<Customer, CustomerViewResource>();
+		var unused1 = CreateMap<Address, AddressViewResource>();
+		var unused = CreateMap<Telephone, TelephoneViewResource>();
 	}
 }

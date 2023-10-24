@@ -3,7 +3,6 @@ using Browl.Service.AuthSecurity.API.Data;
 using Browl.Service.AuthSecurity.API.Entities;
 using Browl.Service.AuthSecurity.API.Middleware;
 using Browl.Service.AuthSecurity.Application;
-using Browl.Service.AuthSecurity.Identity;
 using Browl.Service.AuthSecurity.Infrastructure;
 using Browl.Service.AuthSecurity.Persistence;
 
@@ -20,7 +19,6 @@ builder.Host.UseSerilog((context, loggerConfig) => loggerConfig
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddPersistenceServices(builder.Configuration);
-builder.Services.AddIdentityServices(builder.Configuration);
 builder.Services.AddIdentityConfiguration(builder.Configuration);
 builder.Services.AddApiConfiguration(builder.Environment, builder.Configuration);
 builder.Services.AddSwaggerConfiguration();
@@ -35,8 +33,8 @@ app.UseMiddleware<ExceptionMiddleware>();
 
 if (app.Environment.IsDevelopment())
 {
-	app.UseSwagger();
-	app.UseSwaggerUI();
+	var unused1 = app.UseSwagger();
+	var unused = app.UseSwaggerUI();
 }
 
 app.UseSerilogRequestLogging();

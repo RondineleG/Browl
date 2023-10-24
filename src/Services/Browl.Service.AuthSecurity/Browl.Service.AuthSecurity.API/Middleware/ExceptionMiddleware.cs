@@ -1,9 +1,9 @@
-﻿using Browl.Service.AuthSecurity.API.Models;
+﻿using System.Net;
+
+using Browl.Service.AuthSecurity.API.Models;
 using Browl.Service.AuthSecurity.Application.Exceptions;
 
 using Newtonsoft.Json;
-
-using System.Net;
 
 namespace Browl.Service.AuthSecurity.API.Middleware;
 

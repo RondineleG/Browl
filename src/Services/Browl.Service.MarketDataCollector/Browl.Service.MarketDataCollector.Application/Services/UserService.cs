@@ -21,15 +21,9 @@ public class UserService : IUserService
 		_jwtService = jwtService;
 	}
 
-	public async Task<IEnumerable<UserViewResource>> GetAsync()
-	{
-		return _mapper.Map<IEnumerable<User>, IEnumerable<UserViewResource>>(await _userRepository.GetAsync());
-	}
+	public async Task<IEnumerable<UserViewResource>> GetAsync() => _mapper.Map<IEnumerable<User>, IEnumerable<UserViewResource>>(await _userRepository.GetAsync());
 
-	public async Task<UserViewResource> GetAsync(string login)
-	{
-		return _mapper.Map<UserViewResource>(await _userRepository.GetAsync(login));
-	}
+	public async Task<UserViewResource> GetAsync(string login) => _mapper.Map<UserViewResource>(await _userRepository.GetAsync(login));
 
 	public async Task<UserViewResource> InsertAsync(UserNewResource novoUsuario)
 	{
@@ -50,7 +44,7 @@ public class UserService : IUserService
 		return _mapper.Map<UserViewResource>(await _userRepository.UpdateAsync(usuario));
 	}
 
-	public async Task<UserLoggedResource> ValidaUsuarioEGeraTokenAsync(User usuario)
+	public async Task<UserLoggedResource?> ValidaUsuarioEGeraTokenAsync(User usuario)
 	{
 		var usuarioConsultado = await _userRepository.GetAsync(usuario.Login);
 		if (usuarioConsultado == null)
@@ -79,7 +73,7 @@ public class UserService : IUserService
 				return true;
 
 			case PasswordVerificationResult.SuccessRehashNeeded:
-				await UpdateMedicoAsync(usuario);
+				_ = await UpdateMedicoAsync(usuario);
 				return true;
 
 			default:

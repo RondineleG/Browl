@@ -19,7 +19,7 @@ public static class DependencyInjectionConfiguration
 		services.AddScoped<IUserRepository, UserRepository>();
 		services.AddScoped<IUserService, UserService>();
 		services.Configure<RouteOptions>(options => options.LowercaseUrls = true);
-		services.AddControllers().ConfigureApiBehaviorOptions(options =>
+		var unused5 = services.AddControllers().ConfigureApiBehaviorOptions(options =>
 		  {
 			  options.InvalidModelStateResponseFactory = InvalidModelStateResponse.ProduceErrorResponse;
 		  });

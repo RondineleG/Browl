@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Shared\Browl.Service.DataNormalization.Shared.Abstractions\Browl.Service.DataNormalization.Shared.Abstractions.csproj" />
+    </ItemGroup>
+
+</Project>

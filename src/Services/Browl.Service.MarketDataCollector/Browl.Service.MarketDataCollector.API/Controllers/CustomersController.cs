@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 using SerilogTimings;
 
-namespace Browl.Service.MarketDataCollector.Controller;
+namespace Browl.Service.MarketDataCollector.API.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -28,14 +28,10 @@ public class CustomersController : ControllerBase
 	[ProducesResponseType(typeof(CustomerViewResource), StatusCodes.Status200OK)]
 	[ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
 	[ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-	public async Task<IActionResult> Get()
+	public async Task<IActionResult> GetAsync()
 	{
 		var clientes = await clienteManager.GetAsync();
-		if (clientes.Any())
-		{
-			return Ok(clientes);
-		}
-		return NotFound();
+		return clientes.Any() ? Ok(clientes) : NotFound();
 	}
 
 	/// <summary>
@@ -46,14 +42,10 @@ public class CustomersController : ControllerBase
 	[ProducesResponseType(typeof(CustomerViewResource), StatusCodes.Status200OK)]
 	[ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
 	[ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-	public async Task<IActionResult> Get(int id)
+	public async Task<IActionResult> GetAsync(int id)
 	{
 		var cliente = await clienteManager.GetAsync(id);
-		if (cliente.Id == 0)
-		{
-			return NotFound();
-		}
-		return Ok(cliente);
+		return cliente.Id == 0 ? NotFound() : Ok(cliente);
 	}
 
 	/// <summary>
@@ -64,7 +56,7 @@ public class CustomersController : ControllerBase
 	[ProducesResponseType(typeof(CustomerViewResource), StatusCodes.Status201Created)]
 	[ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
 	[ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-	public async Task<IActionResult> Post(CustomerResource customerResource)
+	public async Task<IActionResult> PostAsync(CustomerResource customerResource)
 	{
 		logger.LogInformation("Objeto recebido {@novoCliente}", customerResource);
 
@@ -74,7 +66,7 @@ public class CustomersController : ControllerBase
 			logger.LogInformation("Foi requisitada a inserção de um novo cliente.");
 			clienteInserido = await clienteManager.PostAsync(customerResource);
 		}
-		return CreatedAtAction(nameof(Get), new { id = clienteInserido.Id }, clienteInserido);
+		return CreatedAtAction(nameof(GetAsync), new { id = clienteInserido.Id }, clienteInserido);
 	}
 
 	/// <summary>
@@ -85,18 +77,14 @@ public class CustomersController : ControllerBase
 	[ProducesResponseType(typeof(CustomerViewResource), StatusCodes.Status200OK)]
 	[ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
 	[ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-	public async Task<IActionResult> Put(CustomerUpdateResource customerUpdateResource)
+	public async Task<IActionResult> PutAsync(CustomerUpdateResource customerUpdateResource)
 	{
 		var clienteAtualizado = await clienteManager.PutAsync(customerUpdateResource);
-		if (clienteAtualizado == null)
-		{
-			return NotFound();
-		}
-		return Ok(clienteAtualizado);
+		return clienteAtualizado == null ? NotFound() : Ok(clienteAtualizado);
 	}
 
 	/// <summary>
-	/// Delete customer.
+	/// DeleteAsync customer.
 	/// </summary>
 	/// <param name="id" example="123">Id</param>
 	/// <remarks>When deleting a customer, it will be permanently removed from the base.</remarks>
@@ -104,13 +92,9 @@ public class CustomersController : ControllerBase
 	[ProducesResponseType(StatusCodes.Status204NoContent)]
 	[ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
 	[ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-	public async Task<IActionResult> Delete(int id)
+	public async Task<IActionResult> DeleteAsync(int id)
 	{
 		var clienteExcliudo = await clienteManager.DeleteAsync(id);
-		if (clienteExcliudo == null)
-		{
-			return NotFound();
-		}
-		return NoContent();
+		return clienteExcliudo == null ? NotFound() : NoContent();
 	}
 }

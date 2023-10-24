@@ -96,8 +96,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Browl.Service.AuthSecurity.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Browl.Service.AuthSecurity.API.Test", "test\Services\Browl.Service.AuthSecurity.Test\Browl.Service.AuthSecurity.API.Test\Browl.Service.AuthSecurity.API.Test.csproj", "{728FCF2F-3429-4A46-A16F-396B3D67741A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{1E1868B1-34EC-4C95-9E41-4AFE56CCB434}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Browl.Service.AuthSecurity.Application", "src\Services\Browl.Service.AuthSecurity\Browl.Service.AuthSecurity.Application\Browl.Service.AuthSecurity.Application.csproj", "{A5170D73-C73D-486D-9DF1-A2BF029E870E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Browl.Service.AuthSecurity.Domain", "src\Services\Browl.Service.AuthSecurity\Browl.Service.AuthSecurity.Domain\Browl.Service.AuthSecurity.Domain.csproj", "{65CB47EA-E846-49F1-83B2-0DD5E3C4849C}"
@@ -107,6 +105,22 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Browl.Service.AuthSecurity.Persistence", "src\Services\Browl.Service.AuthSecurity\Browl.Service.AuthSecurity.Persistence\Browl.Service.AuthSecurity.Persistence.csproj", "{53F6ACDF-832D-4669-BCD0-1C74DC637788}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Browl.Service.AuthSecurity.Infrastructure", "src\Services\Browl.Service.AuthSecurity\Browl.Service.AuthSecurity.Infrastructure\Browl.Service.AuthSecurity.Infrastructure.csproj", "{0B0A09FF-CEF2-4B50-B7F9-24B62ADF8099}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Browl.Service.DataNormalization", "Browl.Service.DataNormalization", "{B14F111A-375E-47C6-847A-94FC898C4A25}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{A58557C1-5987-4757-A1D4-F0B0DBE0CEEA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Browl.Service.DataNormalization.Shared", "src\Services\Browl.Service.DataNormalization\Shared\Browl.Service.DataNormalization.Shared\Browl.Service.DataNormalization.Shared.csproj", "{A8A69088-8B0E-4A92-9BEB-70542C608D4B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Browl.Service.DataNormalization.Shared.Abstractions", "src\Services\Browl.Service.DataNormalization\Shared\Browl.Service.DataNormalization.Shared.Abstractions\Browl.Service.DataNormalization.Shared.Abstractions.csproj", "{729B9A11-A020-40FA-9775-780D1F346C06}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Browl.Service.DataNormalization.API", "src\Services\Browl.Service.DataNormalization\Browl.Service.DataNormalization.API\Browl.Service.DataNormalization.API.csproj", "{3F89ABC5-8771-4CE3-B58B-01B005A430DD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Browl.Service.DataNormalization.Application", "src\Services\Browl.Service.DataNormalization\Browl.Service.DataNormalization.Application\Browl.Service.DataNormalization.Application.csproj", "{9CDD9104-65CA-4A63-B1B0-203356F3B5F5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Browl.Service.DataNormalization.Domain", "src\Services\Browl.Service.DataNormalization\Browl.Service.DataNormalization.Domain\Browl.Service.DataNormalization.Domain.csproj", "{4FC1A3D2-9659-4B82-92CA-4691928A95D8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Browl.Service.DataNormalization.Infrastructure", "src\Services\Browl.Service.DataNormalization\Browl.Service.DataNormalization.Infrastructure\Browl.Service.DataNormalization.Infrastructure.csproj", "{B0562D3F-3BCD-44D1-9444-C61DC2B5046C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -186,6 +200,30 @@ Global
 		{0B0A09FF-CEF2-4B50-B7F9-24B62ADF8099}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B0A09FF-CEF2-4B50-B7F9-24B62ADF8099}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B0A09FF-CEF2-4B50-B7F9-24B62ADF8099}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8A69088-8B0E-4A92-9BEB-70542C608D4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8A69088-8B0E-4A92-9BEB-70542C608D4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8A69088-8B0E-4A92-9BEB-70542C608D4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8A69088-8B0E-4A92-9BEB-70542C608D4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{729B9A11-A020-40FA-9775-780D1F346C06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{729B9A11-A020-40FA-9775-780D1F346C06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{729B9A11-A020-40FA-9775-780D1F346C06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{729B9A11-A020-40FA-9775-780D1F346C06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F89ABC5-8771-4CE3-B58B-01B005A430DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F89ABC5-8771-4CE3-B58B-01B005A430DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F89ABC5-8771-4CE3-B58B-01B005A430DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F89ABC5-8771-4CE3-B58B-01B005A430DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CDD9104-65CA-4A63-B1B0-203356F3B5F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CDD9104-65CA-4A63-B1B0-203356F3B5F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CDD9104-65CA-4A63-B1B0-203356F3B5F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CDD9104-65CA-4A63-B1B0-203356F3B5F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FC1A3D2-9659-4B82-92CA-4691928A95D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FC1A3D2-9659-4B82-92CA-4691928A95D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FC1A3D2-9659-4B82-92CA-4691928A95D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FC1A3D2-9659-4B82-92CA-4691928A95D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0562D3F-3BCD-44D1-9444-C61DC2B5046C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0562D3F-3BCD-44D1-9444-C61DC2B5046C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0562D3F-3BCD-44D1-9444-C61DC2B5046C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0562D3F-3BCD-44D1-9444-C61DC2B5046C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -221,6 +259,14 @@ Global
 		{26E2B771-F9DE-4F18-9025-3F6CF10B4BB9} = {09EE67D6-ADE1-4A0A-8766-974D00A71209}
 		{53F6ACDF-832D-4669-BCD0-1C74DC637788} = {09EE67D6-ADE1-4A0A-8766-974D00A71209}
 		{0B0A09FF-CEF2-4B50-B7F9-24B62ADF8099} = {09EE67D6-ADE1-4A0A-8766-974D00A71209}
+		{B14F111A-375E-47C6-847A-94FC898C4A25} = {758EAD6C-01B5-4816-97E5-CA0E5F217D34}
+		{A58557C1-5987-4757-A1D4-F0B0DBE0CEEA} = {B14F111A-375E-47C6-847A-94FC898C4A25}
+		{A8A69088-8B0E-4A92-9BEB-70542C608D4B} = {A58557C1-5987-4757-A1D4-F0B0DBE0CEEA}
+		{729B9A11-A020-40FA-9775-780D1F346C06} = {A58557C1-5987-4757-A1D4-F0B0DBE0CEEA}
+		{3F89ABC5-8771-4CE3-B58B-01B005A430DD} = {B14F111A-375E-47C6-847A-94FC898C4A25}
+		{9CDD9104-65CA-4A63-B1B0-203356F3B5F5} = {B14F111A-375E-47C6-847A-94FC898C4A25}
+		{4FC1A3D2-9659-4B82-92CA-4691928A95D8} = {B14F111A-375E-47C6-847A-94FC898C4A25}
+		{B0562D3F-3BCD-44D1-9444-C61DC2B5046C} = {B14F111A-375E-47C6-847A-94FC898C4A25}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {09C8AF50-40D4-48F2-A03D-9BC7AB6D3538}

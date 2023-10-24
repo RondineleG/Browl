@@ -1,8 +1,7 @@
-﻿namespace Browl.Service.AuthSecurity.API.Contracts.Notifications
+﻿namespace Browl.Service.AuthSecurity.API.Contracts.Notifications;
+
+public class SendNotificationRequest
 {
-	public class SendNotificationRequest
-	{
-		public string Message { get; set; }
-	}
+	public required string Message { get; set; }
 }
 

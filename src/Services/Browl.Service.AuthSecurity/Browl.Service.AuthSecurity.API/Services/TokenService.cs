@@ -55,13 +55,10 @@ public class TokenService
 			throw;
 		}
 	}
-	private SigningCredentials CreateSigningCredentials()
-	{
-		return new SigningCredentials(
+	private SigningCredentials CreateSigningCredentials() => new(
 			new SymmetricSecurityKey(
 				Encoding.UTF8.GetBytes("this is my custom Secret key for authentication")
 			),
 			SecurityAlgorithms.HmacSha256
 		);
-	}
 }

@@ -9,10 +9,10 @@ public class UserProfile : Profile
 {
 	public UserProfile()
 	{
-		CreateMap<User, UserViewResource>().ReverseMap();
-		CreateMap<User, UserNewResource>().ReverseMap();
-		CreateMap<User, UserLoggedResource>().ReverseMap();
-		CreateMap<Role, RoleViewResource>().ReverseMap();
-		CreateMap<Role, ReferenceRoleResource>().ReverseMap();
+		_ = CreateMap<User, UserViewResource>().ReverseMap();
+		_ = CreateMap<User, UserNewResource>().ReverseMap();
+		_ = CreateMap<User, UserLoggedResource>().ReverseMap();
+		_ = CreateMap<Role, RoleViewResource>().ReverseMap();
+		_ = CreateMap<Role, ReferenceRoleResource>().ReverseMap();
 	}
 }

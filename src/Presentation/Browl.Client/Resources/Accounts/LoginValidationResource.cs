@@ -6,12 +6,12 @@ public class LoginValidationResource : AbstractValidator<LoginResource>
 {
 	public LoginValidationResource()
 	{
-		RuleFor(_ => _.Email)
+		var unused1 = RuleFor(_ => _.Email)
 			.NotEmpty()
 			.EmailAddress()
 			.WithMessage("Invalid Email");
 
-		RuleFor(x => x.Password).NotEmpty().WithMessage("Invalid Credentials")
+		var unused = RuleFor(x => x.Password).NotEmpty().WithMessage("Invalid Credentials")
 				.MinimumLength(6).WithMessage("Invalid Credentials")
 				.MaximumLength(16).WithMessage("Invalid Credentials")
 				.Matches(@"[A-Z]+").WithMessage("Invalid Credentials")
@@ -24,8 +24,6 @@ public class LoginValidationResource : AbstractValidator<LoginResource>
 	{
 		var result =
 		await ValidateAsync(ValidationContext<LoginResource>.CreateWithOptions((LoginResource)model, x => x.IncludeProperties(propertyName)));
-		if (result.IsValid)
-			return Array.Empty<string>();
-		return result.Errors.Select(e => e.ErrorMessage);
+		return result.IsValid ? (IEnumerable<string>)Array.Empty<string>() : result.Errors.Select(e => e.ErrorMessage);
 	};
 }

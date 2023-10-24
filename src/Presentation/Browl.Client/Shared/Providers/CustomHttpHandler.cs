@@ -5,10 +5,7 @@ namespace Browl.Client.Shared.Providers;
 public class CustomHttpHandler : DelegatingHandler
 {
 	private readonly ILocalStorageService _localStorageService;
-	public CustomHttpHandler(ILocalStorageService localStorageService)
-	{
-		_localStorageService = localStorageService;
-	}
+	public CustomHttpHandler(ILocalStorageService localStorageService) => _localStorageService = localStorageService;
 	protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
 	{
 		if (request.RequestUri.AbsolutePath.ToLower().Contains("login") ||

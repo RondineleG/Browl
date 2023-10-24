@@ -3,29 +3,19 @@ using Browl.Service.AuthSecurity.Application.Models.Identity;
 
 using Microsoft.AspNetCore.Mvc;
 
-namespace Browl.Service.AuthSecurity.Api.Controllers.v2
+namespace Browl.Service.AuthSecurity.Api.Controllers.v2;
+
+[Route("api/v2/identity/auth")]
+[ApiController]
+public class AuthController : ControllerBase
 {
-	[Route("api/v2/identity/auth")]
-	[ApiController]
-	public class AuthController : ControllerBase
-	{
-		private readonly IAuthService _authenticationService;
+	private readonly IAuthService _authenticationService;
 
-		public AuthController(IAuthService authenticationService)
-		{
-			_authenticationService = authenticationService;
-		}
+	public AuthController(IAuthService authenticationService) => _authenticationService = authenticationService;
 
-		[HttpPost("login")]
-		public async Task<ActionResult<AuthResponse>> Login(AuthRequest request)
-		{
-			return Ok(await _authenticationService.Login(request));
-		}
+	[HttpPost("login")]
+	public async Task<ActionResult<AuthResponse>> LoginAsync(AuthRequest request) => Ok(await _authenticationService.LoginAsync(request));
 
-		[HttpPost("register")]
-		public async Task<ActionResult<RegistrationResponse>> Register(RegistrationRequest request)
-		{
-			return Ok(await _authenticationService.Register(request));
-		}
-	}
+	[HttpPost("register")]
+	public async Task<ActionResult<RegistrationResponse>> RegisterAsync(RegistrationRequest request) => Ok(await _authenticationService.RegisterAsync(request));
 }

@@ -14,9 +14,10 @@ namespace Browl.Service.MarketDataCollector.API.Configurations;
 
 public static class FluentValidationConfig
 {
+	[Obsolete]
 	public static void AddFluentValidationConfiguration(this IServiceCollection services)
 	{
-		services.AddControllers()
+		var unused4 = services.AddControllers()
 			.AddNewtonsoftJson(x =>
 			{
 				x.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
@@ -25,10 +26,10 @@ public static class FluentValidationConfig
 			.AddJsonOptions(p => p.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()))
 			.AddFluentValidation(p =>
 		   {
-			   p.RegisterValidatorsFromAssemblyContaining<CustomerNewValidator>();
-			   p.RegisterValidatorsFromAssemblyContaining<AddressNewValidator>();
-			   p.RegisterValidatorsFromAssemblyContaining<CustomerUpdateValidator>();
-			   p.RegisterValidatorsFromAssemblyContaining<TelephoneNewValidator>();
+			   var unused3 = p.RegisterValidatorsFromAssemblyContaining<CustomerNewValidator>();
+			   var unused2 = p.RegisterValidatorsFromAssemblyContaining<AddressNewValidator>();
+			   var unused1 = p.RegisterValidatorsFromAssemblyContaining<CustomerUpdateValidator>();
+			   var unused = p.RegisterValidatorsFromAssemblyContaining<TelephoneNewValidator>();
 			   p.ValidatorOptions.LanguageManager.Culture = new CultureInfo("pt-BR");
 		   });
 

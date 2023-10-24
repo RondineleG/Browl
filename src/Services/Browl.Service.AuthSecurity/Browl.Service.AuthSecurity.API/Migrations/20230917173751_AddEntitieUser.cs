@@ -2,21 +2,20 @@
 
 #nullable disable
 
-namespace Browl.Service.AuthSecurity.API.Migrations
+namespace Browl.Service.AuthSecurity.API.Migrations;
+
+/// <inheritdoc />
+public partial class AddEntitieUser : Migration
 {
-    /// <inheritdoc />
-    public partial class AddEntitieUser : Migration
-    {
-        /// <inheritdoc />
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
+	/// <inheritdoc />
+	protected override void Up(MigrationBuilder migrationBuilder)
+	{
 
-        }
+	}
 
-        /// <inheritdoc />
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
+	/// <inheritdoc />
+	protected override void Down(MigrationBuilder migrationBuilder)
+	{
 
-        }
-    }
+	}
 }

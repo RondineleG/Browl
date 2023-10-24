@@ -30,12 +30,12 @@ public class AuthenticateService : IAuthenticateService
 	{
 		var user = await _userManager.FindByEmailAsync(email).ConfigureAwait(false);
 		var claims = await _userManager.GetClaimsAsync(user).ConfigureAwait(false);
-		var identityClaims = await GetClaimsUser(claims, user).ConfigureAwait(false);
+		var identityClaims = await GetClaimsUserAsync(claims, user).ConfigureAwait(false);
 		var encodedToken = EncodeToken(identityClaims);
 		return GetResponseToken(encodedToken, user, claims);
 	}
 
-	private async Task<ClaimsIdentity> GetClaimsUser(ICollection<Claim> claims, IdentityUser user)
+	private async Task<ClaimsIdentity> GetClaimsUserAsync(ICollection<Claim> claims, IdentityUser user)
 	{
 		var userRoles = await _userManager.GetRolesAsync(user);
 		claims.Add(new Claim(JwtRegisteredClaimNames.Sub, user.Id));
@@ -95,8 +95,5 @@ public class AuthenticateService : IAuthenticateService
 	}
 
 
-	public long ToUnixEpochDate(DateTime date)
-	{
-		return DateTimeOffset.UtcNow.ToUnixTimeSeconds();
-	}
+	public long ToUnixEpochDate(DateTime date) => DateTimeOffset.UtcNow.ToUnixTimeSeconds();
 }

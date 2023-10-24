@@ -1,5 +1,4 @@
-﻿using Browl.Service.AuthSecurity.API.Service;
-using Browl.Service.AuthSecurity.API.Services;
+﻿using Browl.Service.AuthSecurity.API.Services;
 using Browl.Service.AuthSecurity.API.Services.Interfaces;
 
 namespace Browl.Service.AuthSecurity.API.Configuration;
@@ -10,10 +9,10 @@ public static class ApiConfig
 	{
 		_ = services.AddControllers();
 		_ = services.AddEndpointsApiExplorer();
-		services.AddHttpContextAccessor();
+		var unused3 = services.AddHttpContextAccessor();
 
-		services.AddScoped<IAuthenticateService, AuthenticateService>();
-		services.AddScoped<IUserService, UserService>();
+		var unused2 = services.AddScoped<IAuthenticateService, AuthenticateService>();
+		var unused1 = services.AddScoped<IUserService, UserService>();
 
 		// services.AddCors(options =>
 		// {
@@ -26,7 +25,7 @@ public static class ApiConfig
 		// 		});
 		// });
 
-		services.AddCors(options =>
+		var unused = services.AddCors(options =>
 {
 	options.AddPolicy("all", builder => builder.AllowAnyOrigin()
 	.AllowAnyHeader()
@@ -51,13 +50,13 @@ public static class ApiConfig
 	public static IApplicationBuilder UseApiConfiguration(this IApplicationBuilder app, IWebHostEnvironment env)
 	{
 
-		app.UseHttpsRedirection();
-		app.UseRouting();
-		app.UseAuthentication();
-		app.UseAuthorization();
+		var unused5 = app.UseHttpsRedirection();
+		var unused4 = app.UseRouting();
+		var unused3 = app.UseAuthentication();
+		var unused2 = app.UseAuthorization();
 		// app.UseCors("BrowlCors");
-		app.UseCors("all");
-		app.UseEndpoints(endpoints =>
+		var unused1 = app.UseCors("all");
+		var unused = app.UseEndpoints(endpoints =>
 		{
 			var unused = endpoints.MapControllers();
 		});

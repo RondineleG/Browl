@@ -1,9 +1,8 @@
-﻿namespace Browl.Service.AuthSecurity.Application.Models.Email
+﻿namespace Browl.Service.AuthSecurity.Application.Models.Email;
+
+public class EmailSettings
 {
-    public class EmailSettings
-    {
-        public string ApiKey { get; set; }
-        public string FromAddress { get; set; }
-        public string FromName { get; set; }
-    }
+	public required string ApiKey { get; set; }
+	public required string FromAddress { get; set; }
+	public required string FromName { get; set; }
 }

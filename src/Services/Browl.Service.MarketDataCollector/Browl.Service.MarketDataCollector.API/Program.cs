@@ -18,6 +18,7 @@ builder.Services.AddApiVersioning(opt =>
 	  new HeaderApiVersionReader("x-api-version"),
 	  new MediaTypeApiVersionReader("x-api-version"));
 });
+
 builder.Services.AddDependencyInjectionConfiguration(builder.Configuration);
 builder.Services.AddAndMigrateDatabases(builder.Configuration);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -27,6 +28,7 @@ builder.Services.AddFluentValidationConfiguration();
 builder.Services.AddAutoMapperConfiguration();
 builder.Services.AddSwaggerConfiguration();
 builder.Services.AddMemoryCache();
+
 var ambiente = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 var configuration = new ConfigurationBuilder()
 						 .SetBasePath(Directory.GetCurrentDirectory())
@@ -35,6 +37,7 @@ var configuration = new ConfigurationBuilder()
 						 .Build();
 Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(configuration).CreateLogger();
 builder.Host.UseSerilog((ctx, lc) => lc.WriteTo.Console());
+
 
 var app = builder.Build();
 if (app.Environment.IsDevelopment())

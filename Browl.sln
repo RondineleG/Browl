@@ -126,17 +126,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{BCDAAE63-C61
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{559E6274-5B9B-4799-89C3-F240C87A1A1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Browl.MVC", "Browl.Api\Browl.MVC.csproj", "{95D0C415-71EA-4B3F-9A81-565AD44ACDCF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Browl.MVC", "Browl.Api\Browl.MVC.csproj", "{95D0C415-71EA-4B3F-9A81-565AD44ACDCF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Browl.Domain", "Browl.Domain\Browl.Domain.csproj", "{10207397-B9BB-40BE-B9B0-F974B37B6EC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Browl.Domain", "Browl.Domain\Browl.Domain.csproj", "{10207397-B9BB-40BE-B9B0-F974B37B6EC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Browl.Service", "Browl.Service\Browl.Service.csproj", "{37E8B24A-E4C3-46AF-BBEA-1FB151D501ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Browl.Service", "Browl.Service\Browl.Service.csproj", "{37E8B24A-E4C3-46AF-BBEA-1FB151D501ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Browl.CrossCutting", "Browl.CrossCutting\Browl.CrossCutting.csproj", "{90C33C03-A5A6-4F37-BFC0-F580FAACD6B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Browl.CrossCutting", "Browl.CrossCutting\Browl.CrossCutting.csproj", "{90C33C03-A5A6-4F37-BFC0-F580FAACD6B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Browl.Infra", "Infra\Browl.Infra.csproj", "{42DA3620-E0CC-4C9A-A8F8-631F5F1C9826}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Browl.Infra", "Infra\Browl.Infra.csproj", "{42DA3620-E0CC-4C9A-A8F8-631F5F1C9826}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Browl.IoC", "Browl.IoC\Browl.IoC.csproj", "{E0F0773B-5D9B-4B25-A4CF-A4D435834B13}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Browl.IoC", "Browl.IoC\Browl.IoC.csproj", "{E0F0773B-5D9B-4B25-A4CF-A4D435834B13}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Browl.Database", "Browl.Database\Browl.Database.sqlproj", "{3A11FBFF-7637-40EE-B38A-0A27554D2345}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -256,6 +258,12 @@ Global
 		{E0F0773B-5D9B-4B25-A4CF-A4D435834B13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E0F0773B-5D9B-4B25-A4CF-A4D435834B13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E0F0773B-5D9B-4B25-A4CF-A4D435834B13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A11FBFF-7637-40EE-B38A-0A27554D2345}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A11FBFF-7637-40EE-B38A-0A27554D2345}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A11FBFF-7637-40EE-B38A-0A27554D2345}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{3A11FBFF-7637-40EE-B38A-0A27554D2345}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A11FBFF-7637-40EE-B38A-0A27554D2345}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A11FBFF-7637-40EE-B38A-0A27554D2345}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -307,6 +315,7 @@ Global
 		{90C33C03-A5A6-4F37-BFC0-F580FAACD6B8} = {559E6274-5B9B-4799-89C3-F240C87A1A1C}
 		{42DA3620-E0CC-4C9A-A8F8-631F5F1C9826} = {559E6274-5B9B-4799-89C3-F240C87A1A1C}
 		{E0F0773B-5D9B-4B25-A4CF-A4D435834B13} = {BCDAAE63-C618-4709-95D2-8BCA717ABD65}
+		{3A11FBFF-7637-40EE-B38A-0A27554D2345} = {559E6274-5B9B-4799-89C3-F240C87A1A1C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {09C8AF50-40D4-48F2-A03D-9BC7AB6D3538}

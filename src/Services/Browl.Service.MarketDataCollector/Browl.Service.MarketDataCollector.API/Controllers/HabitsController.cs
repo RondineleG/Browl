@@ -32,7 +32,8 @@ public class HabitsController : ControllerBase
 	public virtual IActionResult GetVersion() => Ok("Response from version 1.0");
 
 	[HttpGet("{id}")]
-	public async Task<IActionResult> GetAsync(int id) => Ok(_mapper.Map<HabitResource>(await _habitService.GetById(id)));
+	public async Task<IActionResult> GetAsync(int id) => 
+		Ok(_mapper.Map<HabitResource>(await _habitService.GetById(id)));
 
 
 	/// <summary>

@@ -21,7 +21,8 @@ public class HabitService : IHabitService
 
 	public async Task<IReadOnlyList<Habit>> GetAll() => await _dbContext.Habits!.ToListAsync();
 
-	public async Task<Habit> GetById(int id) => await _dbContext.Habits.FindAsync(id);
+	public async Task<Habit> GetById(int id) => 
+		await _dbContext.Habits.FindAsync(id);
 
 	public async Task DeleteById(int id)
 	{

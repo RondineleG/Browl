@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Browl.CrossCutting\Browl.CrossCutting.csproj" />
+    <ProjectReference Include="..\Browl.Domain\Browl.Domain.csproj" />
+    <ProjectReference Include="..\Browl.IoC\Browl.IoC.csproj" />
+  </ItemGroup>
+
+</Project>

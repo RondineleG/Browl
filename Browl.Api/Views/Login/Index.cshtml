@@ -1,0 +1,24 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div>
+    <h1>Login</h1>
+    <div>
+        <form method="post" action='@Url.Action("Authenticate", "Login")'>
+            <label for="email">
+                Email
+            </label>
+            <input id="email" name="email" />
+            <label for="password">
+                Senha
+            </label>
+            <input id="password" name="password" />
+            <button type="submit">
+                Entrar
+            </button>
+        </form>
+    </div>
+</div>

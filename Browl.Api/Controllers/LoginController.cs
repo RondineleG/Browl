@@ -18,7 +18,7 @@ public class LoginController : Controller
 		return View();
 	}
 
-	[HttpPost("")]
+	[HttpPost]
 	public async Task<IActionResult> AuthenticateAsync(AutenticationCommand command)
 	{
 		var authenticated = await _authenticationService.Authenticate(command);

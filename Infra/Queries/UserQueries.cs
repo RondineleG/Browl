@@ -7,9 +7,9 @@ SELECT TOP 1
 	Nome,
 	Email
 FROM
-	User
+	Browl.dbo.[User]
 WHERE
-	Email = @email 
+	Email = @Email 
 	AND Passwordhash = @passwordhash
 ";
 

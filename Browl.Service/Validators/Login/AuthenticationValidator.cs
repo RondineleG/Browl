@@ -8,7 +8,7 @@ namespace Browl.Service.Validators.Login
     {
 		public AuthenticationValidator() { 
 			RuleFor(c => c.Email)
-				.NotEmpty()
+				.NotEmpty()				
 				.WithMessage("Obrigatório informar o email");
 
 			RuleFor(c => c.Password)

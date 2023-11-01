@@ -21,6 +21,7 @@ public class AuthenticationService : BaseService, IAuthenticationService
 
 	public async Task<AuthenticationVM> Authenticate(AutenticationCommand command) {
 		Validate(command, new AuthenticationValidator());
+
 		var user = _mapper.Map<User>(command);
 		
 		string passwordHash = command.Password; //Aqui precisa fazer o esquema pra gerar o hash da senha pra validar na base;

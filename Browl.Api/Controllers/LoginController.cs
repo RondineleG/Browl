@@ -4,9 +4,9 @@ using Browl.Domain.IServices;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Browl.Api.Controllers;
-public class LoginController : Controller
+public class LoginController : Controller										
 {
-	private readonly IAuthenticationService _authenticationService;
+	private readonly IAuthenticationService _authenticationService;			// Recebe uma injeção de dependências e atribui a uma variavel privada _auth...
 
 	public LoginController(IAuthenticationService authenticationService)
 	{
@@ -23,12 +23,12 @@ public class LoginController : Controller
 	{
 		var authenticated = await _authenticationService.Authenticate(command);
 
-		if (authenticated == null)
-			return BadRequest();
+		if (authenticated == null)						// Caso authenticação retorne nulo
+			return BadRequest();						
 
-		ViewBag.Logado = true; 
+		ViewBag.Logado = true;							// Autenticação aprovada, atribui true em logado
 
-		return RedirectToAction("Index", "Home");
+		return RedirectToAction("Index", "Home");		// Redireciona a página
 
 	}
 }

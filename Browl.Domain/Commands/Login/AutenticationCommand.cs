@@ -1,8 +1,8 @@
 ﻿namespace Browl.Domain.Commands.Login
 {
-	public class AutenticationCommand
+	public class AutenticationCommand				// Classe publica de autenticação
     {
-		public string Email { get; set; }
-		public string Password { get; set; }
+		public string Email { get; set; }			// Podemos ler e atribuir valores
+		public string Password { get; set; }        // Podemos ler e atribuir valores
 	}
 }

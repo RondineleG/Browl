@@ -1,4 +1,6 @@
-﻿using Browl.Domain.Commands.Login;
+﻿using System.ComponentModel.DataAnnotations;
+
+using Browl.Domain.Commands.Login;
 using Browl.Domain.IServices;
 
 using Microsoft.AspNetCore.Mvc;
@@ -23,12 +25,11 @@ public class LoginController : Controller
 	{
 		var authenticated = await _authenticationService.Authenticate(command);
 
-		if (authenticated == null)						// Caso authenticação retorne nulo
-			return BadRequest();						
+		if (authenticated == null)
+			return BadRequest();
 
-		ViewBag.Logado = true;							// Autenticação aprovada, atribui true em logado
+		ViewBag.Logado = true;
 
-		return RedirectToAction("Index", "Home");		// Redireciona a página
-
+		return RedirectToAction("Index", "Home");
 	}
 }

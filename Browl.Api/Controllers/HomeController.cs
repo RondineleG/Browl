@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Browl.Api.Controllers;
 public class HomeController : Controller							// HomeController classe, herda Controller
 {
+
 	private readonly ILogger<HomeController> _logger;		
 
 	public HomeController(ILogger<HomeController> logger)

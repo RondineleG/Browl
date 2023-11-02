@@ -12,23 +12,29 @@ public class AuthenticationService : BaseService, IAuthenticationService
 {
 	private readonly IUserRepository _userRepository;
 	private readonly IMapper _mapper;
+	private readonly ITokenService _tokenService;
 
-	public AuthenticationService(IUserRepository userRepository, IMapper mapper)
+	public AuthenticationService(IUserRepository userRepository, IMapper mapper, ITokenService tokenService)
 	{
 		_userRepository = userRepository;
 		_mapper = mapper;
+		_tokenService = tokenService;
 	}
 
 	public async Task<AuthenticationVM> Authenticate(AutenticationCommand command) {
+
 		Validate(command, new AuthenticationValidator());
 
 		var user = _mapper.Map<User>(command);
 		
 		string passwordHash = command.Password; //Aqui precisa fazer o esquema pra gerar o hash da senha pra validar na base;
 		user = await _userRepository.Authenticate(user, passwordHash);
-
+		if (user == null)
+		{
+			return null;
+		}
 		var vm = _mapper.Map<AuthenticationVM>(user);
-		vm.JWT = "Precisa implementar a geração do JWT";
+		vm.JWT = await _tokenService.GenerateToken(user);
 
 		return vm;
 	}

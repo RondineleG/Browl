@@ -43,9 +43,6 @@ public class BaseConnectionManager : IDisposable
 			throw;
 		}
 	}
-
-
-
 	public void Dispose()
 	{
 		if(trans != null)

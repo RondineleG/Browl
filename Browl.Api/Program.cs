@@ -1,7 +1,13 @@
 
+using System.Text;
+
 using Browl.CrossCutting.Extensions;
+using Browl.CrossCutting;
 using Browl.Domain.AutoMappper;
 using Browl.IoC;
+
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,10 +34,42 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseEndpoints(endpoints =>
+{
+	endpoints.MapControllers();
+});
 
 app.MapControllerRoute(
 	name: "default",
 	pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+
+// APlicando Autenticação JWT
+void ConfigureServices(IServiceCollection services)
+{
+	services.AddCors();
+	services.AddControllers();
+
+	var key = Encoding.ASCII.GetBytes(Browl.CrossCutting.Settings.Secret);
+	services.AddAuthentication(x =>
+	{
+		x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+		x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+	})
+	.AddJwtBearer(x =>
+	{
+		x.RequireHttpsMetadata = false;
+		x.SaveToken = true;
+		x.TokenValidationParameters = new TokenValidationParameters
+		{
+			ValidateIssuerSigningKey = true,
+			IssuerSigningKey = new SymmetricSecurityKey(key),
+			ValidateIssuer = false,
+			ValidateAudience = false
+		};
+	});
+}

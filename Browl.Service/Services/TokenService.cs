@@ -28,8 +28,6 @@ namespace Bowl.Service.Services
 				SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
 			};
 			var token = tokenHandler.CreateToken(tokenDescriptor);
-			return Task.FromResult(tokenHandler.WriteToken(token));
-			Console.WriteLine("teste");
-		}
+			return Task.FromResult(tokenHandler.WriteToken(token));		}
 	}
 }

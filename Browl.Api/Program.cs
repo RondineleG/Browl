@@ -2,7 +2,6 @@
 using System.Text;
 
 using Browl.CrossCutting.Extensions;
-using Browl.CrossCutting;
 using Browl.Domain.AutoMappper;
 using Browl.IoC;
 

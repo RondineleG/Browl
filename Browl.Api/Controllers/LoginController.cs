@@ -17,19 +17,36 @@ public class LoginController : Controller
 
 	public IActionResult Index()
 	{
+		TempData["Logado"] = false;
+		if (TempData["LoginAuthenticateError"] != null)
+		{
+			ViewBag.LoginAuthenticateError = TempData["LoginAuthenticateError"];
+			TempData["LoginAuthenticateError"] = null;
+		}
 		return View();
 	}
 
 	[HttpPost]
 	public async Task<IActionResult> AuthenticateAsync(AutenticationCommand command)
 	{
-		var authenticated = await _authenticationService.Authenticate(command);
+		try
+		{
+			var authenticated = await _authenticationService.Authenticate(command);
 
-		if (authenticated == null)
-			return BadRequest();
+			if (authenticated == null)
+			{
+				TempData["LoginAuthenticateError"] = "Usuário ou senha incorretos";
+				return RedirectToAction("Index");
+			}
+			TempData["Logado"] = true;
 
-		ViewBag.Logado = true;
-
-		return RedirectToAction("Index", "Home");
+			return RedirectToAction("Index", "Home");
+		}
+		catch (Exception ex)
+		{
+			Console.WriteLine("Erro ao realizar login: " + ex.Message);
+			TempData["LoginAuthenticateError"] = "Erro ao realizar login, se o erro persistir entre em contato com o suporte";
+			return RedirectToAction("Index");
+		}
 	}
 }

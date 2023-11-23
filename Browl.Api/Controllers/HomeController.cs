@@ -15,16 +15,22 @@ public class HomeController : Controller							// HomeController classe, herda C
 		_logger = logger;
 	}
 
-	public IActionResult Index()									// Método para lidar com a rota padrão quando o usuário acessa
+	public IActionResult Index()
 	{
-		
 		bool logado = false;
-		bool.TryParse(TempData["Logado"].ToString(), out logado);
 
-		if (logado == false || TempData["Logado"] == null)		// Verifica se a view.Bag é nula ou falsa
+		// Verifica se TempData["Logado"] é nulo antes de acessá-lo
+		if (TempData["Logado"] != null)
+		{
+			bool.TryParse(TempData["Logado"].ToString(), out logado);
+		}
+
+		if (!logado)
+		{
 			return RedirectToAction("Index", "Login");
+		}
 
-		return View();												// Caso View.bag.logado não seja nula ou falsa, retorna View
+		return View();
 	}
 
 	public IActionResult Privacy()

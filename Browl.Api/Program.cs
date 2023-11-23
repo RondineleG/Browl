@@ -45,7 +45,7 @@ app.MapControllerRoute(
 	name: "default",
 	pattern: "{controller=Home}/{action=Index}/{id?}");
 
-app.Run();
+
 
 // APlicando Autenticação JWT
 void ConfigureServices(IServiceCollection services)
@@ -72,3 +72,4 @@ void ConfigureServices(IServiceCollection services)
 		};
 	});
 }
+app.Run();

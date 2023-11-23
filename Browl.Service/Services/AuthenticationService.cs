@@ -27,7 +27,7 @@ public class AuthenticationService : BaseService, IAuthenticationService
 
 		var user = _mapper.Map<User>(command);
 		
-		string passwordHash = command.Password; //Aqui precisa fazer o esquema pra gerar o hash da senha pra validar na base;
+		string passwordHash = command.Password; 
 		user = await _userRepository.Authenticate(user, passwordHash);
 		if (user == null)
 		{

@@ -4,24 +4,33 @@
 @{
 }
 
-<div>
-    <h1>Login</h1>
+<div class="col-12 col-lg-6 col-md-8 container-fluid">
+    <h1 class="m-1 p-1">Login</h1>
     <div>        
-        <form method="post" action='@Url.Action("Authenticate", "Login")'>
-            <label for="email">
+        <form class="container d-flex flex-column" method="post" action='@Url.Action("Authenticate", "Login")'>
+            @if (ViewBag.LoginAuthenticateError != null)
+            {
+                <p class="text-danger">
+                    @ViewBag.LoginAuthenticateError
+                </p>
+                
+            }
+            <label class="form-label" for="email">
                 Email
             </label>
-            <input id="email" name="email" />
-            <label for="password">
+            <input class="form-control" id="email" name="email" />
+            <label class="form-label" for="password">
                 Senha
             </label>
-            <input id="password" name="password" type="password"/><br />
-            <button type="submit">
-                Cadastrar
-            </button>
-            <button type="submit">
+            <input class="form-control" id="password" name="password" type="password" /><br />
+            <button class="btn btn-primary m-1 p-1 px-3" type="submit">
                 Entrar
             </button>
+
+            @Html.ActionLink("Cadastro", "Cadastro", "Login", null, new {                
+                @class = "btn btn-info m-1 p-1 px-3 text-decoration-none"                
+            })
+            
         </form>
     </div>
 </div>

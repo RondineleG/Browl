@@ -17,8 +17,13 @@ public class HomeController : Controller							// HomeController classe, herda C
 
 	public IActionResult Index()									// Método para lidar com a rota padrão quando o usuário acessa
 	{
-		if (ViewBag.Logado == null || ViewBag.Logado == false)		// Verifica se a view.Bag é nula ou falsa
-			return RedirectToAction("Index", "Login");				
+		
+		bool logado = false;
+		bool.TryParse(TempData["Logado"].ToString(), out logado);
+
+		if (logado == false || TempData["Logado"] == null)		// Verifica se a view.Bag é nula ou falsa
+			return RedirectToAction("Index", "Login");
+
 		return View();												// Caso View.bag.logado não seja nula ou falsa, retorna View
 	}
 

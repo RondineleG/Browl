@@ -49,4 +49,9 @@ public class LoginController : Controller
 			return RedirectToAction("Index");
 		}
 	}
+
+	public ActionResult Cadastro()
+	{
+		return View();
+	}
 }

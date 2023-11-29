@@ -15,6 +15,12 @@
                 </p>
                 
             }
+            @if (TempData["CadastroSucesso"] != null)
+            {
+                <p class="text-sucess">
+                    @TempData["CadastroSucesso"]
+                </p>
+            }
             <label class="form-label" for="email">
                 Email
             </label>

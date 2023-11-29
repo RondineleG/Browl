@@ -1,4 +1,5 @@
 
+using System.Data.SqlClient;
 using System.Text;
 
 using Browl.CrossCutting.Extensions;
@@ -7,6 +8,7 @@ using Browl.IoC;
 
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +21,7 @@ builder.Services.RegisterDependencies();
 var app = builder.Build();
 
 app.Configuration.SetEnvironmentConfiguration();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -52,6 +55,9 @@ void ConfigureServices(IServiceCollection services)
 {
 	services.AddCors();
 	services.AddControllers();
+	services.AddTransient<SqlConnection>(_ => new SqlConnection(app.Configuration.GetConnectionString("DefaultConnection")));
+
+
 
 	var key = Encoding.ASCII.GetBytes(Browl.CrossCutting.Settings.Secret);
 	services.AddAuthentication(x =>

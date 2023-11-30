@@ -16,4 +16,5 @@ namespace Browl.Service.Validators.Login
 				.WithMessage("Não informou a senha");
 		}
     }
+
 }

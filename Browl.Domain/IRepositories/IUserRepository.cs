@@ -4,4 +4,5 @@ namespace Browl.Domain.IRepositories;
 public interface IUserRepository
 {
 	Task<User> Authenticate(User user, string passwordhash);
+	Task<bool> VerifyUserExist(string email);
 }

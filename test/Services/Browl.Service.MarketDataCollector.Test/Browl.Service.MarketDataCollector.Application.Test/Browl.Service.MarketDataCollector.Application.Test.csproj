@@ -28,8 +28,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\..\..\src\Services\Browl.Service.MarketDataCollector\Browl.Service.MarketDataCollector.Application\Browl.Service.MarketDataCollector.Application.csproj" />
-	  <ProjectReference Include="..\..\..\..\src\Services\Browl.Service.MarketDataCollector\Browl.Service.MarketDataCollector.Domain\Browl.Service.MarketDataCollector.Domain.csproj" />
 	  <ProjectReference Include="..\Browl.Service.MarketDataCollector.FakeData\Browl.Service.MarketDataCollector.FakeData.csproj" />
 	</ItemGroup>
 

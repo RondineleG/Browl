@@ -13,6 +13,13 @@ WHERE
 	AND Passwordhash = @passwordhash
 ";
 
+	private const string QueryVerifyUserExist = @"
+		SELECT COUNT(*) 
+FROM 
+	User 
+WHERE 
+	Email = @Email
 
+";
 
 }

@@ -38,4 +38,15 @@ public class AuthenticationService : BaseService, IAuthenticationService
 
 		return vm;
 	}
+
+	public async Task<int> CreateUser(CreateUserCommand command)
+	{
+		Validate(command, new CreateUserValidator());
+		var userExists = await _userRepository.VerifyUserExist(command.Email);
+		if (userExists)
+		{
+			throw new ArgumentException("Usuário ja existe");
+		}
+
+	}
 }

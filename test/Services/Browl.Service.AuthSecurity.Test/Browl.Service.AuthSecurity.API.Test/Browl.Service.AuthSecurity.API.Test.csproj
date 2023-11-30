@@ -24,8 +24,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\src\Services\Browl.Service.AuthSecurity\Browl.Service.AuthSecurity.Api\Browl.Service.AuthSecurity.API.csproj" />
-  </ItemGroup>
-
 </Project>

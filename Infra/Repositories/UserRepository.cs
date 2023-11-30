@@ -14,12 +14,23 @@ public partial class UserRepository : BaseRepository, IUserRepository
 	public async Task<User> Authenticate(User user, string passwordhash)
 	{
 		return await _conn.QueryFirstOrDefaultAsync<User>(
-			QueryAuthenticateUser, 
+			QueryAuthenticateUser,
 			new {
 				user.Email,
 				passwordhash
 			}
-		);		
+		);
 	}
 
+	public async Task<bool> VerifyUserExist(string email)
+	{
+		var userExist =  await _conn.QueryFirstOrDefaultAsync<int>(
+			QueryVerifyUserExist,
+			new
+			{
+				email
+			}
+		);
+		return userExist>0;
+	}
 }

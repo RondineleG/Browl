@@ -5,6 +5,6 @@ namespace Browl.Domain.IServices;
 public interface IAuthenticationService
 {
 	Task<AuthenticationVM> Authenticate(AutenticationCommand command);
-
+	Task<int> CreateUser(CreateUserCommand command);
 
 }

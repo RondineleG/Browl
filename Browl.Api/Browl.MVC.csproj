@@ -8,9 +8,21 @@
 
   <ItemGroup>
     <Compile Remove="Repositories\**" />
+    <Compile Remove="Views\Cadastro\**" />
     <Content Remove="Repositories\**" />
+    <Content Remove="Views\Cadastro\**" />
     <EmbeddedResource Remove="Repositories\**" />
+    <EmbeddedResource Remove="Views\Cadastro\**" />
     <None Remove="Repositories\**" />
+    <None Remove="Views\Cadastro\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Login\teste.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Views\Login\teste.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,10 +36,6 @@
     <ProjectReference Include="..\Browl.CrossCutting\Browl.CrossCutting.csproj" />
     <ProjectReference Include="..\Browl.Domain\Browl.Domain.csproj" />
     <ProjectReference Include="..\Browl.IoC\Browl.IoC.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Views\Cadastro\" />
   </ItemGroup>
 
 </Project>

@@ -51,13 +51,13 @@ public class LoginController : Controller
 		}
 	}
 
-	public ActionResult Cadastro()
+	public IActionResult cadastro()
 	{
-		return View();
+		return RedirectToAction("teste", "Login");
 	}
 
 	[HttpPost]
-	public async ActionResult Cadastro(CreateUserCommand command)
+	public async Task<ActionResult> Cadastro(CreateUserCommand command)
 	{
 		try
 		{
@@ -78,17 +78,5 @@ public class LoginController : Controller
 			TempData["CadastroAuthenticateError"] = ex.Message;
 			return RedirectToAction("Index");
 		}
-		// Criando novo usuário
-		using (var insertUserCommand = new SqlCommand("INSERT INTO User(Email, Nome, PasswordHash) VALUES(@Email, @Nome, @PasswordHash)", _sqlConnection))
-		{
-			insertUserCommand.Parameters.AddWithValue("@Email", email);
-			insertUserCommand.Parameters.AddWithValue("@Nome", nome);
-			insertUserCommand.Parameters.AddWithValue("@PasswordHash", password);
-
-			insertUserCommand.ExecuteNonQuery();
-		}
-
-
-
 	}
 }
